@@ -1,10 +1,11 @@
-import './App.css';
+import './App.scss';
+import Homepage from './Pages/Homepage';
 
 
 function App() {
   return (
-    <div className="text-center">
-     <h1>welcome to E-commerce website</h1>
+    <div>
+     <Homepage />
     </div>
   );
 }

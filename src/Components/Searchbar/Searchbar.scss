@@ -1,0 +1,70 @@
+:root{
+    --topbar-color:#1976d2;
+    --searchbar-bg-color:#e8e8e84a;
+    --logo-color:var(--topbar-color);
+}
+
+.searchbar{
+    display: flex;
+    align-items: center;
+    background-color: var(--searchbar-bg-color);
+    width: 100%;
+   
+}
+
+.searchbar_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    padding: 1rem 0 1rem 0;
+    
+    .searchbar_left{
+        margin-left: 3rem;
+        border: 3px solid rgb(45, 89, 184);
+        border-radius: 0.5rem;
+        color: var(--logo-color);
+
+        .company_logo{
+            padding: 0.4rem;
+        }
+       
+    }
+    
+}
+
+.searchbar_middle .search_input{
+    form input{
+        width:25rem;
+    }
+}
+
+.searchbar_right{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.searchbar_right .icons{
+    display: flex;
+    align-items: center;
+    margin-right: 1.5rem;
+    
+    .cart_icon,.profile_icon{
+        border-radius: 50%;
+        border: 1px solid var(--searchbar-bg-color);
+        box-shadow: 1px 1px 2px 1px rgb(223, 222, 222);
+        width: 3rem;
+        height:3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 1rem;
+        cursor: pointer;
+    }
+}
+
+.welcome_section { 
+    line-height: 7px;
+}
+
