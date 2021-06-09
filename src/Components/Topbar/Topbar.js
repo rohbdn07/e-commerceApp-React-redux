@@ -5,7 +5,7 @@ export default function Topbar() {
     return (
         <> 
             <div className="topbar">
-                <div className="col-lg-8 topbar_wrapper">
+                <div className="col-lg-8 col-md-11 col-sm-12 topbar_wrapper">
                     <div className="top_left">
                         <ul>
                             <li>Home</li>
