@@ -4,6 +4,7 @@ import Searchbar from '../Components/Searchbar/Searchbar';
 import Menubar from '../Components/Menubar/Menubar';
 import Banner from '../Components/Banner/Banner';
 import Eservices from '../Components/E-services/Eservices';
+import ProductsList from '../Components/ProductsContainer/ProductsList';
 
 export default function Homepage() {
     return (
@@ -13,6 +14,7 @@ export default function Homepage() {
             <Menubar />
             <Banner />
             <Eservices />
+            <ProductsList />
         </div>
     )
 }
