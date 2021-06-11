@@ -63,7 +63,7 @@
         border: 1px solid red;
         background-color: red;
         position: relative;
-        top: -15px;
+        top: -10px;
         right: -5px;
         color: #ffff;
     }
@@ -71,7 +71,6 @@
     .cart_icon,.profile_icon{
         font-size: 1.5rem;
         border-radius: 50%;
-        border: 1px solid var(--searchbar-bg-color);
         box-shadow: 1px 1px 2px 1px rgb(223, 222, 222);
         width: 2.7rem;
         height:2.7rem;
@@ -82,7 +81,9 @@
         cursor: pointer;
 
         &:hover{
+            background-color:var(--topbar-color);
             opacity: 0.7;
+            color: #ffff;
         }
     }
 }

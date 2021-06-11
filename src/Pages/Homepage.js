@@ -3,6 +3,7 @@ import Topbar from '../Components/Topbar/Topbar';
 import Searchbar from '../Components/Searchbar/Searchbar';
 import Menubar from '../Components/Menubar/Menubar';
 import Banner from '../Components/Banner/Banner';
+import Eservices from '../Components/E-services/Eservices';
 
 export default function Homepage() {
     return (
@@ -11,6 +12,7 @@ export default function Homepage() {
             <Searchbar />
             <Menubar />
             <Banner />
+            <Eservices />
         </div>
     )
 }
