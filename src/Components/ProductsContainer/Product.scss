@@ -1,0 +1,27 @@
+.products {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5rem;
+    margin-top: 3rem;
+
+    .product_wrapper{
+        width: 20rem;
+        // height: 50rem;
+        border-radius: 0.2rem 0.2rem 0 0;
+        max-height: 30rem;
+        img{
+            width: 13rem;
+            height: 12rem;
+            margin: auto;
+            margin-top: 0.5rem;
+            // border: 1px solid red;
+            padding: 0.5rem;
+        }
+        .price_text{
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: rgba(34, 145, 230, 0.981);
+        }
+        
+    }
+}

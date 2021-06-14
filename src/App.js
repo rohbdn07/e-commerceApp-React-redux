@@ -4,9 +4,9 @@ import Homepage from './Pages/Homepage';
 
 function App() {
   return (
-    <div className="col-lg-12">
+      <div className="col-lg-12">
       <Homepage />
-    </div>
+    </div>    
   );
 }
 
