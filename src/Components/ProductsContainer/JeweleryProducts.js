@@ -11,12 +11,12 @@ export default function JeweleryProducts() {
               <h2 style={{marginTop:"3rem"}}>Jewelery:</h2>
 
         {
-            allProducts === false ? <h3>Loading...</h3> : 
+            allProducts === false ? <h3>Couldn't able to get data from source</h3> : 
             <div className="products">
               
                 {
                     allProducts.map((item)=>{
-                            return  [ item.category === "jewelery" ?
+                            return  (item.category === "jewelery" ?
                                     <div className="card col-lg-10 product_wrapper" key={item.id}>
                                         <img src={item.image} className="card-img-top" alt="men's-product" />
                                         <div className="card-body">
@@ -27,7 +27,7 @@ export default function JeweleryProducts() {
                                         </div>
                                     </div>
 
-                                : null]
+                                : null)
                             
                     })
                 }

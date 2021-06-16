@@ -11,13 +11,13 @@ export default function ElectronicProducts() {
               <h2 style={{marginTop:"3rem"}}>Electronics:</h2>
 
         {
-            allProducts === false ? <h3>Loading...</h3> : 
+            allProducts === false ? <h3>Couldn't able to get data from source</h3> : 
             <div className="products">
               
                 {
                     allProducts.map((item)=>{
-                            return  [ item.category === "electronics" ?
-                                    <div className="card col-lg-10 product_wrapper" key={item.id}>
+                            return  (item.category === "electronics" ?
+                                    <div className="card product_wrapper" key={item.id}>
                                         <img src={item.image} className="card-img-top" alt="men's-product" />
                                         <div className="card-body">
                                         <h5 className="card-title">{item.title}</h5>
@@ -27,7 +27,7 @@ export default function ElectronicProducts() {
                                         </div>
                                     </div>
 
-                                : null]
+                                : null)
                             
                     })
                 }

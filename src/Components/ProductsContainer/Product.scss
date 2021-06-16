@@ -1,14 +1,25 @@
 .products {
-    display: flex;
-    justify-content: space-between;
+    display: inline-flex;
+    flex-wrap: wrap;
     margin-bottom: 5rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
 
     .product_wrapper{
+        margin-top: 1rem;
+        margin-right: 2rem;
         width: 20rem;
         // height: 50rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 0.2rem 0.2rem 0 0;
         max-height: 30rem;
+        word-wrap: break-word;
+        cursor: pointer;
+
+        &:hover{
+            box-shadow: 0 4px 15px #6d6b6bb3;
+            transition: 0.3s;
+        }
+
         img{
             width: 13rem;
             height: 12rem;
@@ -17,10 +28,15 @@
             // border: 1px solid red;
             padding: 0.5rem;
         }
+
         .price_text{
             font-size: 1.5rem;
             font-weight: bold;
             color: rgba(34, 145, 230, 0.981);
+        }
+
+        .card-title{
+            height: 5rem;
         }
         
     }

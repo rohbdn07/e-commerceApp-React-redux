@@ -1,11 +1,15 @@
-import React,{ useEffect } from 'react';
+import React,{ useEffect, useState } from 'react';
 import { useDispatch }  from 'react-redux';
 import { GetProductsAction } from '../../Redux/Action/GetProducts-Action';
 import MenProduct from './MenProduct';
-import JeweleryProducts from '../ProductsContainer/JeweleryProducts';
-import ElectronicProducts from '../ProductsContainer/ElectronicProducts';
+import JeweleryProducts from './JeweleryProducts';
+import ElectronicProducts from './ElectronicProducts';
+import WomenProducts from './WomenProducts';
+
 export default function ProductsList() {
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false)
+
 
     useEffect(() => {
         getProducts()
@@ -13,13 +17,15 @@ export default function ProductsList() {
 
     const getProducts = () => {
         try {
-        const fetchData = fetch('https://fakestoreapi.com/products?limit=12')
+        setLoading(true);
+        const fetchData = fetch('https://fakestoreapi.com/products?limit=20')
                             .then((res) => res.json())
                             .then((data) =>{
                                 console.log('the products datas are: ', data)
                                 dispatch(GetProductsAction(data))
-                               
                             })
+                            setLoading(false)
+                            
                                 
         } catch (error) {
             console.log('there is an error', error)
@@ -33,9 +39,16 @@ export default function ProductsList() {
     return (
        <>
             <div className="col-lg-8 mx-auto"> 
-                <MenProduct />
-                <JeweleryProducts />
-                <ElectronicProducts />
+            {
+                loading ? <h3>Loading...</h3> :
+                <>
+                    <MenProduct />
+                    <JeweleryProducts />
+                    <ElectronicProducts />
+                    <WomenProducts />
+                </>
+            }
+                
             </div>
        </>
     )

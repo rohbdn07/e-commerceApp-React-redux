@@ -1,6 +1,4 @@
 import { GET_PRODCUTS } from '../Constants/action-types';
-import { store } from '../Store';
-
 
 const initalstate = {
     allProducts : []
