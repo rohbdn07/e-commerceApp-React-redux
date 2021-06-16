@@ -1,14 +1,18 @@
 .products {
-    display: inline-flex;
+    display: flex;
+    // justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 5rem;
     margin-top: 2rem;
+    // max-width: 90rem;
+    
 
     .product_wrapper{
-        margin-top: 1rem;
-        margin-right: 2rem;
-        width: 20rem;
-        // height: 50rem;
+        margin-top: 0.5rem;
+        // margin-right: 0.2rem;
+        max-width: 19rem;
+        // height: fit-content;
+        padding: 1rem;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 0.2rem 0.2rem 0 0;
         max-height: 30rem;
@@ -21,8 +25,8 @@
         }
 
         img{
-            width: 13rem;
-            height: 12rem;
+            width: 10rem;
+            height: 10rem;
             margin: auto;
             margin-top: 0.5rem;
             // border: 1px solid red;
@@ -30,14 +34,22 @@
         }
 
         .price_text{
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: rgba(34, 145, 230, 0.981);
         }
 
         .card-title{
-            height: 5rem;
+            font-size: 0.8rem;
+            min-height: 3rem;
+            max-width: 12rem;
+        
         }
         
     }
 }
+
+// .product_list{
+//     display: flex;
+//     flex-direction: column;
+// }

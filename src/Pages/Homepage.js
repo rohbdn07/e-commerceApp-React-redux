@@ -5,6 +5,7 @@ import Menubar from '../Components/Menubar/Menubar';
 import Banner from '../Components/Banner/Banner';
 import Eservices from '../Components/E-services/Eservices';
 import ProductsList from '../Components/ProductsContainer/ProductsList';
+import PartnersList from '../Components/OurBrands/PartnersList';
 
 export default function Homepage() {
     return (
@@ -15,6 +16,7 @@ export default function Homepage() {
             <Banner />
             <Eservices />
             <ProductsList />
+            <PartnersList />
         </div>
     )
 }

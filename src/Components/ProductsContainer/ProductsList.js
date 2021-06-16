@@ -41,12 +41,12 @@ export default function ProductsList() {
             <div className="col-lg-8 mx-auto"> 
             {
                 loading ? <h3>Loading...</h3> :
-                <>
-                    <MenProduct />
+                <div className="product_list">
+                     <MenProduct />
                     <JeweleryProducts />
                     <ElectronicProducts />
                     <WomenProducts />
-                </>
+                </div>
             }
                 
             </div>

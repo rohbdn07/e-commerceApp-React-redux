@@ -17,7 +17,7 @@ export default function WomenProducts() {
                 {
                     allProducts.map((item)=>{
                             return  (item.category === "women's clothing" ?
-                                    <div className="card product_wrapper" key={item.id}>
+                                    <div className="card col-lg-3 col-md-3 product_wrapper" key={item.id}>
                                         <img src={item.image} className="card-img-top" alt="men's-product" />
                                         <div className="card-body">
                                         <h5 className="card-title">{item.title}</h5>
