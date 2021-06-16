@@ -1,12 +1,15 @@
+import React from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.scss';
 import Homepage from './Pages/Homepage';
 
 
 function App() {
   return (
-      <div className="col-lg-12">
-      <Homepage />
-    </div>    
+    <BrowserRouter>
+        <Homepage />
+    </BrowserRouter>
+        
   );
 }
 

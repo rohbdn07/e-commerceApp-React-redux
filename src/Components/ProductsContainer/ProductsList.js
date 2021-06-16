@@ -13,12 +13,12 @@ export default function ProductsList() {
 
     useEffect(() => {
         getProducts()
-    })
+    },[])
 
     const getProducts = () => {
         try {
         setLoading(true);
-        const fetchData = fetch('https://fakestoreapi.com/products?limit=20')
+        fetch('https://fakestoreapi.com/products?limit=20')
                             .then((res) => res.json())
                             .then((data) =>{
                                 console.log('the products datas are: ', data)

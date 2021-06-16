@@ -23,7 +23,7 @@ export default function MenProduct() {
                                         <h5 className="card-title">{item.title}</h5>
                                         <p className="card-text price_text">${item.price}</p>
                                         {/* <p className="card-text">{item.description}</p> */}
-                                        <a href="#" className="btn btn-primary">Add to cart</a>
+                                        <button className="btn btn-primary">Add to cart</button>
                                         </div>
                                     </div>
 

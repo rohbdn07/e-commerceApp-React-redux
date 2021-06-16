@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import './Product.scss';
 
@@ -23,7 +23,7 @@ export default function ElectronicProducts() {
                                         <h5 className="card-title">{item.title}</h5>
                                         <p className="card-text price_text">${item.price}</p>
                                         {/* <p className="card-text">{item.description}</p> */}
-                                        <a href="#" className="btn btn-primary">Add to cart</a>
+                                        <button className="btn btn-primary">Add to cart</button>
                                         </div>
                                     </div>
 
