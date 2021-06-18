@@ -25,3 +25,24 @@
     color: #1976d2;
    }
 }
+
+.footer_end{
+    width: 100%;
+    margin-top: 3rem;
+    // background-color: brown;
+
+    .fotend_wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .fotend_middle{
+        display: flex;
+        align-items: center;
+        p{
+            font-size: 0.9rem;
+            margin-right: 1.5rem;
+        }
+    }
+
+}
