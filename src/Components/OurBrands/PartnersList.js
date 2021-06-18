@@ -11,7 +11,7 @@ export default function PartnersList() {
                 <div className="col-lg-8 mx-auto partnerList_wrapper">
                     <h2>Our Brands</h2>
                     <div className="partner_row">
-                    { brands.map((item)=> {
+                    { brands && brands.map((item)=> {
                     return (
                         <Partners image={item.image} text={item.text}/>
                     )

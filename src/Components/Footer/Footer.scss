@@ -1,0 +1,27 @@
+.footer{
+    width: 100%;
+    background-color:#f8f9fa;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+
+    .footer_wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+}
+
+.brands_title p{ 
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.brands_names p{
+   font-size: 0.9rem;
+
+   &:hover{
+    cursor: pointer;
+    color: #1976d2;
+   }
+}
