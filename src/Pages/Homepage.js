@@ -6,6 +6,7 @@ import Banner from '../Components/Banner/Banner';
 import Eservices from '../Components/E-services/Eservices';
 import ProductsList from '../Components/ProductsContainer/ProductsList';
 import PartnersList from '../Components/OurBrands/PartnersList';
+import DemoApp from '../Components/DownloadApp/DemoApp';
 
 export default function Homepage() {
     return (
@@ -17,6 +18,7 @@ export default function Homepage() {
             <Eservices />
             <ProductsList />
             <PartnersList />
+            <DemoApp />
         </div>
     )
 }

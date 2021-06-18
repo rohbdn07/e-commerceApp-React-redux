@@ -8,7 +8,7 @@
         height: 5rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid rgb(197, 194, 194);
-        margin-bottom: 0.5rem;
+        // margin-bottom: 0.5rem;
         margin: auto;
         padding: 0.5rem;
     }
@@ -20,8 +20,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 2rem;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+}
+
+.partnerList{
+    width: 100%;
+    background-color: rgb(242, 240, 238);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
 }
 
