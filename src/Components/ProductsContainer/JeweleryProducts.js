@@ -13,9 +13,7 @@ export default function JeweleryProducts() {
         {
             allProducts === false ? <h3>Couldn't able to get data from source</h3> : 
             <div className="products">
-              
-                {
-                    allProducts.map((item)=>{
+                { allProducts.map((item)=>{
                             return  (item.category === "jewelery" ?
                                     <div className="card col-lg-3 col-md-3 product_wrapper" key={item.id}>
                                         <img src={item.image} className="card-img-top" alt="men's-product" />
