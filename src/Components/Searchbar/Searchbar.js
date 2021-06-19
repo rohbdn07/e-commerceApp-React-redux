@@ -3,6 +3,7 @@ import './Searchbar.scss';
 
 import { ImCart } from 'react-icons/im';
 import { BsPersonFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 export default function Searchbar() {
     return (
@@ -25,11 +26,12 @@ export default function Searchbar() {
                     </div>
                     <div className="searchbar_right">
                         <div className="icons">
-                            <div className="cart_icon">
-                                <ImCart />
-                                <p>7</p>
-                                
-                            </div>
+                            <Link to="/shopping-cart" >
+                                <div className="cart_icon">
+                                    <ImCart />
+                                    <p>7</p>
+                                </div>
+                            </Link>
                             <div className="profile_icon">
                                 <BsPersonFill />
                             </div>
