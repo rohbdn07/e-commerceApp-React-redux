@@ -1,0 +1,28 @@
+.cartitemslist{
+    // width: 50%;
+    // margin-top: 5rem;
+    // display: flex;
+    justify-content: flex-start;
+    // margin: auto;
+    padding: 2rem;
+    border: 1px solid #616060;
+    border-radius: 2rem;
+    // margin-left: 20rem;
+}
+
+.cartitemslist_wrapper{
+    border-radius: 0.5rem;
+}
+
+
+.cartitem{
+    width: 100%;
+
+    .cartitem_wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+}
+

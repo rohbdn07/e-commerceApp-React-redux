@@ -1,10 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { SelectToCartAction } from '../../Redux/Action/SelectToCartAction';
 import './Product.scss';
 
 
 export default function ElectronicProducts() {
     const {allProducts} = useSelector(state => state.productReducer);
+    const {selectedItems} = useSelector (state => state.addToCartReducer)
+    const dispatch = useDispatch();
+
+    const addTocart = (itemId) => {
+        const selectedProduct= allProducts.filter((item)=> item.id == itemId);
+        // const itemarray = [selectedProduct];
+        // const pushItem = itemarray.push(selectedProduct)
+        console.log('the selected item is', selectedProduct)
+        if (selectedProduct.length > 0) {
+            localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct))
+            dispatch(SelectToCartAction(selectedProduct))
+        }
+        
+    }
+
+    // console.log('the selected item is', item)
    
     return (
         <>
@@ -23,7 +40,7 @@ export default function ElectronicProducts() {
                                         <h5 className="card-title">{item.title}</h5>
                                         <p className="card-text price_text">${item.price}</p>
                                         {/* <p className="card-text">{item.description}</p> */}
-                                        <button className="btn btn-primary">Add to cart</button>
+                                        <button className="btn btn-primary" onClick={()=> addTocart(item.id)}>Add to cart</button>
                                         </div>
                                     </div>
 
