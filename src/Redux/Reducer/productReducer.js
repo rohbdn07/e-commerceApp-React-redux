@@ -50,9 +50,8 @@ export default function productReducer(state = initalstate, action) {
                         ...state
                     };
                 }
-            
-           
-            break;
+                break;
+        
    
        default:
            return state

@@ -19,6 +19,7 @@ export default function CartItems() {
                             <div className="cartitem">
                                 <div className="cartitem_wrapper">
                                     <div className="cartitem_img">
+                                      
                                         <img src={item.image} alt="product_image"/>
                                     
                                     </div>
