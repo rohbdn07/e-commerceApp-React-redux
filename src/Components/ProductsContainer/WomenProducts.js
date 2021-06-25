@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectToCartAction } from '../../Redux/Action/selectToCartAction';
 import './Product.scss';
+
 
 
 export default function WomenProducts() {
     const {allProducts} = useSelector(state => state.productReducer);
-   
+    const dispatch = useDispatch();
+
+    const addTocart = (itemId) => {
+        dispatch(selectToCartAction(itemId))
+    }
+
     return (
         <>
               <h2 style={{marginTop:"3rem"}}>Women's clothes:</h2>
@@ -23,7 +30,7 @@ export default function WomenProducts() {
                                         <h5 className="card-title">{item.title}</h5>
                                         <p className="card-text price_text">${item.price}</p>
                                         {/* <p className="card-text">{item.description}</p> */}
-                                        <button className="btn btn-primary">Add to cart</button>
+                                        <button className="btn btn-primary" onClick={()=> addTocart(item.id)}>Add to cart</button>
                                         </div>
                                     </div>
 

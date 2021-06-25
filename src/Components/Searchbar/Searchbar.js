@@ -1,18 +1,22 @@
 import React from 'react';
 import './Searchbar.scss';
+import { useSelector }  from 'react-redux';
 
 import { ImCart } from 'react-icons/im';
 import { BsPersonFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 export default function Searchbar() {
+    const {selectedItems} = useSelector(state => state.productReducer);
+
+
     return (
         <>
             <div className="searchbar">
                 <div className="col-lg-8 searchbar_wrapper">
                     <div className="searchbar_left">
                         <div className="company_logo">
-                            <h4>RB-Cart</h4>
+                           <Link to="/"><h4>RB-Cart</h4></Link> 
                         </div>
                     </div>
                     <div className="searchbar_middle">
@@ -29,7 +33,7 @@ export default function Searchbar() {
                             <Link to="/shopping-cart" >
                                 <div className="cart_icon">
                                     <ImCart />
-                                    <p>7</p>
+                                    <p>{selectedItems.length}</p>
                                 </div>
                             </Link>
                             <div className="profile_icon">

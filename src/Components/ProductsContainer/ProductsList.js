@@ -1,6 +1,6 @@
 import React,{ useEffect, useState } from 'react';
 import { useDispatch }  from 'react-redux';
-import { GetProductsAction } from '../../Redux/Action/GetProducts-Action';
+import { getProductsAction } from '../../Redux/Action/getProducts-Action';
 import MenProduct from './MenProduct';
 import JeweleryProducts from './JeweleryProducts';
 import ElectronicProducts from './ElectronicProducts';
@@ -22,7 +22,7 @@ export default function ProductsList() {
                             .then((res) => res.json())
                             .then((data) =>{
                                 console.log('the products datas are: ', data)
-                                dispatch(GetProductsAction(data))
+                                dispatch(getProductsAction(data))
                             })
                             setLoading(false)
                             

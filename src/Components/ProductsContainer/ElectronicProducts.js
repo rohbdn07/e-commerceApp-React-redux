@@ -1,27 +1,17 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { SelectToCartAction } from '../../Redux/Action/SelectToCartAction';
+import { selectToCartAction } from '../../Redux/Action/selectToCartAction';
 import './Product.scss';
 
 
 export default function ElectronicProducts() {
     const {allProducts} = useSelector(state => state.productReducer);
-    const {selectedItems} = useSelector (state => state.addToCartReducer)
+    // const {selectedItems} = useSelector (state => state.addToCartReducer)
     const dispatch = useDispatch();
 
     const addTocart = (itemId) => {
-        const selectedProduct= allProducts.filter((item)=> item.id == itemId);
-        // const itemarray = [selectedProduct];
-        // const pushItem = itemarray.push(selectedProduct)
-        console.log('the selected item is', selectedProduct)
-        if (selectedProduct.length > 0) {
-            localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct))
-            dispatch(SelectToCartAction(selectedProduct))
-        }
-        
+        dispatch(selectToCartAction(itemId))
     }
-
-    // console.log('the selected item is', item)
    
     return (
         <>

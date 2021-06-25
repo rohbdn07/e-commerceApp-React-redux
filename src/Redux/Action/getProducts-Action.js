@@ -1,6 +1,6 @@
 import { GET_PRODCUTS } from '../Constants/action-types';
 
-export const GetProductsAction = (data) => {
+export const getProductsAction = (data) => {
     return (
         {
             type: GET_PRODCUTS,
