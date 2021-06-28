@@ -4,7 +4,7 @@ export const getProductsAction = (data) => {
     return (
         {
             type: GET_PRODCUTS,
-            payload: data
+            payload: data,
         }
     )
 }

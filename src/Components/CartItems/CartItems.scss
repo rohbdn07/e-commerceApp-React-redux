@@ -1,12 +1,21 @@
 .cartitemslist{
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    // margin-top: 3rem;
+    // margin-bottom: 3rem;
     padding: 1rem;
     border: 1px solid #616060;
-    border-radius: 1rem;
-    width: 70%;
+    border-radius: 0.5rem;
+    //  width: 70%;
+    height: fit-content;
   
    
+}
+
+
+.discount_right{
+    margin-left: 5rem;
 }
 
 .cartitem{
@@ -14,7 +23,7 @@
 }
 
 .cartitemslist_wrapper{
-    border-radius: 0.5rem;
+  height:fit-content;
 
     .cartitem_img{
         display: flex;

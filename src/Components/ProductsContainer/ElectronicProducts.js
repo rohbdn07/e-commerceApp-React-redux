@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectToCartAction } from '../../Redux/Action/selectToCartAction';
 import './Product.scss';
 
 
 export default function ElectronicProducts() {
+    const [added, setAdded] = useState(false);
     const {allProducts} = useSelector(state => state.productReducer);
-    // const {selectedItems} = useSelector (state => state.addToCartReducer)
     const dispatch = useDispatch();
 
     const addTocart = (itemId) => {
-        dispatch(selectToCartAction(itemId))
+        dispatch(selectToCartAction(itemId));
+     
     }
    
     return (

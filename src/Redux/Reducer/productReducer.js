@@ -24,7 +24,7 @@ export default function productReducer(state = initalstate, action) {
                     // localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
                     return {
                         ...state,
-                     selectedItems: [...state.selectedItems, ...selectedProduct]
+                        selectedItems: [...state.selectedItems, ...selectedProduct]
                      
                     }
                 } else {

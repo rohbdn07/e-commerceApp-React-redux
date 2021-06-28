@@ -14,7 +14,7 @@ export default function CartItems() {
 
     return (
         <>
-                { selectedItems.length > 0 ? selectedItems.map((item)=> {
+        { selectedItems.length > 0 ? selectedItems.map((item)=> {
                     return ( 
                             <div className="cartitem">
                                 <div className="cartitem_wrapper">
