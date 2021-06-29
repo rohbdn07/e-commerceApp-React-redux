@@ -6,6 +6,8 @@ import Searchbar from '../Components/Searchbar/Searchbar';
 import Topbar from '../Components/Topbar/Topbar';
 import Discount from '../Components/Discount/Discount';
 import Purchase from '../Components/MakePurchase/Purchase';
+import Refund from '../Components/Refund/Refund';
+import Footer from '../Components/CartFooter/Footer';
 
 export default function ShoppingCart() {
     return (
@@ -21,8 +23,11 @@ export default function ShoppingCart() {
                   </div>
                      <div className="col-lg-3">
                          <Discount />
-                     </div>
-                    
+                     </div>  
+               </div>
+               <div className="col-lg-12 mx-auto">
+                  <Refund />
+                  <Footer />
                </div>
             </div>
        </>

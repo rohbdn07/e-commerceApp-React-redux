@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GrPrevious } from 'react-icons/gr';
+import { GrPrevious, GrNext } from 'react-icons/gr';
 import { FaTruck } from 'react-icons/fa';
 
 
@@ -12,11 +12,10 @@ export default function Purchase() {
             <div className="purchase">
                 <div className="purchase_wrapper">
                     <div className="purchase_left">
-                      <Link to="/"><button className="btn btn-outline-secondary">
-                          <GrPrevious />Continue shopping</button></Link> 
+                      <Link to="/"><button className="btn btn-outline-secondary"><span><GrPrevious /></span>Continue shopping</button></Link> 
                     </div>
                     <div className="purchase_right">
-                    <button className="btn btn-primary">Make Purchase</button>
+                    <button className="btn btn-primary">Make Purchase<span><GrNext /></span></button>
                     </div>
                 </div>
                 <div className="alert purchase_delievery">

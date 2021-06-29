@@ -36,11 +36,6 @@
             
         }
 
-        p{
-            max-width: 15rem;
-            font-size: small;
-            margin-left: 3rem;
-        }
     }
 
 }
@@ -63,6 +58,7 @@
             flex-wrap: wrap;
             inline-size: 12rem;
             overflow-wrap: break-word;
+            font-size: 0.8rem;
         }
     }
     
