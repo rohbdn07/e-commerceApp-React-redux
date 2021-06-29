@@ -5,6 +5,7 @@ import CartItemsList from '../Components/CartItems/CartItemsList';
 import Searchbar from '../Components/Searchbar/Searchbar';
 import Topbar from '../Components/Topbar/Topbar';
 import Discount from '../Components/Discount/Discount';
+import Purchase from '../Components/MakePurchase/Purchase';
 
 export default function ShoppingCart() {
     return (
@@ -16,6 +17,7 @@ export default function ShoppingCart() {
                <div className="container shopping_cart">
                   <div className="col-lg-8">
                      <CartItemsList />
+                     <Purchase />
                   </div>
                      <div className="col-lg-3">
                          <Discount />
