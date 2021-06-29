@@ -8,6 +8,7 @@ import Discount from '../Components/Discount/Discount';
 import Purchase from '../Components/MakePurchase/Purchase';
 import Refund from '../Components/Refund/Refund';
 import Footer from '../Components/CartFooter/Footer';
+import TotalPrice from '../Components/TotalPrice/TotalPrice';
 
 export default function ShoppingCart() {
     return (
@@ -23,6 +24,7 @@ export default function ShoppingCart() {
                   </div>
                      <div className="col-lg-3">
                          <Discount />
+                         <TotalPrice />
                      </div>  
                </div>
                <div className="col-lg-12 mx-auto">

@@ -9,8 +9,8 @@ export default function Discount() {
                     <p>Have coupon?</p>
                     <div className="search_input">
                             <form className="d-flex">
-                                <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
-                                <button class="btn btn-outline-primary" type="submit">Search</button>
+                                <input class="form-control me-1" type="search" placeholder="Enter coupon code..." aria-label="Search" />
+                                <button class="btn btn-outline-primary" type="submit">Apply</button>
                             </form>
                         </div>
 
