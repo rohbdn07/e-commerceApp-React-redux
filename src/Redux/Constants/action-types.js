@@ -1,3 +1,7 @@
 export const GET_PRODCUTS = "GET_PRODCUTS";
 export const ADD_CART = "ADD_CART";
 export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM";
+export const INCREASE_CART_QTY = "INCREASE_CART_QTY";
+export const DECREASE_CART_QTY = "DECREASE_CART_QTY";
+export const GET_TOTAL_PRICE   = "GET_TOTAL_PRICE";
+

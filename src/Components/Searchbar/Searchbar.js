@@ -1,7 +1,6 @@
 import React from 'react';
 import './Searchbar.scss';
 import { useSelector }  from 'react-redux';
-
 import { ImCart } from 'react-icons/im';
 import { BsPersonFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
@@ -16,7 +15,7 @@ export default function Searchbar() {
                 <div className="col-lg-8 searchbar_wrapper">
                     <div className="searchbar_left">
                         <div className="company_logo">
-                           <Link to="/"><h4>RB-Cart</h4></Link> 
+                           <Link to="/"><img src="/coollogo_com-7409163.png" alt="logo"/></Link> 
                         </div>
                     </div>
                     <div className="searchbar_middle">

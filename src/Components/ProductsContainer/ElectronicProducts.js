@@ -5,13 +5,12 @@ import './Product.scss';
 
 
 export default function ElectronicProducts() {
-    const [added, setAdded] = useState(false);
-    const {allProducts} = useSelector(state => state.productReducer);
+    const {allProducts, selectedItems} = useSelector(state => state.productReducer);
     const dispatch = useDispatch();
 
     const addTocart = (itemId) => {
         dispatch(selectToCartAction(itemId));
-     
+        localStorage.setItem("selectedProduct", JSON.stringify(selectedItems))
     }
    
     return (

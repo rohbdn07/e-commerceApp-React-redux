@@ -15,7 +15,7 @@ export default function Purchase() {
                       <Link to="/"><button className="btn btn-outline-secondary"><span><GrPrevious /></span>Continue shopping</button></Link> 
                     </div>
                     <div className="purchase_right">
-                    <button className="btn btn-primary">Make Purchase<span><GrNext /></span></button>
+                    <button className="btn btn-primary">Make Purchase<span><GrNext className="nexticon" /></span></button>
                     </div>
                 </div>
                 <div className="alert purchase_delievery">

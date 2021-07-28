@@ -64,6 +64,49 @@
     
 }
 
+
+
+.add-minus-quantity {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+//   .add-minus-quantity button {
+//     border: none;
+//     background-color: transparent;
+//     outline: none;
+//     cursor: pointer;
+//   }
+  
+  .add-minus-quantity input {
+    width: 4rem;
+    height: 2rem;
+    border: 0.141rem solid rgb(43, 43, 43);
+    box-sizing: border-box;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+    // color: var(--primary-color);
+    margin: 0 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    background-color: transparent;
+    // background-color: rgb(72, 71, 71);
+    color: white;
+  }
+  
+  .add-minus-quantity input:focus {
+    outline: none;
+    color: rgb(33, 32, 32);
+  }
+
+  .add-minus-quantity input,span{
+      color: rgb(116, 113, 113);
+  }
+
 // .table .image{
 //     height: 5rem;
 // }
