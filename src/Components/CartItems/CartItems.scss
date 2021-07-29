@@ -32,15 +32,12 @@
     
         img{
             height:5rem;
-            width: 7rem;
-            
+            width: 7rem; 
         }
 
     }
 
 }
-
-
 .cartitem{
     width: 100%;
 
@@ -65,11 +62,11 @@
 }
 
 
-
 .add-minus-quantity {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    width: 5rem;
   }
   
 //   .add-minus-quantity button {
@@ -105,6 +102,10 @@
 
   .add-minus-quantity input,span{
       color: rgb(116, 113, 113);
+  }
+
+  .cartitem_price {
+      min-width: 10rem;
   }
 
 // .table .image{

@@ -11,7 +11,8 @@ const initalstate = {
   allProducts: [],
   selectedItems: [],
   price: 0,
-  totalPrice: 0,
+  // totalPrice: 0,
+  qty: 0,
 };
 // JSON.parse(localStorage.getItem('selectedProduct') || '[]')
 
@@ -77,7 +78,6 @@ export default function productReducer(state = initalstate, action) {
           return {
             ...item,
             qty: (item.qty += 1),
-            price: item.price * item.qty,
           };
         } else {
           return item;
@@ -95,7 +95,6 @@ export default function productReducer(state = initalstate, action) {
             return {
               ...item,
               qty: item.qty - 1,
-              price: item.price * item.qty,
             };
           } else {
             return item;
@@ -108,8 +107,9 @@ export default function productReducer(state = initalstate, action) {
     case GET_TOTAL_PRICE:
       const { totalPrice } = state.selectedItems.reduce(
         (accum, currValue) => {
-          const { price } = currValue;
-          accum.totalPrice += price;
+          const { price, qty } = currValue;
+          const updatedTotalAmount = price * qty;
+          accum.totalPrice += updatedTotalAmount;
           return accum;
         },
         { totalPrice: 0 }
