@@ -1,12 +1,10 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Creating a simple e-commerce website. Users can select, add, and/or delete the shopping items. Use of API (fakestoreapi.com) to generate shopping items. Moreover, Redux is been use for state management. For styling, SCSS has been in use.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
+#### Front-page screenshot:
+![e-commerce-front-page01](https://user-images.githubusercontent.com/57314666/127641942-ff8b3d55-5001-41ed-8acc-1154e4a5bc4d.png)
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
