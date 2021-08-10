@@ -1,0 +1,15 @@
+{
+  "name": "e-commerce-node-stripe",
+  "version": "1.0.0",
+  "description": "creating a simple backend program with NodeJs to make payment gateway using Stripe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stripe",
+    "nodeJs"
+  ],
+  "author": "Rohit Bhandari",
+  "license": "ISC"
+}
