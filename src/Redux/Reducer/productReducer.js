@@ -9,7 +9,9 @@ import {
 
 const initalstate = {
   allProducts: [],
-  selectedItems: [],
+  selectedItems: localStorage.getItem("selectedProduct")
+    ? JSON.parse(localStorage.getItem("selectedProduct"))
+    : [],
   price: 0,
   // totalPrice: 0,
   qty: 0,
@@ -17,8 +19,6 @@ const initalstate = {
 // JSON.parse(localStorage.getItem('selectedProduct') || '[]')
 
 export default function productReducer(state = initalstate, action) {
-  // const {selectedItems, qty, price} = useSelector(state => state.productReducer);
-
   switch (action.type) {
     case GET_PRODCUTS:
       return {
@@ -28,20 +28,20 @@ export default function productReducer(state = initalstate, action) {
       break;
 
     case ADD_CART:
+      localStorage.setItem(
+        "selectedProduct",
+        JSON.stringify(state.selectedItems)
+      );
       const selectedProduct = state.allProducts.filter((item) => {
         return (item.qty = 1), item.id == action.payload;
       });
+
       console.log("the selected item incl qty is", selectedProduct);
       const checkItem = state.selectedItems.find(
         (item) => item.id == action.payload
       );
-      const local = localStorage.setItem(
-        "selectedProduct",
-        JSON.stringify(selectedProduct)
-      );
-      console.log("the local storage item is", local);
+
       if (!checkItem) {
-        // localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
         return {
           ...state,
           selectedItems: [...state.selectedItems, ...selectedProduct],
@@ -57,13 +57,12 @@ export default function productReducer(state = initalstate, action) {
         (item) => item.id !== action.payload
       );
       if (filteredItem.length >= 0) {
-        localStorage.removeItem("selectedProduct");
+        localStorage.setItem("selectedProduct", JSON.stringify(filteredItem));
         return {
           ...state,
           selectedItems: [...filteredItem],
         };
       } else {
-        localStorage.setItem("selectedProduct");
         return {
           ...state,
         };
@@ -102,6 +101,10 @@ export default function productReducer(state = initalstate, action) {
         })
         .filter((item) => item.qty !== 0);
       console.log("the updated cart is", decreaseQtyUpdate);
+      localStorage.setItem(
+        "selectedProduct",
+        JSON.stringify(decreaseQtyUpdate)
+      );
       return { ...state, selectedItems: decreaseQtyUpdate };
 
     case GET_TOTAL_PRICE:
