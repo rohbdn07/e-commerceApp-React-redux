@@ -11,14 +11,14 @@ export default function Purchase() {
 
   const checkout = () => {
     axiosInstance
-      .get("/create-checkout-session", {
-       selectedItems
+      .post("/api/create-checkout-session", {
+        productItems: selectedItems,
       })
       .then(function (response) {
-        console.log("the response from backend", response.data);
+        console.log("the data saved to server", response.data);
       })
       .catch(function (error) {
-        console.log(error);
+        console.log("there is an error", error);
       });
   };
   return (
