@@ -5,20 +5,7 @@ require("dotenv").config();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-//GET: route(/) to get all the data from db.
-router.get("/", (req, res) => {
-  // console.log("the comming from frontend", req.body);
-  res.json('here is it');
-});
-// router.get("/api/checkout/success", (req, res) => {
-//   console.log("the comming from frontend");
-//   res.json("hello");
-// });
-
-// const calculateOrderAmount = items => {
-
-//   return items.price
-// };
+//POST: route(/api/create-checkout-session) to post product data to stripe.
 
 router.post("/api/create-checkout-session", async (req, res) => {
   try {
@@ -42,6 +29,16 @@ router.post("/api/create-checkout-session", async (req, res) => {
       }
     })
 
+    // const sendEmail = async (session) => {
+    //   console.log('the email is called')
+    //   await stripe.paymentIntents.create({
+    //     amount: session.amount_total,
+    //     currency: session.currency,
+    //     payment_method_types: ['card'],
+    //     receipt_email: session.customer_email,
+    //   });
+    // }
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: getProductData,
@@ -50,9 +47,14 @@ router.post("/api/create-checkout-session", async (req, res) => {
       },
       mode: "payment",
       success_url: `${process.env.SERVER_URL}/success?session_id={CHECKOUT_SESSION_ID}`, //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
-      cancel_url: `${process.env.SERVER_URL}/cancelled=true`, //`${DomainUrl}/cancelled=true`
+      cancel_url: `${process.env.SERVER_URL}/shopping-cart`, //`${DomainUrl}/cancelled=true`
     })
-    res.status(200).json({ url: session.url });
+    res.status(200).json({
+      url: session.url,
+      session: session
+    });
+
+
   } catch (error) {
     console.log("there is an error connection to Stripe", error);
     res.status(400).json({ error: "unable to submit payment to stripe" });
