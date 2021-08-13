@@ -6,10 +6,10 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 //GET: route(/) to get all the data from db.
-// router.posts("/api/checkout", (req, res) => {
-//   console.log("the comming from frontend", req.body);
-//   res.json(JSON.stringify(req.body));
-// });
+router.get("/", (req, res) => {
+  // console.log("the comming from frontend", req.body);
+  res.json('here is it');
+});
 // router.get("/api/checkout/success", (req, res) => {
 //   console.log("the comming from frontend");
 //   res.json("hello");
