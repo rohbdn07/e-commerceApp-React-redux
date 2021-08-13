@@ -5,50 +5,56 @@ require("dotenv").config();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-//GET: route(/) to get all the data from db.
-router.get("/", (req, res) => {
-  // console.log("the comming from frontend", req.body);
-  res.json('here is it');
-});
-// router.get("/api/checkout/success", (req, res) => {
-//   console.log("the comming from frontend");
-//   res.json("hello");
-// });
+//POST: route(/api/create-checkout-session) to post product data to stripe.
 
 router.post("/api/create-checkout-session", async (req, res) => {
   try {
-    const { productItems } = req.body;
-    if (!productItems) {
+    const { dataFromClient } = req.body;
+    if (!dataFromClient) {
       return res
         .status(400)
         .json({ error: "missing required session parameter" });
     }
+
+    const getProductData = dataFromClient.map((item) => {
+      return {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: item.title,
+          },
+          unit_amount: item.price * 100,
+        },
+        quantity: item.qty,
+      }
+    })
+
+    // const sendEmail = async (session) => {
+    //   console.log('the email is called')
+    //   await stripe.paymentIntents.create({
+    //     amount: session.amount_total,
+    //     currency: session.currency,
+    //     payment_method_types: ['card'],
+    //     receipt_email: session.customer_email,
+    //   });
+    // }
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      line_items:
-      productItems.map((item) => {
-        return {
-          quantity: item.quantity,
-          price_data: {
-            currency: "usd",
-            unit_amount: item.price * 1000,
-            product_data: {
-              name: item.title,
-              description: item.description,
-              images: [item.image],
-            },
-          },
-        };
-      }),
-     
+      line_items: getProductData,
       shipping_address_collection: {
-        allowed_countries: ["US", "CA"],
+        allowed_countries: ["FI", "CA"],
       },
       mode: "payment",
-      success_url: "http://localhost:3000/success", //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
-      cancel_url: "http://localhost:3000/cancel", //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
+      success_url: `${process.env.SERVER_URL}/success?session_id={CHECKOUT_SESSION_ID}`, //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
+      cancel_url: `${process.env.SERVER_URL}/shopping-cart`, //`${DomainUrl}/cancelled=true`
+    })
+    res.status(200).json({
+      url: session.url,
+      session: session
     });
-    res.status(200).json({ sessionID: session.id });
+
+
   } catch (error) {
     console.log("there is an error connection to Stripe", error);
     res.status(400).json({ error: "unable to submit payment to stripe" });
