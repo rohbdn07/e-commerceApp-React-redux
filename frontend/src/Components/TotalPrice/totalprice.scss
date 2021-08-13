@@ -1,0 +1,30 @@
+.totalprice {
+  margin-top: 2rem;
+  border: 1px solid rgb(150, 147, 147);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.totalrate,
+.discount_rate,
+.grand_total {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  line-height: 1rem;
+}
+
+.grand_total span {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.payment_cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+  color: rgba(0, 44, 97, 0.886);
+}
