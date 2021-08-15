@@ -12,8 +12,14 @@ export default function Purchase() {
   const [loading, setLoading] = useState(false);
 
   const checkout = async () => {
+    // if (selectedItems.length < 0) {
+    //   alert("please select item at first");
+    //   return;
+    // }
+    console.log("the selected item are", selectedItems);
     try {
       setLoading(true);
+
       const { data } = await axiosInstance.post(
         "/api/create-checkout-session",
         { dataFromClient: selectedItems }
@@ -24,9 +30,10 @@ export default function Purchase() {
       if (!loading && data.url) {
         window.location = data.url;
       }
+      localStorage.removeItem("selectedProduct");
     } catch (error) {
-      console.log("there is an error", error);
-      alert("there is an error"); //TODO: change this to react tostify to alert the User
+      // console.log("there is an error", data.error);
+      alert("there is an error", error); //TODO: change this to react tostify to alert the User
     }
   };
 
@@ -46,15 +53,20 @@ export default function Purchase() {
           </div>
           <div className="purchase_right">
             {!loading ? (
-              <button onClick={checkout} className="btn btn-warning text-dark">
+              <button
+                onClick={checkout}
+                className={
+                  selectedItems.length <= 0
+                    ? "visually-hidden"
+                    : "btn btn-warning"
+                }
+              >
                 Checkout
               </button>
             ) : (
-              <span
-                className="spinner-border text-primary spinner-border-sm"
-                role="status"
-                aria-hidden="true"
-              ></span>
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
             )}
           </div>
         </div>
