@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import "./App.scss";
 import SuccessPage from "./Pages/SuccessPage";
+import CancelledPage from "./Pages/CancelledPage";
 import Homepage from "./Pages/Homepage";
 import ShoppingCart from "./Pages/ShoppingCart";
 
@@ -17,6 +18,9 @@ function App() {
         </Route>
         <Route path="/success">
           <SuccessPage />
+        </Route>
+        <Route path="/cancelled">
+          <CancelledPage />
         </Route>
       </Switch>
     </BrowserRouter>
