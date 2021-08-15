@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,9 +9,11 @@ import "./purchase.scss";
 
 export default function Purchase() {
   const { selectedItems } = useSelector((state) => state.productReducer);
+  const [loading, setLoading] = useState(false);
 
   const checkout = async () => {
     try {
+      setLoading(true);
       const { data } = await axiosInstance.post(
         "/api/create-checkout-session",
         { dataFromClient: selectedItems }
@@ -19,7 +21,7 @@ export default function Purchase() {
 
       console.log("the data saved to server", data.url);
       console.log("the session data are", data.session);
-      if (data.url) {
+      if (!loading && data.url) {
         window.location = data.url;
       }
     } catch (error) {
@@ -43,12 +45,15 @@ export default function Purchase() {
             </Link>
           </div>
           <div className="purchase_right">
-            <button onClick={checkout} className="btn btn-primary">
-              Checkout
-              <span>
-                <GrNext className="nexticon" />
-              </span>
-            </button>
+            {!loading ? (
+              <button onClick={checkout} className="btn btn-primary">Checkout</button>
+            ) : (
+              <span
+                className="spinner-border text-primary spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+            )}
           </div>
         </div>
         <div className="alert purchase_delievery">
