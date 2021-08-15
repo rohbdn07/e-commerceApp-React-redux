@@ -13,7 +13,6 @@ export default function Topbar(props) {
             {shopping ? (
               <ul>
                 <Link to="/">
-                  {" "}
                   <li className="previous">
                     <GrFormPrevious style={{ width: "30" }} size="1x" />
                     {shopping}
