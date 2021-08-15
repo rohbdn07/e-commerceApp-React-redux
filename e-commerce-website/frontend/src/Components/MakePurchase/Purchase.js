@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
+// import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { GrPrevious, GrNext } from "react-icons/gr";
@@ -12,16 +12,19 @@ export default function Purchase() {
 
   const checkout = async () => {
     try {
-      const { data } = await axiosInstance.post("/api/create-checkout-session", { dataFromClient: selectedItems });
+      const { data } = await axiosInstance.post(
+        "/api/create-checkout-session",
+        { dataFromClient: selectedItems }
+      );
 
       console.log("the data saved to server", data.url);
       console.log("the session data are", data.session);
       if (data.url) {
-        window.location = data.url
+        window.location = data.url;
       }
     } catch (error) {
       console.log("there is an error", error);
-      alert('there is an error')  //TODO: change this to react tostify to alert the User
+      alert("there is an error"); //TODO: change this to react tostify to alert the User
     }
   };
 
