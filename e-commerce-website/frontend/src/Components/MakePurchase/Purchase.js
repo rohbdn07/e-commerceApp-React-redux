@@ -1,5 +1,5 @@
-import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+// import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { GrPrevious, GrNext } from "react-icons/gr";
@@ -9,19 +9,31 @@ import "./purchase.scss";
 
 export default function Purchase() {
   const { selectedItems } = useSelector((state) => state.productReducer);
+  const [loading, setLoading] = useState(false);
 
   const checkout = async () => {
+    // if (selectedItems.length < 0) {
+    //   alert("please select item at first");
+    //   return;
+    // }
+    console.log("the selected item are", selectedItems);
     try {
-      const { data } = await axiosInstance.post("/api/create-checkout-session", { dataFromClient: selectedItems });
+      setLoading(true);
+
+      const { data } = await axiosInstance.post(
+        "/api/create-checkout-session",
+        { dataFromClient: selectedItems }
+      );
 
       console.log("the data saved to server", data.url);
       console.log("the session data are", data.session);
-      if (data.url) {
-        window.location = data.url
+      if (!loading && data.url) {
+        window.location = data.url;
       }
+      localStorage.removeItem("selectedProduct");
     } catch (error) {
-      console.log("there is an error", error);
-      alert('there is an error')  //TODO: change this to react tostify to alert the User
+      // console.log("there is an error", data.error);
+      alert("there is an error", error); //TODO: change this to react tostify to alert the User
     }
   };
 
@@ -40,12 +52,22 @@ export default function Purchase() {
             </Link>
           </div>
           <div className="purchase_right">
-            <button onClick={checkout} className="btn btn-primary">
-              Checkout
-              <span>
-                <GrNext className="nexticon" />
-              </span>
-            </button>
+            {!loading ? (
+              <button
+                onClick={checkout}
+                className={
+                  selectedItems.length <= 0
+                    ? "visually-hidden"
+                    : "btn btn-warning"
+                }
+              >
+                Checkout
+              </button>
+            ) : (
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            )}
           </div>
         </div>
         <div className="alert purchase_delievery">

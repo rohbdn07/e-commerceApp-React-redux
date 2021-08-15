@@ -19,25 +19,16 @@ router.post("/api/create-checkout-session", async (req, res) => {
     const getProductData = dataFromClient.map((item) => {
       return {
         price_data: {
-          currency: 'usd',
+          currency: "usd",
           product_data: {
             name: item.title,
+            images: [item.image],
           },
           unit_amount: item.price * 100,
         },
         quantity: item.qty,
-      }
-    })
-
-    // const sendEmail = async (session) => {
-    //   console.log('the email is called')
-    //   await stripe.paymentIntents.create({
-    //     amount: session.amount_total,
-    //     currency: session.currency,
-    //     payment_method_types: ['card'],
-    //     receipt_email: session.customer_email,
-    //   });
-    // }
+      };
+    });
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -48,13 +39,11 @@ router.post("/api/create-checkout-session", async (req, res) => {
       mode: "payment",
       success_url: `${process.env.SERVER_URL}/success?session_id={CHECKOUT_SESSION_ID}`, //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
       cancel_url: `${process.env.SERVER_URL}/shopping-cart`, //`${DomainUrl}/cancelled=true`
-    })
+    });
     res.status(200).json({
       url: session.url,
-      session: session
+      session: session,
     });
-
-
   } catch (error) {
     console.log("there is an error connection to Stripe", error);
     res.status(400).json({ error: "unable to submit payment to stripe" });
