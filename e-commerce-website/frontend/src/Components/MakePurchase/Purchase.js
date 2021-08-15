@@ -46,7 +46,9 @@ export default function Purchase() {
           </div>
           <div className="purchase_right">
             {!loading ? (
-              <button onClick={checkout} className="btn btn-primary">Checkout</button>
+              <button onClick={checkout} className="btn btn-warning text-dark">
+                Checkout
+              </button>
             ) : (
               <span
                 className="spinner-border text-primary spinner-border-sm"
