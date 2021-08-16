@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 import Topbar from "../Topbar/Topbar";
 import FooterEnd from "../Footer/FooterEnd";
 import { AiOutlineLike } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
 import "./success.scss";
 
-export default function Success() {
+const Success = ({ history }) => {
   const [shopping, setShopping] = useState("back to Shopping");
   return (
     <>
-      <Topbar shopping={shopping} />
+      <Topbar shopping={shopping} history={history} />
       <div className="text-center success">
         <p className="mb-5 text-warning">Congratulations....</p>
         <h3>Thank you for your purchase.</h3>
@@ -28,4 +29,6 @@ export default function Success() {
       </div>
     </>
   );
-}
+};
+
+export default withRouter(Success);

@@ -35,16 +35,16 @@ export default function TotalPrice() {
           </div>
           <div className="discount_rate">
             <p>Discount:</p>
-            <span>USD 50</span>
+            <span>{totalPrice > 100 ? "USD 10" : "USD 0"}</span>
           </div>
           <div className="grand_total">
             <p>Total:</p>
             <span>
-              ${" "}
-              {selectedItems.length !== 0 && totalPrice ? (
-                Math.round(totalPrice) - 50
+              $
+              {selectedItems.length !== 0 && totalPrice && totalPrice > 100 ? (
+                Math.round(totalPrice) - 10
               ) : (
-                <span>0</span>
+                <span>{Math.round(totalPrice)}</span>
               )}
             </span>
           </div>

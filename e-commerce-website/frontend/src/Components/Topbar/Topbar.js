@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { GrFormPrevious } from "react-icons/gr";
 import "./Topbar.scss";
 
 export default function Topbar(props) {
-  const { shopping } = props;
+  const { shopping, history } = props;
   return (
     <>
       <div className="topbar">
@@ -12,12 +11,12 @@ export default function Topbar(props) {
           <div className="top_left">
             {shopping ? (
               <ul>
-                <Link to="/">
+                <button className="btn btn-primary" onClick={() => history.push("/")}>
                   <li className="previous">
                     <GrFormPrevious style={{ width: "30" }} size="1x" />
                     {shopping}
                   </li>
-                </Link>
+                </button>
               </ul>
             ) : (
               <ul>
