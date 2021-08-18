@@ -11,9 +11,9 @@ export default function FooterList() {
       <div className="footer">
         <div className="col-lg-8 mx-auto footer_wrapper">
           {footerItems &&
-            footerItems.map((item) => (
+            footerItems.map((item, index) => (
               <Brands
-                key={item.index}
+                key={index}
                 title={item.title}
                 item1={item.item1}
                 item2={item.item2}

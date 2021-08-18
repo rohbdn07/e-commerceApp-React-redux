@@ -50,3 +50,15 @@ ul {
     font-size: 1rem;
   }
 }
+
+@media only screen and (max-width: 576px) {
+  .topbar {
+    // display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .topbar_wrapper ul li {
+    font-size: 0.3rem;
+  }
+}

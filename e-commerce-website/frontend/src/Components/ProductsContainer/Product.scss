@@ -32,7 +32,12 @@
   .price_text {
     font-size: 1.3rem;
     font-weight: bold;
-    color: rgba(34, 145, 230, 0.981);
+    // color: rgba(34, 145, 230, 0.981);
+    color: whitesmoke;
+    background-color: #f53b57;
+    width: fit-content;
+    padding: 0.15rem;
+    border-radius: 5%;
   }
 
   .card-title {
@@ -44,4 +49,42 @@
 
 .product_list {
   margin-bottom: 5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: #d2dae219;
+  }
+  .products {
+    padding: 0 1rem;
+    .product_wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      img {
+        width: 10rem;
+        height: 9rem;
+      }
+      .price_text {
+        font-size: 0.6rem;
+        background-color: #f53b57;
+        padding: 0.1rem;
+      }
+      .card-title {
+        font-size: 0.7rem;
+      }
+      button {
+        font-size: 0.6rem;
+      }
+    }
+  }
+  .product_list {
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .products {
+  
+  }
 }

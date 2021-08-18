@@ -20,11 +20,11 @@ export default function Products(props) {
       {allProducts === false ? (
         <h3>Couldn't able to get data from source</h3>
       ) : (
-        <div className="col-lg-12 products">
+        <div className="row col-lg-12 col-md-12 col-sm-12 products">
           {allProducts.map((item) => {
             return item.category === category ? (
               <div
-                className="card col-lg-3 col-md-4 col-sm-11 product_wrapper"
+                className="card col-lg-3 col-sm-5 product_wrapper"
                 key={item.id}
               >
                 <img
