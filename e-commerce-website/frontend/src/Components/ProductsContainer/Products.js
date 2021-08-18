@@ -4,9 +4,7 @@ import { selectToCartAction } from "../../Redux/Action/selectToCartAction";
 import "./Product.scss";
 
 export default function Products(props) {
-  const { allProducts } = useSelector(
-    (state) => state.productReducer
-  );
+  const { allProducts } = useSelector((state) => state.productReducer);
   const dispatch = useDispatch();
 
   const { title, category } = props;

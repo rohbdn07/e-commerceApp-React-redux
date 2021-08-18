@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getProductsAction } from "../../Redux/Action/getProducts-Action";
-// import MenProduct from "./MenProduct";
-// import JeweleryProducts from "./JeweleryProducts";
-// import ElectronicProducts from "./ElectronicProducts";
-// import WomenProducts from "./WomenProducts";
-import { axiosFetchAPI } from "../../servicesAPI/axios";
+import { getProductsAPI } from "../../servicesAPI/getProductsAPI";
 
 import Products from "./Products";
 
@@ -14,23 +9,8 @@ export default function ProductsList() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getProducts();
+    getProductsAPI(setLoading, dispatch);
   }, []);
-
-  const getProducts = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axiosFetchAPI.get(
-        "https://fakestoreapi.com/products?limit=20"
-      );
-      setLoading(true);
-      // console.log('the products datas are: ', data)
-      dispatch(getProductsAction(data));
-      setLoading(false);
-    } catch (error) {
-      console.log("server error", error);
-    }
-  };
 
   return (
     <>
@@ -38,7 +18,7 @@ export default function ProductsList() {
         {loading ? (
           <h3>Loading...</h3>
         ) : (
-          <div className="product_list">
+          <div className="col-lg-12 product_list">
             <Products title="Men's clothes" category="men's clothing" />
             <Products title="Women's clothes" category="women's clothing" />
             <Products title="Electronics" category="electronics" />
