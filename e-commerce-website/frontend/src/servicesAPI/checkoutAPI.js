@@ -5,7 +5,6 @@ export const checkoutAPI = async (selectedItems, setLoading) => {
     setLoading(true);
     const { data } = await axiosInstance.post("/api/create-checkout-session", {
       dataFromClient: selectedItems,
-      // totalAmount: data.amount_subtotal,
     });
     setLoading(false);
     
