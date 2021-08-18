@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.scss";
 import SuccessPage from "./Pages/SuccessPage";
 import CancelledPage from "./Pages/CancelledPage";

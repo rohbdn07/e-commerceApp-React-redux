@@ -1,40 +1,17 @@
 import React, { useState } from "react";
-// import { useHistory, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { GrPrevious, GrNext } from "react-icons/gr";
 import { FaTruck } from "react-icons/fa";
-import { axiosInstance } from "../../servicesAPI/axios";
+import { checkoutAPI } from "../../servicesAPI/checkoutAPI";
 import "./purchase.scss";
 
 export default function Purchase() {
   const { selectedItems } = useSelector((state) => state.productReducer);
   const [loading, setLoading] = useState(false);
 
-  const checkout = async () => {
-    // if (selectedItems.length < 0) {
-    //   alert("please select item at first");
-    //   return;
-    // }
-    console.log("the selected item are", selectedItems);
-    try {
-      setLoading(true);
-
-      const { data } = await axiosInstance.post(
-        "/api/create-checkout-session",
-        { dataFromClient: selectedItems }
-      );
-
-      console.log("the data saved to server", data.url);
-      console.log("the session data are", data.session);
-      if (!loading && data.url) {
-        window.location = data.url;
-      }
-      localStorage.removeItem("selectedProduct");
-    } catch (error) {
-      // console.log("there is an error", data.error);
-      alert("there is an error", error); //TODO: change this to react tostify to alert the User
-    }
+  const checkoutSubmit = () => {
+    checkoutAPI(selectedItems, setLoading);
   };
 
   return (
@@ -54,7 +31,7 @@ export default function Purchase() {
           <div className="purchase_right">
             {!loading ? (
               <button
-                onClick={checkout}
+                onClick={checkoutSubmit}
                 className={
                   selectedItems.length <= 0
                     ? "visually-hidden"
