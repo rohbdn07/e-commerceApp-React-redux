@@ -47,15 +47,58 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+//media query
+
+@media only screen and (max-width: 850px) {
+  .footer {
+    .footer_wrapper {
+      padding: 0 2rem 0 2rem;
+    }
+  }
+
   .footer_end {
     .fotend_wrapper {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(auto);
+      padding: 0 1rem;
+
+      // p {
+      //   font-size: 0.6rem;
+      //   line-height: 0.2rem;
+      // }
+    }
+   
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .footer {
+    .footer_wrapper {
+      padding: 0 1rem 0 1rem;
+    }
+  }
+
+  .brands {
+    .brands_wrapper {
+      p {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  .footer_end {
+    .fotend_wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 1rem;
+
+      p {
+        font-size: 0.6rem;
+        line-height: 0.2rem;
+      }
     }
     .fotend_middle {
-      display: flex;
-      flex-direction: column;
+      display: block;
     }
     .fotend_cards {
       display: inline-flex;
