@@ -21,9 +21,6 @@ export default function Discount() {
             </form>
           </div>
         </div>
-        <div className="get_discount">
-          <p>Get discount only above 100 $</p>
-        </div>
       </div>
     </>
   );
