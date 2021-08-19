@@ -52,13 +52,11 @@ ul {
 }
 
 @media only screen and (max-width: 576px) {
-  .topbar {
-    // display: none;
+  .topbar_wrapper ul li {
     display: flex;
     justify-content: center;
-    align-items: center;
-  }
-  .topbar_wrapper ul li {
-    font-size: 0.3rem;
+    font-size: 0.5rem;
+    margin-left: 0.5rem;
+    // border: 1px solid red;
   }
 }
