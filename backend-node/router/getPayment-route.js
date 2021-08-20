@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const app = express();
-// if (process.env.NODE_ENV !== "production") {
-//    require("dotenv").config();
-// }
+
+if (process.env.NODE_ENV !== "production") {
+   require("dotenv").config("./config/keyDev.env");
+} else if (process.env.NODE_ENV === "production") {
+   require("dotenv").config("./config/keyProd.env");
+}
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
