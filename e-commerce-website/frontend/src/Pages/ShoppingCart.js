@@ -1,11 +1,9 @@
 import React from "react";
-import CartHeader from "../Components/CartHeader/CartHeader";
 import CompanyLogo from "../Components/CompanyLogo/CompanyLogo";
 import CartIcon from "../Components/CartIcon/CartIcon";
 import UserProfile from "../Components/Profile/UserProfile";
-import Login_register from "../Components/Login_register/Login_register";
+import LoginRegister from "../Components/LoginRegister/LoginRegister";
 import CartItemsList from "../Components/CartItems/CartItemsList";
-import Searchbar from "../Components/Searchbar/Searchbar";
 import Topbar from "../Components/Topbar/Topbar";
 import Discount from "../Components/Discount/Discount";
 import Purchase from "../Components/MakePurchase/Purchase";
@@ -24,11 +22,10 @@ export default function ShoppingCart() {
             <div className="homepage_search">
                <div className="container shopping_search_wrapper">
                   <CompanyLogo />
-                  {/* <Searchbar /> */}
                   <div className="homepage_right">
                      <CartIcon />
                      <UserProfile />
-                     <Login_register />
+                     <LoginRegister />
                   </div>
                </div>
             </div>

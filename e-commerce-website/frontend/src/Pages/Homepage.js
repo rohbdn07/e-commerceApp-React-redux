@@ -11,7 +11,7 @@ import FooterList from "../Components/Footer/FooterList";
 import CartIcon from "../Components/CartIcon/CartIcon";
 import UserProfile from "../Components/Profile/UserProfile";
 import CompanyLogo from "../Components/CompanyLogo/CompanyLogo";
-import Login_register from "../Components/Login_register/Login_register";
+import LoginRegister from "../Components/LoginRegister/LoginRegister";
 
 export default function Homepage() {
    return (
@@ -27,7 +27,7 @@ export default function Homepage() {
                </div>
                <CartIcon />
                <UserProfile />
-               <Login_register />
+               <LoginRegister />
             </div>
          </div>
          <Menubar />

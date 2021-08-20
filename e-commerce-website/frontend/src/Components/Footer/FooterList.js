@@ -5,7 +5,6 @@ import { footerItems } from "../../FooterItems";
 import FooterEnd from "./FooterEnd";
 
 export default function FooterList() {
-   console.log("the footer items are", footerItems);
    return (
       <>
          <div className="footer">

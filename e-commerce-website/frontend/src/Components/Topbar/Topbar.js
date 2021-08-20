@@ -12,12 +12,12 @@ export default function Topbar(props) {
                   {shopping ? (
                      <ul>
                         <button
-                           className="btn btn-primary"
+                           className="btn btn-primary btn-sm"
                            onClick={() => history.push("/")}
                         >
                            <li className="previous">
                               <GrFormPrevious
-                                 style={{ width: "30" }}
+                                 style={{ width: "20" }}
                                  size="1x"
                               />
                               {shopping}
