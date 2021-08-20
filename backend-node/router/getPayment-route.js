@@ -53,8 +53,8 @@ router.post("/api/create-checkout-session", async (req, res) => {
                coupon: coupon.id,
             },
          ],
-         success_url: `https://rbstore-ecommerce.herokuapp.com//success?session_id={CHECKOUT_SESSION_ID}`, //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
-         cancel_url: `https://rbstore-ecommerce.herokuapp.com//cancelled`, //`${DomainUrl}/cancelled=true`
+         success_url: `https://rbstore-ecommerce.herokuapp.com/success?session_id={CHECKOUT_SESSION_ID}`, //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
+         cancel_url: `https://rbstore-ecommerce.herokuapp.com/cancelled`, //`${DomainUrl}/cancelled=true`
       });
 
       res.status(200).json({
