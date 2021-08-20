@@ -1,0 +1,20 @@
+.welcome_section {
+   text-align: center;
+   line-height: 7px;
+
+   p {
+      font-size: small;
+      opacity: 0.7;
+      cursor: pointer;
+      padding: 0.2rem;
+      line-height: 0.5px;
+   }
+}
+
+//media query
+
+@media only screen and (max-width: 576px) {
+   .welcome_section {
+      display: none;
+   }
+}
