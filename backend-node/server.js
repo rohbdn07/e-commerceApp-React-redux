@@ -1,6 +1,9 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
+// if (process.env.NODE_ENV !== "production") {
+//    require("dotenv").config();
+// }
+
+require("dotenv").config();
+
 const express = require("express");
 const router = express.Router();
 const cors = require("cors");
@@ -10,10 +13,10 @@ const getPaymentRoute = require("./router/getPayment-route");
 
 //Serve static assists if in PRODUCTION
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "frontend", "build")));
-  router.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-  });
+   app.use(express.static(path.join(__dirname, "frontend", "build")));
+   router.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+   });
 }
 
 //listing to LocalHost
@@ -35,7 +38,7 @@ app.use(getPaymentRoute);
 // When an HTTP client receives a response with status 302, it will send
 // an HTTP request to the URL in the response, in this case `/`
 router.get("*", (req, res) => {
-  res.redirect("/");
+   res.redirect("/");
 });
 
 module.exports = app;
