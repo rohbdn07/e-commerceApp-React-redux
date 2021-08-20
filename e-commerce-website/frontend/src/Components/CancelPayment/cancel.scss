@@ -1,12 +1,27 @@
 .cancel {
-    // background: url(../../assists/Images/cancel.jpeg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    height: 70vh;
-    color: whitesmoke;
-    padding: 5rem;
-    p {
+   // background: url(../../assists/Images/cancel.jpeg);
+   background-position: center center;
+   background-repeat: no-repeat;
+   height: 70vh;
+   color: whitesmoke;
+   padding: 5rem;
+   p {
       font-size: 3rem;
-    }
-  }
-  
+   }
+}
+
+//media query
+
+@media only screen and (max-width: 576px) {
+   .cancel {
+      p {
+         font-size: 1.5rem;
+      }
+      h5 {
+         font-size: 1rem;
+      }
+      .cancel_icon {
+         width: 9rem !important;
+      }
+   }
+}

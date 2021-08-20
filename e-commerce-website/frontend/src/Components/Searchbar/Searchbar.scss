@@ -1,102 +1,29 @@
 :root {
-  --topbar-color: #1976d2;
-  --searchbar-bg-color: #e8e8e84a;
-  --logo-color: var(--topbar-color);
-  --border-line: #6360605f;
+   --topbar-color: #1976d2;
+   --searchbar-bg-color: #e8e8e84a;
+   --logo-color: var(--topbar-color);
+   --border-line: #6360605f;
 }
 
 .searchbar {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  background-color: var(--searchbar-bg-color);
-  width: 100%;
-  border-bottom: 1px solid var(--border-line);
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   width: 100%;
 }
 
 .searchbar_wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 1rem 0 1rem 0;
-
-  .searchbar_left {
-    border: 1px solid rgb(45, 89, 184);
-    border-radius: 0.5rem;
-    color: var(--logo-color);
-
-    .company_logo img {
-      max-height: 3rem;
-      max-width: 5rem;
-    }
-  }
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   width: 100%;
+   // padding: 1rem 0 1rem 0;
 }
 
 .searchbar_middle .search_input {
-  form input {
-    max-width: 25rem;
-    margin: auto;
-  }
-}
-
-.searchbar_right {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.searchbar_right .icons {
-  display: flex;
-  align-items: center;
-  margin-right: 1.5rem;
-
-  .cart_icon p {
-    font-size: 0.9rem;
-    border-radius: 50%;
-    height: 1.2rem;
-    width: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid red;
-    background-color: red;
-    position: relative;
-    top: -10px;
-    right: -5px;
-    color: #ffff;
-  }
-
-  .cart_icon,
-  .profile_icon {
-    font-size: 1.5rem;
-    border-radius: 50%;
-    box-shadow: 1px 1px 2px 1px rgb(223, 222, 222);
-    width: 2.7rem;
-    height: 2.7rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 1rem;
-    cursor: pointer;
-
-    &:hover {
-      background-color: var(--topbar-color);
-      opacity: 0.7;
-      color: #ffff;
-    }
-  }
-}
-
-.welcome_section {
-  text-align: center;
-  line-height: 7px;
-
-  p {
-    font-size: small;
-    opacity: 0.7;
-    cursor: pointer;
-    padding: 0.2rem;
-    line-height: 0.5px;
-  }
+   form input {
+      max-width: 25rem;
+      margin: auto;
+   }
 }

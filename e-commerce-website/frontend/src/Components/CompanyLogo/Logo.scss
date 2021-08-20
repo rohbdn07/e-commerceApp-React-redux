@@ -1,0 +1,18 @@
+:root {
+   --topbar-color: #1976d2;
+   --searchbar-bg-color: #e8e8e84a;
+   --logo-color: var(--topbar-color);
+   --border-line: #6360605f;
+}
+.company_logo {
+   border: 1px solid rgb(45, 89, 184);
+   border-radius: 0.5rem;
+   color: var(--logo-color);
+   width: fit-content;
+   height: fit-content;
+
+   .company_logo_wrapper img {
+      max-height: 3rem;
+      max-width: 5rem;
+   }
+}
