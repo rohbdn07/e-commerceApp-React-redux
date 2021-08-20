@@ -1,10 +1,17 @@
-# E-Commerce-website (Rbstore)
+## Rbstore, an e-commerce website with Stripe payment.
+
+#### Deploy at Heroku: https://rbstore-ecommerce.herokuapp.com/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Creating a simple e-commerce website with Stripe. Users can select, add, and/or delete the shopping items. Use of API (fakestoreapi.com) to generate shopping items. Moreover, Redux is used for state management. For styling, SCSS has been in use. In order to give real kind of feeling to users, Stripe payment system has been addded, where user can checkout and use demo credit card to pay for the selected items. To run this project, see the commands below:
+Creating a simple e-commerce website with Stripe payment gateway (dev:mode). Users can select, add, and/or delete the shopping items. Use of API (fakestoreapi.com) to generate shopping items. Moreover, Redux is used for state management. NodeJs is used to handle API requests for stripe. For styling, SCSS has been in use. In order to give real kind of feeling to users, Stripe payment system has been addded, where user can checkout and use demo credit card to pay for the selected items. To run this project, see the commands below:
 
-#### Front-page screenshot:
-![e-commerce-front-page01](https://user-images.githubusercontent.com/57314666/127641942-ff8b3d55-5001-41ed-8acc-1154e4a5bc4d.png)
+#### Front-page desktop screenshot:
+
+![e-commerce-app-desktop-image](https://user-images.githubusercontent.com/57314666/130216547-9ad33103-1d65-44ac-a39b-ffd3f01a3f12.png)
+
+#### Front-page mobile screenshot:
+
+![e-commerce-website-mobile](https://user-images.githubusercontent.com/57314666/130216684-61a5dede-9265-4e5c-913f-d2437a283afb.png)
 
 ### `npm start`
 
