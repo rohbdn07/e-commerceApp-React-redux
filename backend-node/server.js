@@ -13,9 +13,9 @@ const getPaymentRoute = require("./router/getPayment-route");
 
 //Serve static assists if in PRODUCTION
 if (process.env.NODE_ENV === "production") {
-   app.use(express.static(path.join(__dirname, "frontend", "build")));
-   router.get("*", (req, res) => {
-      res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+   app.use(express.static(path.join(__dirname, "../frontend", "build")));
+   app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
    });
 }
 
