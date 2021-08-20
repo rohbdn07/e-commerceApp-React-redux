@@ -1,0 +1,135 @@
+.cartitemslist{
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    // margin-top: 3rem;
+    // margin-bottom: 3rem;
+    padding: 1rem;
+    border: 1px solid #616060;
+    border-radius: 0.5rem;
+    //  width: 70%;
+    height: fit-content;
+  
+   
+}
+
+
+.discount_right{
+    margin-left: 5rem;
+}
+
+.cartitem{
+    margin-top: 1rem;
+}
+
+.cartitemslist_wrapper{
+  height:fit-content;
+
+    .cartitem_img{
+        display: flex;
+        // flex-direction: column;
+        align-items: center;
+    
+        img{
+            height:5rem;
+            width: 7rem; 
+        }
+
+    }
+
+}
+.cartitem{
+    width: 100%;
+
+
+    .cartitem_wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .cartitem_info {
+        p{
+            display: flex;
+            flex-wrap: wrap;
+            inline-size: 12rem;
+            overflow-wrap: break-word;
+            font-size: 0.8rem;
+        }
+    }
+    
+}
+
+
+.add-minus-quantity {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 5rem;
+  }
+  
+//   .add-minus-quantity button {
+//     border: none;
+//     background-color: transparent;
+//     outline: none;
+//     cursor: pointer;
+//   }
+  
+  .add-minus-quantity input {
+    width: 4rem;
+    height: 2rem;
+    border: 0.141rem solid rgb(43, 43, 43);
+    box-sizing: border-box;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+    // color: var(--primary-color);
+    margin: 0 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    background-color: transparent;
+    // background-color: rgb(72, 71, 71);
+    color: white;
+  }
+  
+  .add-minus-quantity input:focus {
+    outline: none;
+    color: rgb(33, 32, 32);
+  }
+
+  .add-minus-quantity input,span{
+      color: rgb(116, 113, 113);
+  }
+
+  .cartitem_price {
+      min-width: 10rem;
+  }
+
+// .table .image{
+//     height: 5rem;
+// }
+
+
+// .table{
+//    margin-top: 3rem;
+//    border-radius: 50%;
+//    border: 1px solid rgb(232, 226, 226);
+  
+// }
+
+// .table .cartitem_img{
+    
+//         max-height: 5rem;
+//         width: 5rem;
+        
+    
+// }
+
+// .cartitem_info{
+//     font-size: small;
+//     max-width: 5rem;
+// }
+

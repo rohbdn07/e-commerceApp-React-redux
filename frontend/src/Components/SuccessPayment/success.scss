@@ -1,0 +1,28 @@
+.success {
+   background: url(../../assists/Images/successImage.jpeg);
+   background-position: center center;
+   background-repeat: no-repeat;
+   height: 70vh;
+   color: whitesmoke;
+   padding: 5rem;
+   p {
+      font-size: 3.5rem;
+   }
+}
+
+//media query
+
+@media only screen and (max-width: 576px) {
+   .success {
+      height: 90vh;
+      p {
+         font-size: 2rem;
+      }
+      h5 {
+         font-size: 1rem;
+      }
+      .success_icon {
+         width: 9rem !important;
+      }
+   }
+}

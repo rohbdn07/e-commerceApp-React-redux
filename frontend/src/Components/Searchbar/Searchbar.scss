@@ -1,0 +1,29 @@
+:root {
+   --topbar-color: #1976d2;
+   --searchbar-bg-color: #e8e8e84a;
+   --logo-color: var(--topbar-color);
+   --border-line: #6360605f;
+}
+
+.searchbar {
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   width: 100%;
+}
+
+.searchbar_wrapper {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   width: 100%;
+   // padding: 1rem 0 1rem 0;
+}
+
+.searchbar_middle .search_input {
+   form input {
+      max-width: 25rem;
+      margin: auto;
+   }
+}

@@ -1,0 +1,20 @@
+// .search_input input{
+//     width:12rem;
+// }
+
+.discount {
+  border: 1px solid rgb(150, 147, 147);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  padding-bottom: 1.5rem;
+  position: relative;
+  text-align: start;
+}
+
+.get_discount {
+  position: absolute;
+  text-align: center;
+  font-size: 0.7rem;
+  opacity: 0.5;
+  padding-top: 0.3rem;
+}

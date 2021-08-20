@@ -1,0 +1,25 @@
+.refund {
+   width: 100%;
+   background-color: #f8f9fa;
+   padding-top: 3rem;
+   padding-bottom: 3rem;
+   border-bottom: 1px solid #f8f9fa;
+}
+
+.refund_wrapper {
+   p {
+      font-size: 0.9rem;
+   }
+}
+
+//media query
+@media only screen and (max-width: 576px) {
+   .refund {
+      padding-bottom: 0rem;
+   }
+   .refund_wrapper {
+      p {
+         font-size: 0.65rem;
+      }
+   }
+}

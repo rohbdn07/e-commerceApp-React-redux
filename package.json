@@ -1,0 +1,22 @@
+{
+  "name": "e-commerce-website",
+  "version": "1.0.0",
+  "description": "creating a e-commerce website having payment gateway with stripe",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd backend-node && node server.js",
+    "server": "cd backend-node && npm start",
+    "client": "cd frontend && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd frontend && npm install --only=dev && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rohit Bhandari",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^6.2.1"
+  },
+  "engines": {
+    "node": "14.17.4"
+  }
+}
