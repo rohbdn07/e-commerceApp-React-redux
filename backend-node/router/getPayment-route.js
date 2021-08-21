@@ -51,7 +51,7 @@ router.post("/api/create-checkout-session", async (req, res) => {
                coupon: coupon.id,
             },
          ],
-         success_url: `${process.env.SERVER_URL}/?session_id={CHECKOUT_SESSION_ID}`, //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
+         success_url: `${process.env.SERVER_URL}/success?session_id={CHECKOUT_SESSION_ID}`, //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
          cancel_url: `${process.env.SERVER_URL}/cancelled`, //`${DomainUrl}/cancelled=true`
       });
 
