@@ -1,13 +1,11 @@
+if (process.env.NODE_ENV !== "production") {
+   require("dotenv").config("../config/keyDev.env");
+} else if (process.env.NODE_ENV === "production") {
+   require("dotenv").config("../config/keyProd.env");
+}
 const express = require("express");
 const router = express.Router();
 const app = express();
-
-if (process.env.NODE_ENV !== "production") {
-   require("dotenv").config("./config/keyDev.env");
-} else if (process.env.NODE_ENV === "production") {
-   require("dotenv").config("./config/keyProd.env");
-}
-
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 //POST: route(/api/create-checkout-session) to post product data to stripe.
@@ -53,8 +51,8 @@ router.post("/api/create-checkout-session", async (req, res) => {
                coupon: coupon.id,
             },
          ],
-         success_url: `https://rbstore-ecommerce.herokuapp.com/success?session_id={CHECKOUT_SESSION_ID}`, //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
-         cancel_url: `https://rbstore-ecommerce.herokuapp.com/cancelled`, //`${DomainUrl}/cancelled=true`
+         success_url: `${process.env.SERVER_URL}/?session_id={CHECKOUT_SESSION_ID}`, //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
+         cancel_url: `${process.env.SERVER_URL}/cancelled`, //`${DomainUrl}/cancelled=true`
       });
 
       res.status(200).json({
