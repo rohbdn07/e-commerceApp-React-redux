@@ -14,6 +14,7 @@ export default function Products(props) {
    const { title, category } = props;
 
    const redirectToDetailsPage = (id) => {
+      // window.scrollTo(0, 0);
       let path = `/product/${category}/${id}`;
       history.push(path);
       dispatch(getDetailBanneritem(allProducts, id));
