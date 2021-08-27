@@ -8,7 +8,9 @@ import {
 } from "../Constants/action-types";
 
 const initalstate = {
-   allProducts: [],
+   allProducts: localStorage.getItem("allProducts")
+      ? JSON.parse(localStorage.getItem("allProducts"))
+      : [],
    selectedItems: localStorage.getItem("selectedProduct")
       ? JSON.parse(localStorage.getItem("selectedProduct"))
       : [],

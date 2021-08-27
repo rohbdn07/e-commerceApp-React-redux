@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectToCartAction } from "../../Redux/Action/selectToCartAction";
 import { getDetailBanneritem } from "../../Redux/Action/getDetailBanneritem";
@@ -27,7 +27,7 @@ export default function Products(props) {
          {allProducts === false ? (
             <h3>Couldn't able to get data from source</h3>
          ) : (
-            <div className="row col-lg-12 col-md-12 col-sm-12 products">
+            <div className="col-lg-12 col-md-12 col-sm-12 products">
                {allProducts.map((item) => {
                   return item.category === category ? (
                      <div
@@ -45,12 +45,11 @@ export default function Products(props) {
                            {/* <p className="card-text">{item.description}</p> */}
 
                            <button
-                              className="btn btn-outline-info text-dark"
+                              className="btn btn-outline-info text-dark mb"
                               onClick={() => redirectToDetailsPage(item.id)}
                            >
                               view details
                            </button>
-
                            <AddToCartButton itemId={item.id} />
                         </div>
                      </div>
