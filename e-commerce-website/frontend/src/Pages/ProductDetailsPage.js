@@ -9,6 +9,7 @@ import LoginRegister from "../Components/LoginRegister/LoginRegister";
 import Menubar from "../Components/Menubar/Menubar";
 import DetailsBanner from "../Components/DetailsBanner/detail_banner";
 import Products from "../Components/ProductsContainer/Products";
+import FooterList from "../Components/Footer/FooterList";
 
 export default function ProductDetailsPage() {
    const { category } = useParams();
@@ -31,7 +32,10 @@ export default function ProductDetailsPage() {
             </div>
             <Menubar />
             <DetailsBanner />
-            <Products category={category} />
+            <div className="container">
+               <Products category={category} />
+            </div>
+            <FooterList />
          </div>
       </>
    );
