@@ -6,10 +6,12 @@ import CancelledPage from "./Pages/CancelledPage";
 import Homepage from "./Pages/Homepage";
 import ShoppingCart from "./Pages/ShoppingCart";
 import ProductDetailsPage from "./Pages/ProductDetailsPage";
+import ScrollToTop from "./Components/ScrollToTop";
 
 function App() {
    return (
       <BrowserRouter>
+         <ScrollToTop />
          <Switch>
             <Route exact path="/">
                <Homepage />
