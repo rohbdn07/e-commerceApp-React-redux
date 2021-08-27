@@ -15,6 +15,7 @@ const initalstate = {
    price: 0,
    // totalPrice: 0,
    qty: 0,
+   isAdded: false,
 };
 // JSON.parse(localStorage.getItem('selectedProduct') || '[]')
 
@@ -32,7 +33,9 @@ export default function productReducer(state = initalstate, action) {
             JSON.stringify(state.selectedItems)
          );
          const selectedProduct = state.allProducts.filter((item) => {
-            return (item.qty = 1), item.id === action.payload;
+            if (item.id === action.payload) {
+               return (item.qty = 1), item;
+            }
          });
 
          const checkItem = state.selectedItems.find(
@@ -44,7 +47,7 @@ export default function productReducer(state = initalstate, action) {
                ...state,
                selectedItems: [...state.selectedItems, ...selectedProduct],
             };
-         } else {
+         } else if (checkItem) {
             alert("the item is already added to cart");
             return state;
          }
