@@ -32,7 +32,11 @@ export default function TotalPrice() {
                   <p>Total Price:</p>
                   <span>
                      USD
-                     {selectedItems.length !== 0 ? totalPrice : <span>0</span>}
+                     {selectedItems.length !== 0 ? (
+                        (Math.round(totalPrice * 100) / 100).toFixed(2)
+                     ) : (
+                        <span>0</span>
+                     )}
                   </span>
                </div>
                <div className="discount_rate">

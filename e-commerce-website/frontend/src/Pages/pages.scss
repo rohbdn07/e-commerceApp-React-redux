@@ -10,8 +10,6 @@
    align-items: flex-start;
    justify-content: space-between;
    flex-wrap: wrap;
-   // margin: auto;
-   // border: 1px solid red;
    margin-top: 2rem;
    margin-bottom: 2rem;
 }
@@ -24,7 +22,6 @@
 .homepage_search {
    background-color: var(--searchbar-bg-color);
    padding: 1rem 0rem;
-   //   width: 100%;
 }
 
 .homepage_search_wrapper {
@@ -55,7 +52,6 @@
 
    .display_searchbar {
       display: none;
-      // padding-top: 1rem;
    }
 }
 
@@ -68,6 +64,5 @@
 
    .display_searchbar {
       display: none;
-      // padding-top: 1rem;
    }
 }
