@@ -14,7 +14,7 @@
 
 .details_banner_inner {
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
    align-items: center;
    position: relative;
 }
@@ -30,7 +30,8 @@
    }
    h5 {
       color: whitesmoke;
-      font-size: 0.7rem;
+      font-size: 1rem;
+      font-weight: normal;
       padding-bottom: 1rem;
    }
 
@@ -72,12 +73,25 @@
 
 //media query for small screens
 
+@media (max-width: 989px) and (min-width: 768px) {
+   .details_banner_right {
+      overflow-x: hidden;
+
+      img {
+         max-width: 12rem;
+         margin: auto;
+         margin-top: 1rem;
+      }
+   }
+}
+
 @media only screen and (max-width: 576px) {
    .details_banner {
       overflow-x: hidden;
       margin: auto;
       width: 100%;
    }
+
    .details_banner_left {
       h3 {
          margin-top: 0;
@@ -87,7 +101,7 @@
       }
       h5 {
          color: whitesmoke;
-         font-size: 0.7rem;
+         font-size: 0.6rem;
          padding-bottom: 1rem;
          max-width: 10rem;
       }
@@ -103,13 +117,14 @@
    }
 
    .details_banner_right {
-      padding-top: 2rem;
+      // padding-top: 2rem;
 
       img {
          background-color: #fff;
          height: 60%;
-         width: 7rem;
-         margin: 1rem auto;
+         max-width: 9rem;
+         margin: auto;
+         margin-top: 1rem;
       }
    }
 }

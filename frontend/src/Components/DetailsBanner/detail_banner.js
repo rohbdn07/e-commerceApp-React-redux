@@ -15,7 +15,7 @@ export default function DetailsBanner() {
          {detailPageBannerItem ? (
             <div className="col-lg-12 col-12 details_banner">
                <div className="container details_banner_inner">
-                  <div className="col-lg-6 col-8 details_banner_left">
+                  <div className="col-lg-6 col-6 details_banner_left">
                      <h3>{title}</h3>
                      <h5>{description}</h5>
                      <p>
@@ -26,7 +26,7 @@ export default function DetailsBanner() {
                         <AddToCartButton itemId={id} />
                      </div>
                   </div>
-                  <div className="col-lg-6 col-4 details_banner_right">
+                  <div className="col-lg-6 col-5 details_banner_right">
                      <img src={image} alt="img" />
                   </div>
                </div>

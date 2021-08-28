@@ -1,42 +1,41 @@
 .download {
-  width: 100%;
-  // background-color:#ede9e9;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+   width: 100%;
+   //  background-color: #ede9e9;
+   margin-bottom: 3rem;
+   padding-bottom: 2rem;
+   padding-top: 2rem;
 
-  .download_text p {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
+   .download_text p {
+      font-size: 1.5rem;
+      font-weight: bold;
+   }
 
-  .download_appStore {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+   .download_appStore {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
 
-    img {
-      margin-right: 1rem;
-      width: 7rem;
-      height: 3rem;
-      cursor: pointer;
-    }
-  }
+      img {
+         margin-right: 1rem;
+         width: 7rem;
+         cursor: pointer;
+      }
+   }
 }
 
 //media query
 
 @media only screen and (max-width: 576px) {
-  .download_wrapper {
-    padding: 0 1rem 0 1rem;
-    .download_text p {
-      font-size: 1.1rem;
-    }
-    .download_appStore {
-      width: 5rem;
-      height: 3rem;
-      cursor: pointer;
-    }
-  }
+   .download_wrapper {
+      padding: 0 1rem 0 1rem;
+      .download_text p {
+         font-size: 1.1rem;
+      }
+      .download_appStore {
+         width: 5rem;
+         height: 3rem;
+         cursor: pointer;
+      }
+   }
 }
