@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import AddToCartButton from "../../utils/Button/AddToCartButton";
+import ProductRating from "../StarRating/ProductRating";
 import "./detail.scss";
 
 export default function DetailsBanner() {
@@ -8,7 +9,8 @@ export default function DetailsBanner() {
       (state) => state.detailPageBanner
    );
 
-   const { id, title, description, price, image } = detailPageBannerItem;
+   const { id, title, description, price, image, rating } =
+      detailPageBannerItem;
 
    return (
       <>
@@ -22,6 +24,7 @@ export default function DetailsBanner() {
                         <span>$</span>
                         {price}
                      </p>
+                     <ProductRating ratingNumber={rating.rate} />
                      <div className="details_banner_button">
                         <AddToCartButton itemId={id} />
                      </div>

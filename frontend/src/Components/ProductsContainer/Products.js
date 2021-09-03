@@ -5,6 +5,7 @@ import { selectToCartAction } from "../../Redux/Action/selectToCartAction";
 import { getDetailBanneritem } from "../../Redux/Action/getDetailBanneritem";
 import AddToCartButton from "../../utils/Button/AddToCartButton";
 import "./Product.scss";
+import ProductRating from "../StarRating/ProductRating";
 
 export default function Products(props) {
    let history = useHistory();
@@ -42,8 +43,8 @@ export default function Products(props) {
                         <div className="card-body">
                            <h5 className="card-title">{item.title}</h5>
                            <p className="card-text price_text">${item.price}</p>
+                           <ProductRating ratingNumber={item.rating.rate} />
                            {/* <p className="card-text">{item.description}</p> */}
-
                            <button
                               className="btn btn-outline-info text-dark mb"
                               onClick={() => redirectToDetailsPage(item.id)}

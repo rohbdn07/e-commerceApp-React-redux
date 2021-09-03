@@ -34,7 +34,7 @@ export default function ShoppingCart() {
                   <CartItemsList />
                   <Purchase />
                </div>
-               <div className="col-lg-3">
+               <div className="col-lg-3 col-12 mt-2">
                   <Discount />
                   <TotalPrice />
                </div>
