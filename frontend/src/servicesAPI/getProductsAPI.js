@@ -1,12 +1,24 @@
+import React from "react";
 import { getProductsAction } from "../Redux/Action/getProducts-Action";
 import { axiosFetchAPI } from "./axios";
+import { useDispatch } from "react-redux";
 
-export const getProductsAPI = async (setLoading, dispatch) => {
+export const useGetProductsAPI = () => {
+   const [loading, setLoading] = React.useState(false);
+   const dispatch = useDispatch();
    try {
-      setLoading(true);
-      const { data } = await axiosFetchAPI.get(axiosFetchAPI.baseUrl);
-      dispatch(getProductsAction(data));
-      setLoading(false);
+      React.useEffect(() => {
+         getData();
+      }, []);
+
+      const getData = async () => {
+         setLoading(true);
+         const { data } = await axiosFetchAPI.get(axiosFetchAPI.baseUrl);
+         setLoading(false);
+         dispatch(getProductsAction(data));
+      };
+
+      return loading;
    } catch (error) {
       console.log("server error", error);
    }

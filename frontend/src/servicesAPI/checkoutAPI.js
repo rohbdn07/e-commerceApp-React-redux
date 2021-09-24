@@ -11,10 +11,6 @@ export const checkoutAPI = async (selectedItems, setLoading) => {
       );
       setLoading(false);
 
-      // console.log("the data saved to server", data.url);
-      // console.log("the session data are", data.session);
-      // console.log("the session data are", data.coupon);
-
       if (data && data.url) {
          window.location = data.url;
       }

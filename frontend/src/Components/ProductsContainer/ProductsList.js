@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { getProductsAPI } from "../../servicesAPI/getProductsAPI";
+import React from "react";
+import { useGetProductsAPI } from "../../servicesAPI/getProductsAPI";
 import Products from "./Products";
 
 export default function ProductsList() {
-   const dispatch = useDispatch();
-   const [loading, setLoading] = useState(false);
-
-   useEffect(() => {
-      getProductsAPI(setLoading, dispatch);
-   }, [dispatch]);
+   const { isLoading } = useGetProductsAPI();
 
    return (
       <>
          <div className="container">
-            {loading ? (
+            {isLoading ? (
                <h3>Loading...</h3>
             ) : (
                <div className="col-lg-12 product_list">
