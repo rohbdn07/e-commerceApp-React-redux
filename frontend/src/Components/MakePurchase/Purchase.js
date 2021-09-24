@@ -10,9 +10,9 @@ export default function Purchase() {
    const { selectedItems } = useSelector((state) => state.productReducer);
    const [loading, setLoading] = useState(false);
 
-   const checkoutSubmit = () => {
+   function checkoutSubmit() {
       checkoutAPI(selectedItems, setLoading);
-   };
+   }
 
    return (
       <>
