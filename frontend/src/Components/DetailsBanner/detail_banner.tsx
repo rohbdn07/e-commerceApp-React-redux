@@ -4,6 +4,7 @@ import { RootState } from "../../Redux/Reducer";
 import AddToCartButton from "../../utils/Button/AddToCartButton";
 import ProductRating from "../StarRating/ProductRating";
 import "./detail.scss";
+
 export default function DetailsBanner(): JSX.Element {
    const { detailPageBannerItem }: any = useSelector(
       (state: RootState) => state.detailPageBanner

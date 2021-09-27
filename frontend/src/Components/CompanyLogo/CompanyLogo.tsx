@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Logo.scss";
 
-export default function CompanyLogo() {
+export default function CompanyLogo(): JSX.Element {
    return (
       <>
          <div className="company_logo">

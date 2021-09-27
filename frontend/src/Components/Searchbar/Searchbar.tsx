@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import "./Searchbar.scss";
 
-export default function Searchbar() {
+export default function Searchbar(): JSX.Element {
    const location = useLocation();
    return (
       <>

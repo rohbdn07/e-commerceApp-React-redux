@@ -2,7 +2,6 @@ import React from "react";
 import { getProductsAction } from "../Redux/Action/getProducts-Action";
 import { axiosFetchAPI } from "./axios";
 import { useDispatch } from "react-redux";
-import { AxiosInstance } from "axios";
 
 export const useGetProductsAPI = () => {
    const [loading, setLoading] = React.useState(false);

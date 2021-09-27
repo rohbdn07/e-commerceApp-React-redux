@@ -75,7 +75,12 @@ export default function Menubar() {
                      </li>
                      <li className="nav-item">
                         <Link to="#" className="nav-link">
-                           Supermarket
+                           Men's clothes
+                        </Link>
+                     </li>
+                     <li className="nav-item">
+                        <Link to="#" className="nav-link">
+                           Women's clothes
                         </Link>
                      </li>
                      <li className="nav-item">
@@ -85,17 +90,7 @@ export default function Menubar() {
                      </li>
                      <li className="nav-item">
                         <Link to="#" className="nav-link">
-                           Baby and Toys
-                        </Link>
-                     </li>
-                     <li className="nav-item">
-                        <Link to="#" className="nav-link">
-                           Fitness sport
-                        </Link>
-                     </li>
-                     <li className="nav-item">
-                        <Link to="#" className="nav-link">
-                           Furnitures
+                           Jewelery
                         </Link>
                      </li>
                   </ul>
