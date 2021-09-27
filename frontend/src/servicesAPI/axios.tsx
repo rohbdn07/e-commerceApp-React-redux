@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
 if (process.env.NODE_ENV !== "production") {
    require("dotenv").config("../config/keyDev.env");
@@ -13,8 +13,8 @@ export const axiosInstance: AxiosInstance = axios.create({
    },
 });
 
-export const axiosFetchAPI: AxiosInstance = axios.create({
-   // baseURL: "https://fakestoreapi.com/products?limit=20",
+export const axiosFetchAPI: AxiosInstance & AxiosRequestConfig = axios.create({
+   baseURL: "https://fakestoreapi.com/products?limit=20",
    headers: {
       "Content-Type": "application/json",
    },

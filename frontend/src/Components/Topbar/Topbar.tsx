@@ -7,7 +7,7 @@ interface ITopbarProps {
    history?: any;
 }
 
-export default function Topbar(props: ITopbarProps) {
+export default function Topbar(props: ITopbarProps): JSX.Element {
    const { shopping, history } = props;
    return (
       <>

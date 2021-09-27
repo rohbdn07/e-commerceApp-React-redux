@@ -2,6 +2,7 @@ import React from "react";
 import { getProductsAction } from "../Redux/Action/getProducts-Action";
 import { axiosFetchAPI } from "./axios";
 import { useDispatch } from "react-redux";
+import { AxiosInstance } from "axios";
 
 export const useGetProductsAPI = () => {
    const [loading, setLoading] = React.useState(false);
@@ -11,7 +12,7 @@ export const useGetProductsAPI = () => {
          const fetchData = async () => {
             setLoading(true);
             const { data } = await axiosFetchAPI.get(
-               "https://fakestoreapi.com/products?limit=20"
+               typeof axiosFetchAPI.baseURL
             );
             setLoading(false);
             dispatch(getProductsAction(data));
