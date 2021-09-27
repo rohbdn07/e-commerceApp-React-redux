@@ -1,7 +1,7 @@
 import React from "react";
 import StarRatingComponent from "react-star-rating-component";
 
-export default function ProductRating(props: any) {
+export default function ProductRating(props: any): JSX.Element {
    const { ratingNumber } = props;
    return (
       <>

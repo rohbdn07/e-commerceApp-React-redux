@@ -3,19 +3,19 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { GrPrevious } from "react-icons/gr";
 import { FaTruck } from "react-icons/fa";
-import { checkoutAPI } from "../../servicesAPI/checkoutAPI";
+import { useCheckoutAPI } from "../../servicesAPI/checkoutAPI";
 import "./purchase.scss";
 import { RootState } from "../../Redux/Reducer";
 
 export default function Purchase(): JSX.Element {
-   const selectedItems: any = useSelector(
-      (state: RootState) => state.productReducer?.selectedItems
+   const { selectedItems }: any = useSelector(
+      (state: RootState) => state.productReducer
    );
 
-   const [loading, setLoading] = React.useState<boolean>(false);
+   const [loading, callCheckoutAPI] = useCheckoutAPI(selectedItems);
 
    function checkoutSubmit() {
-      checkoutAPI(selectedItems, setLoading);
+      callCheckoutAPI();
    }
 
    return (

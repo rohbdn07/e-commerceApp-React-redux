@@ -1,7 +1,7 @@
 import React from "react";
 import "./Discount.scss";
 
-export default function Discount() {
+export default function Discount(): JSX.Element {
    return (
       <>
          <div className="discount">

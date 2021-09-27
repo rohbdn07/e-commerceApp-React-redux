@@ -1,9 +1,9 @@
-import { IProductItems } from "../../Components/CartItems/CartItems";
 import { ActionType } from "./actionTypes";
+import { IFetchedData } from "./getProducts-Action";
 
 export const getDetailBanneritem = (
-   allProducts: IProductItems[],
-   selectedProductId: string
+   allProducts: IFetchedData[],
+   selectedProductId: number
 ) => {
    const exitedProduct = allProducts.find(
       (item) => item.id === selectedProductId

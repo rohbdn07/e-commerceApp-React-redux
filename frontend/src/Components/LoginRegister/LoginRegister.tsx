@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login_register.scss";
 
-export default function LoginRegister() {
+export default function LoginRegister(): JSX.Element {
    return (
       <>
          <div className="welcome_section">

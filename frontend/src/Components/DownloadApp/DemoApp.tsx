@@ -2,7 +2,7 @@ import React from "react";
 import appstorelogo from "../../assists/Images/applestorelogo.png";
 import "./DemoApp.scss";
 
-export default function DemoApp() {
+export default function DemoApp(): JSX.Element {
    return (
       <div className="download">
          <div className="col-lg-8 mx-auto download_wrapper">

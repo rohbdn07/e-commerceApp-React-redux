@@ -13,7 +13,7 @@ import UserProfile from "../Components/Profile/UserProfile";
 import CompanyLogo from "../Components/CompanyLogo/CompanyLogo";
 import LoginRegister from "../Components/LoginRegister/LoginRegister";
 
-export default function Homepage() {
+export default function Homepage(): JSX.Element {
    return (
       <div className="col-lg-12 mx-auto">
          <div className="col-lg-8 hompage_topbar">

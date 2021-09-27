@@ -4,7 +4,7 @@ import "./Footer.scss";
 import { footerItems } from "../../FooterItems";
 import FooterEnd from "./FooterEnd";
 
-export default function FooterList() {
+export default function FooterList(): JSX.Element {
    return (
       <>
          <div className="footer">

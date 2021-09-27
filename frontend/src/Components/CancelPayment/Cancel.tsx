@@ -5,8 +5,8 @@ import FooterEnd from "../Footer/FooterEnd";
 import { GiCancel } from "react-icons/gi";
 import "./cancel.scss";
 
-const Cancelled = ({ history }: any) => {
-   const [shopping, setShopping] = useState("back to Shopping");
+const Cancelled = ({ history }: any): JSX.Element => {
+   const [shopping] = useState("back to Shopping");
    return (
       <>
          <Topbar shopping={shopping} history={history} />

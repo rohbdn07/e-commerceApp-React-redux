@@ -6,20 +6,11 @@ import AddToCartButton from "../../utils/Button/AddToCartButton";
 import "./Product.scss";
 import ProductRating from "../StarRating/ProductRating";
 import { RootState } from "../../Redux/Reducer";
+import { IFetchedData } from "../../Redux/Action/getProducts-Action";
 
 interface IProductsProps {
    title?: string;
    category: string | undefined;
-}
-
-interface IAllProducts {
-   category: string;
-   id: string;
-   image: string;
-   title: string;
-   price: number;
-   rating: any;
-   rate: any;
 }
 
 export default function Products(props: IProductsProps): JSX.Element {
@@ -31,8 +22,7 @@ export default function Products(props: IProductsProps): JSX.Element {
 
    const { title, category } = props;
 
-   const redirectToDetailsPage = (id: string): void => {
-      // window.scrollTo(0, 0);
+   const redirectToDetailsPage = (id: number): void => {
       let path = `/product/${category}/${id}`;
       history.push(path);
       dispatch(getDetailBanneritem(allProducts, id));
@@ -46,7 +36,7 @@ export default function Products(props: IProductsProps): JSX.Element {
             <h3>Couldn't able to get data from source</h3>
          ) : (
             <div className="col-lg-12 col-md-12 col-sm-12 products">
-               {allProducts.map((item: IAllProducts) => {
+               {allProducts.map((item: IFetchedData) => {
                   return item.category === category ? (
                      <div
                         className="card col-lg-3 col-sm-5 product_wrapper"

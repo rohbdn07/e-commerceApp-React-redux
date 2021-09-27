@@ -1,6 +1,10 @@
 import { ActionType } from "./actionTypes";
 
-export const getTotalItemPrice = () => {
+interface IReturnType {
+   type: ActionType
+}
+
+export const getTotalItemPrice = (): IReturnType => {
    return {
       type: ActionType.GET_TOTAL_PRICE,
    };

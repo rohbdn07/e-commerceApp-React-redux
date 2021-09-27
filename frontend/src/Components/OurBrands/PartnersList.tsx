@@ -3,7 +3,7 @@ import Partners from "./Partners";
 import { brands } from "../../Brands";
 import "../OurBrands/Partners.scss";
 
-export default function PartnersList() {
+export default function PartnersList(): JSX.Element {
    return (
       <>
          <div className="partnerList">

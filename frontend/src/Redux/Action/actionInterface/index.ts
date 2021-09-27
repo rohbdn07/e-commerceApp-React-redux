@@ -4,7 +4,7 @@ import { IFetchedData } from "../getProducts-Action";
 
 interface GetProductInDetailPage {
    type: ActionType.GET_PRODUCT_IN_DETAILPAGE_BANNER;
-   payload: IProductItems | undefined;
+   payload: IProductItems;
 }
 
 interface GetAllProducts {
@@ -14,12 +14,12 @@ interface GetAllProducts {
 
 interface AddCart {
    type: ActionType.ADD_CART;
-   payload: string;
+   payload: number;
 }
 
 interface RemoveCartItem {
    type: ActionType.REMOVE_CART_ITEM;
-   payload: string;
+   payload: number;
 }
 
 interface IncreaseCartQty {

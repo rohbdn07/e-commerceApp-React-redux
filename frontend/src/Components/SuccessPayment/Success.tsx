@@ -7,7 +7,7 @@ import { MdEmail } from "react-icons/md";
 import "./success.scss";
 
 const Success = ({ history }: any) => {
-   const [shopping, setShopping] = useState("back to Shopping");
+   const [shopping] = useState("back to Shopping");
    return (
       <>
          <Topbar shopping={shopping} history={history} />

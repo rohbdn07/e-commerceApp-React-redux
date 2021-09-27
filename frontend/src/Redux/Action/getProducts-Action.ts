@@ -1,14 +1,16 @@
 import { ActionType } from "./actionTypes";
 
 export interface IFetchedData {
-   id: string | number;
+   id: number;
    title: string;
    price: number;
    description?: string;
    qty: number
    category: string;
    image: string;
-   rating: any;
+   rating: {
+      rate: number
+   };
 }
 
 export const getProductsAction = (data: IFetchedData) => {

@@ -3,6 +3,11 @@ import { getProductsAction } from "../Redux/Action/getProducts-Action";
 import { axiosFetchAPI } from "./axios";
 import { useDispatch } from "react-redux";
 
+/**
+ * Hook for getting Products from API
+ * @returns loading state
+ */
+
 export const useGetProductsAPI = () => {
    const [loading, setLoading] = React.useState(false);
    const dispatch = useDispatch();

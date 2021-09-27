@@ -2,11 +2,16 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Reducer";
 import AddToCartButton from "../../utils/Button/AddToCartButton";
+import { IProductItems } from "../CartItems/CartItems";
 import ProductRating from "../StarRating/ProductRating";
 import "./detail.scss";
 
+interface IDetailPageProps {
+   detailPageBannerItem: IProductItems;
+}
+
 export default function DetailsBanner(): JSX.Element {
-   const { detailPageBannerItem }: any = useSelector(
+   const { detailPageBannerItem }: IDetailPageProps = useSelector(
       (state: RootState) => state.detailPageBanner
    );
 

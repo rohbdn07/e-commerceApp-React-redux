@@ -2,7 +2,7 @@ import React from "react";
 import { BsPersonFill } from "react-icons/bs";
 import "./User.scss";
 
-export default function UserProfile() {
+export default function UserProfile(): JSX.Element {
    return (
       <>
          <div className="userprofile">

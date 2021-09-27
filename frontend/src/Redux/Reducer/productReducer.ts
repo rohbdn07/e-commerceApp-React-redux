@@ -14,7 +14,7 @@ interface Iinitalstate {
    isAdded: boolean
 }
 
-export interface IselectedProdcuts {
+export interface IselectedProducts {
    item: IProductItems[]
 }
 

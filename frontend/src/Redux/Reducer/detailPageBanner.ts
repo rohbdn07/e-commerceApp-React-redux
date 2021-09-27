@@ -2,8 +2,8 @@ import { IProductItems } from "../../Components/CartItems/CartItems";
 import { Action } from "../Action/actionInterface";
 import { ActionType } from "../Action/actionTypes";
 
-interface Iinitalstate {
-   detailPageBannerItem: IProductItems[];
+export interface Iinitalstate {
+   detailPageBannerItem: IProductItems;
 }
 
 const getExitedProduct = localStorage.getItem("exitedProduct");

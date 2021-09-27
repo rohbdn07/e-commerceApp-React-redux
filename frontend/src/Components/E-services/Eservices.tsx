@@ -2,7 +2,7 @@ import React from "react";
 import "./Eservices.scss";
 import { ImTruck, ImHome, ImLock } from "react-icons/im";
 
-export default function Eservices() {
+export default function Eservices(): JSX.Element {
    return (
       <>
          <div className="Eservices">

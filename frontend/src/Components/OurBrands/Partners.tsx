@@ -5,7 +5,7 @@ interface IPartnersProps {
    image: string;
    text: string;
 }
-export default function Partners(props: IPartnersProps) {
+export default function Partners(props: IPartnersProps): JSX.Element {
    const { image, text } = props;
    return (
       <>

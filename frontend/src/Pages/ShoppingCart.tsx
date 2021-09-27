@@ -11,8 +11,9 @@ import Refund from "../Components/Refund/Refund";
 import Footer from "../Components/CartFooter/Footer";
 import TotalPrice from "../Components/TotalPrice/TotalPrice";
 import "./pages.scss";
+import CartHeader from "../Components/CartHeader/CartHeader";
 
-export default function ShoppingCart() {
+export default function ShoppingCart(): JSX.Element {
    return (
       <>
          <div className="col-lg-12 mx-auto">
@@ -30,6 +31,7 @@ export default function ShoppingCart() {
                </div>
             </div>
             <div className="container shopping_cart">
+               <CartHeader />
                <div className="col-lg-8">
                   <CartItemsList />
                   <Purchase />

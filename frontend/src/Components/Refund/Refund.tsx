@@ -1,7 +1,7 @@
 import React from "react";
 import "./refund.scss";
 
-export default function Refund() {
+export default function Refund(): JSX.Element {
    return (
       <>
          <div className="refund">

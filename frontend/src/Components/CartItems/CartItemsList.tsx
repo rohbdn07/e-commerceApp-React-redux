@@ -3,7 +3,7 @@ import CartItems from "./CartItems";
 import "./CartItems.scss";
 import { Scrollbars } from "react-custom-scrollbars";
 
-export default function CartItemsList() {
+export default function CartItemsList(): JSX.Element {
    return (
       <>
          <div className="cartitemslist">

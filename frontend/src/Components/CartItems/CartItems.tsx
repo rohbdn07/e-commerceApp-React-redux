@@ -2,22 +2,20 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromcart } from "../../Redux/Action/removeFromcart";
 import "./CartItems.scss";
-import { FaMinus, FaPlus } from "react-icons/fa";
 import { decreaseQty, increaseQty } from "../../Redux/Action/upDown";
 import { RootState } from "../../Redux/Reducer";
-import { IselectedProdcuts } from "../../Redux/Reducer/productReducer";
+import CartItemTab from "./CartItemTab";
 
 export interface IProductItems {
-   filter(
-      arg0: (item: IProductItems) => IProductItems | undefined
-   ): IselectedProdcuts;
-   id: string;
+   id: number;
    title: string;
    qty: string | number;
+   description?: string;
    image: string;
    price: number;
-   rating?: number | undefined;
-   rate?: number | undefined;
+   rating: {
+      rate: number;
+   };
 }
 
 export default function CartItems(): JSX.Element {
@@ -26,7 +24,7 @@ export default function CartItems(): JSX.Element {
    );
    const dispatch = useDispatch();
 
-   const removeItem = (itemId: string) => {
+   const removeItem = (itemId: number) => {
       dispatch(removeFromcart(itemId));
    };
 
@@ -43,56 +41,18 @@ export default function CartItems(): JSX.Element {
          {selectedItems.length > 0 ? (
             selectedItems.map((item: IProductItems, index: number) => {
                return (
-                  <div key={index} className="cartitem">
-                     <div className="cartitem_wrapper">
-                        <div className="cartitem_img">
-                           <img src={item.image} alt="product_image" />
-                        </div>
-                        <div className="cartitem_info">
-                           <p>{item.title}</p>
-                        </div>
-                        <div className="cartitem_qty">
-                           <ul>
-                              <li>
-                                 <div className="add-minus-quantity">
-                                    <span>
-                                       <FaMinus
-                                          onClick={() => minusQty(item)}
-                                       />
-                                    </span>
-                                    <input
-                                       type="text"
-                                       value={item.qty}
-                                       onChange={(e) => e.target.value}
-                                       placeholder="0"
-                                    />
-                                    <span>
-                                       <FaPlus onClick={() => addQty(item)} />
-                                    </span>
-                                 </div>
-                              </li>
-                           </ul>
-                        </div>
-                        <div className="cartitem_price">
-                           <p>
-                              <strong>${item.price.toFixed(2)}</strong>
-                           </p>
-                        </div>
-                        <div className="cartitem_delete">
-                           <button
-                              className="btn btn-primary"
-                              onClick={() => removeItem(item.id)}
-                           >
-                              Remove
-                           </button>
-                        </div>
-                     </div>
-                     {selectedItems.length !== 1 ? <hr /> : null}
-                  </div>
+                  <CartItemTab
+                     item={item}
+                     index={index}
+                     removeItem={removeItem}
+                     addQty={addQty}
+                     minusQty={minusQty}
+                     selectedItems={selectedItems}
+                  />
                );
             })
          ) : (
-            <h6>no item is selected. please select the product(s) at first.</h6>
+            <h6>No item is selected. please select the product(s) at first.</h6>
          )}
       </>
    );

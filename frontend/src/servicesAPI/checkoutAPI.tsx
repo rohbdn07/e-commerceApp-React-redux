@@ -1,26 +1,34 @@
-import { SetStateAction } from "react";
+import React from "react";
+import { IProductItems } from "../Components/CartItems/CartItems";
 import { axiosInstance } from "./axios";
 
-export const checkoutAPI = async (
-   selectedItems: any,
-   setLoading: { (value: SetStateAction<boolean>): void; (arg0: boolean): void }
-) => {
-   try {
-      setLoading(true);
-      const { data } = await axiosInstance.post(
-         "/api/create-checkout-session",
-         {
-            dataFromClient: selectedItems,
-         }
-      );
-      setLoading(false);
+/**
+ * Hook for redirecting to stipe payment page.
+ * @param selectedItems
+ * @returns loading, callCheckoutAPI()
+ */
 
-      if (data && data.url) {
-         window.location = data.url;
+export const useCheckoutAPI = (selectedItems: IProductItems) => {
+   const [loading, setLoading] = React.useState(false);
+
+   const callCheckoutAPI = async () => {
+      try {
+         setLoading(true);
+         const { data } = await axiosInstance.post(
+            "/api/create-checkout-session",
+            {
+               dataFromClient: selectedItems,
+            }
+         );
+         setLoading(false);
+
+         if (data && data.url) {
+            window.location = data.url;
+         }
+         localStorage.removeItem("selectedProduct");
+      } catch (error) {
+         console.log("there is an error", error);
       }
-      localStorage.removeItem("selectedProduct");
-   } catch (error) {
-      console.log("there is an error", error);
-      // alert("there is an error", error); //TODO: change this to react tostify to alert the User
-   }
+   };
+   return [loading, callCheckoutAPI] as const;
 };
