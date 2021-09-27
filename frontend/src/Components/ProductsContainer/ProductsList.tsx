@@ -2,7 +2,7 @@ import React from "react";
 import { useGetProductsAPI } from "../../servicesAPI/getProductsAPI";
 import Products from "./Products";
 
-export default function ProductsList() {
+export default function ProductsList(): JSX.Element {
    const isLoading: boolean | undefined = useGetProductsAPI();
 
    return (

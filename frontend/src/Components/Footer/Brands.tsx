@@ -16,7 +16,7 @@ export default function Brands({
    item3,
    item4,
    item5,
-}: IBrands) {
+}: IBrands): JSX.Element {
    return (
       <>
          <div className="brands">

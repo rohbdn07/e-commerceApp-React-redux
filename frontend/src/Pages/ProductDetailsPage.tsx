@@ -11,7 +11,7 @@ import DetailsBanner from "../Components/DetailsBanner/detail_banner";
 import Products from "../Components/ProductsContainer/Products";
 import FooterList from "../Components/Footer/FooterList";
 
-export default function ProductDetailsPage() {
+export default function ProductDetailsPage(): JSX.Element {
    const { category } = useParams<{ category?: string }>();
    return (
       <>

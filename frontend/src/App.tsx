@@ -8,7 +8,7 @@ import ShoppingCart from "./Pages/ShoppingCart";
 import ProductDetailsPage from "./Pages/ProductDetailsPage";
 import ScrollToTop from "./Components/ScrollToTop";
 
-function App() {
+function App(): JSX.Element {
    return (
       <BrowserRouter>
          <ScrollToTop />

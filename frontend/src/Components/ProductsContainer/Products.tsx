@@ -12,7 +12,7 @@ interface IProductsProps {
    category: string | undefined;
 }
 
-interface IallProducts {
+interface IAllProducts {
    category: string;
    id: string;
    image: string;
@@ -22,7 +22,7 @@ interface IallProducts {
    rate: any;
 }
 
-export default function Products(props: IProductsProps) {
+export default function Products(props: IProductsProps): JSX.Element {
    let history = useHistory();
    const { allProducts }: any = useSelector(
       (state: RootState) => state.productReducer
@@ -31,7 +31,7 @@ export default function Products(props: IProductsProps) {
 
    const { title, category } = props;
 
-   const redirectToDetailsPage = (id: string) => {
+   const redirectToDetailsPage = (id: string): void => {
       // window.scrollTo(0, 0);
       let path = `/product/${category}/${id}`;
       history.push(path);
@@ -46,7 +46,7 @@ export default function Products(props: IProductsProps) {
             <h3>Couldn't able to get data from source</h3>
          ) : (
             <div className="col-lg-12 col-md-12 col-sm-12 products">
-               {allProducts.map((item: IallProducts) => {
+               {allProducts.map((item: IAllProducts) => {
                   return item.category === category ? (
                      <div
                         className="card col-lg-3 col-sm-5 product_wrapper"

@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./CartIcon.scss";
 import { RootState } from "../../Redux/Reducer";
+import { IFetchedData } from "../../Redux/Action/getProducts-Action";
 
-export default function CartIcon() {
-   const { selectedItems }: any = useSelector(
-      (state: RootState) => state.productReducer
+export default function CartIcon(): JSX.Element {
+   const selectedItems: IFetchedData[] | undefined = useSelector(
+      (state: RootState) => state.productReducer?.selectedItems
    );
 
    return (
@@ -17,7 +18,7 @@ export default function CartIcon() {
                <Link to="/shopping-cart">
                   <div className="cart_icon">
                      <ImCart />
-                     <p>{selectedItems.length}</p>
+                     <p>{selectedItems?.length}</p>
                   </div>
                </Link>
             </div>

@@ -20,7 +20,7 @@ export interface IProductItems {
    rate?: number | undefined;
 }
 
-export default function CartItems() {
+export default function CartItems(): JSX.Element {
    const { selectedItems }: any = useSelector(
       (state: RootState) => state.productReducer
    );

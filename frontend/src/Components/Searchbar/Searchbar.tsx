@@ -2,8 +2,14 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import "./Searchbar.scss";
 
+interface LocationState {
+   from: {
+      pathname: string;
+   };
+}
+
 export default function Searchbar(): JSX.Element {
-   const location = useLocation();
+   const location = useLocation<LocationState>();
    return (
       <>
          {location.pathname === "/shopping-cart" ? null : (

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Searchbar from "../Searchbar/Searchbar";
 import "./Menubar.scss";
 
-export default function Menubar() {
+export default function Menubar(): JSX.Element {
    return (
       <>
          <nav className="navbar navbar-expand-lg navbar-light bg-light border border-bottom-1">
