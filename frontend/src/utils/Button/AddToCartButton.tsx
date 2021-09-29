@@ -5,7 +5,9 @@ import { RootState } from "../../Redux/Reducer";
 
 export default function AddToCartButton(props: any): JSX.Element {
    const dispatch = useDispatch();
+
    const { itemId } = props;
+
    const selectedItems: any = useSelector(
       (state: RootState) => state.productReducer?.selectedItems
    );

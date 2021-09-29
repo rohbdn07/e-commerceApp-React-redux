@@ -7,7 +7,8 @@ import { getTotalItemPrice } from "../../Redux/Action/getTotalPrice";
 import { RootState } from "../../Redux/Reducer";
 
 export default function TotalPrice() {
-   const [discount, Setdiscount] = useState(10);
+   const [discount, Setdiscount] = useState<number>(10);
+
    const { totalPrice, selectedItems }: any = useSelector(
       (state: RootState) => state.productReducer
    );

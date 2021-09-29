@@ -43,7 +43,6 @@ export default function ProductDetailsPage(): JSX.Element {
                   <Products category={category} />
                </div>
             )}
-
             <FooterList />
          </div>
       </>

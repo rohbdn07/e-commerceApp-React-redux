@@ -42,6 +42,7 @@ export default function CartItems(): JSX.Element {
             selectedItems.map((item: IProductItems, index: number) => {
                return (
                   <CartItemTab
+                     key={item.id}
                      item={item}
                      index={index}
                      removeItem={removeItem}

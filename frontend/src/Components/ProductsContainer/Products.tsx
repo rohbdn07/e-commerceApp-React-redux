@@ -15,6 +15,7 @@ interface IProductsProps {
 
 export default function Products(props: IProductsProps): JSX.Element {
    let history = useHistory();
+
    const { allProducts }: any = useSelector(
       (state: RootState) => state.productReducer
    );

@@ -3,8 +3,6 @@ import { IProductItems } from "../../Components/CartItems/CartItems";
 import { Action } from "../Action/actionInterface";
 import { ActionType } from "../Action/actionTypes";
 import { IFetchedData } from "../Action/getProducts-Action";
-
-
 interface Iinitalstate {
    allProducts: IFetchedData[] 
    selectedItems: IFetchedData[]
@@ -45,12 +43,14 @@ export default function productReducer(state = initalstate, action: Action) {
                return (item.qty = 1, item)
             }
          });
-
-         const checkItem = state.selectedItems.some(
-            (item) => item.id === action.payload
-         );
+         
+         const checkItem = state.selectedItems.some((item) => item.id === action.payload);
 
          if (!checkItem) {
+            localStorage.setItem(
+               "selectedProduct",
+               JSON.stringify(state.selectedItems)
+            );
             return {
                ...state,
                selectedItems: [...state.selectedItems, ...selectedProduct],
@@ -61,16 +61,11 @@ export default function productReducer(state = initalstate, action: Action) {
             return state;
          }
 
-         localStorage.setItem(
-            "selectedProduct",
-            JSON.stringify(state.selectedItems)
-         );
-         
          break;
 
       case ActionType.REMOVE_CART_ITEM:
          const filteredItem = state.selectedItems.filter(
-            (item ) => item.id !== action.payload
+            (item) => item.id !== action.payload
          );
 
          if (filteredItem.length >= 0) {
