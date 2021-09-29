@@ -40,17 +40,13 @@ export default function productReducer(state = initalstate, action: Action) {
          };
 
       case ActionType.ADD_CART:
-         localStorage.setItem(
-            "selectedProduct",
-            JSON.stringify(state.selectedItems)
-         );
          const selectedProduct = state.allProducts.filter((item) => {
             if (item.id === action.payload) {
                return (item.qty = 1, item)
             }
          });
 
-         const checkItem = state.selectedItems.find(
+         const checkItem = state.selectedItems.some(
             (item) => item.id === action.payload
          );
 
@@ -59,16 +55,24 @@ export default function productReducer(state = initalstate, action: Action) {
                ...state,
                selectedItems: [...state.selectedItems, ...selectedProduct],
             };
+            
          } else if (checkItem) {
             alert("the item is already added to cart");
             return state;
          }
+
+         localStorage.setItem(
+            "selectedProduct",
+            JSON.stringify(state.selectedItems)
+         );
+         
          break;
 
       case ActionType.REMOVE_CART_ITEM:
          const filteredItem = state.selectedItems.filter(
             (item ) => item.id !== action.payload
          );
+
          if (filteredItem.length >= 0) {
             localStorage.setItem(
                "selectedProduct",
@@ -96,7 +100,6 @@ export default function productReducer(state = initalstate, action: Action) {
                return item;
             }
          });
-         console.log("the updated cart is", increaseQtyUpdate);
          return { ...state, selectedItems: increaseQtyUpdate };
 
       case ActionType.DECREASE_CART_QTY:
