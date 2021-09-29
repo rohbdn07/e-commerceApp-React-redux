@@ -13,7 +13,11 @@ Creating a simple e-commerce website with Stripe payment gateway (dev:mode). Use
 
 ![e-commerce-website-mobile](https://user-images.githubusercontent.com/57314666/130216684-61a5dede-9265-4e5c-913f-d2437a283afb.png)
 
-### `npm start`
+First, clone this repo. Then Go to the root of the project folder. Then run following command:
+
+### `npm run dev`
+
+This command will run both (Backend and frontend services). For more info, check Package.json.
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
