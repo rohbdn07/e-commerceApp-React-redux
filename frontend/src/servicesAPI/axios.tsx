@@ -22,7 +22,7 @@ export const axiosFetchAPI: AxiosInstance & AxiosRequestConfig = axios.create({
 
 export const axiosFetchCategory: AxiosInstance & AxiosRequestConfig =
    axios.create({
-      baseURL: `https://fakestoreapi.com/products/category/jewelery`,
+      // baseURL: `https://fakestoreapi.com/products/category/jewelery`,
       headers: {
          "Content-Type": "application/json",
       },

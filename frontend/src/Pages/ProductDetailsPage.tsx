@@ -10,12 +10,10 @@ import Menubar from "../Components/Menubar/Menubar";
 import DetailsBanner from "../Components/DetailsBanner/detail_banner";
 import Products from "../Components/ProductsContainer/Products";
 import FooterList from "../Components/Footer/FooterList";
-import { useGetProductsAPI } from "../servicesAPI/getProductsAPI";
 
 export default function ProductDetailsPage(): JSX.Element {
-   const isLoading: boolean | undefined = useGetProductsAPI();
-
-   const { category } = useParams<{ category?: string }>();
+   const { categoryname }: any = useParams<{ categoryname?: string }>();
+   // const { category } = useParams<{ category?: string }>();
 
    return (
       <>
@@ -35,14 +33,13 @@ export default function ProductDetailsPage(): JSX.Element {
                </div>
             </div>
             <Menubar />
+
             <DetailsBanner />
-            {isLoading ? (
-               <h6 className="text-center">Loading...</h6>
-            ) : (
-               <div className="container">
-                  <Products category={category} />
-               </div>
-            )}
+
+            <div className="container">
+               <Products category={categoryname} />
+            </div>
+
             <FooterList />
          </div>
       </>

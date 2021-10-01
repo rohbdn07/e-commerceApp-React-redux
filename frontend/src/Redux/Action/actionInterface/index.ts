@@ -2,6 +2,14 @@ import { IProductItems } from "../../../Components/CartItems/CartItems";
 import { ActionType } from "../actionTypes";
 import { IFetchedData } from "../getProducts-Action";
 
+interface GetLoadingState {
+   type: ActionType.GET_LOADING_STATE
+}
+
+interface GetProductLoadingError {
+   type: ActionType.PRODUCT_LOADING_ERROR
+}
+
 interface GetProductInDetailPage {
    type: ActionType.GET_PRODUCT_IN_DETAILPAGE_BANNER;
    payload: IProductItems;
@@ -38,6 +46,8 @@ interface GetTotalPrice {
 }
 
 export type Action =
+   | GetLoadingState
+   | GetProductLoadingError
    | GetProductInDetailPage
    | GetAllProducts
    | AddCart

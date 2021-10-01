@@ -3,13 +3,15 @@ import { IProductItems } from "../../Components/CartItems/CartItems";
 import { Action } from "../Action/actionInterface";
 import { ActionType } from "../Action/actionTypes";
 import { IFetchedData } from "../Action/getProducts-Action";
-interface Iinitalstate {
-   allProducts: IFetchedData[] 
+export interface Iinitalstate {
+   loading: boolean
+   allProducts: IFetchedData[]
    selectedItems: IFetchedData[]
    price: number
    totalPrice: number
    qty: number
    isAdded: boolean
+   errMessage: string
 }
 
 export interface IselectedProducts {
@@ -20,22 +22,40 @@ const storeAllProducts = localStorage.getItem("allProduct");
 const storeSelectedItems = localStorage.getItem("selectedProduct");
 
 const initalstate: Iinitalstate = {
+   loading: false,
    allProducts: storeAllProducts ? JSON.parse(storeAllProducts) : [],
    selectedItems: storeSelectedItems ? JSON.parse(storeSelectedItems) : [],
    price: 0,
    totalPrice: 0,
    qty: 0,
    isAdded: false,
+   errMessage: ''
 };
 // JSON.parse(localStorage.getItem('selectedProduct') || '[]')
 
 export default function productReducer(state = initalstate, action: Action) {
    switch (action.type) {
+      case ActionType.GET_LOADING_STATE:
+         return {
+            ...state,
+            loading: true
+         }
+
       case ActionType.GET_PRODCUTS:
          return {
             ...state,
+            loading: false,
+            selectedItems: [],
             allProducts: action.payload,
+            errMessage: '',
          };
+
+      case ActionType.PRODUCT_LOADING_ERROR:
+         return {
+            ...state,
+            loading: false,
+            errMessage: 'Opps! Server error! Cannot load more'
+         }
 
       case ActionType.ADD_CART:
          const selectedProduct = state.allProducts.filter((item) => {
@@ -43,7 +63,7 @@ export default function productReducer(state = initalstate, action: Action) {
                return (item.qty = 1, item)
             }
          });
-         
+
          const checkItem = state.selectedItems.some((item) => item.id === action.payload);
 
          if (!checkItem) {
@@ -55,7 +75,7 @@ export default function productReducer(state = initalstate, action: Action) {
                ...state,
                selectedItems: [...state.selectedItems, ...selectedProduct],
             };
-            
+
          } else if (checkItem) {
             alert("the item is already added to cart");
             return state;

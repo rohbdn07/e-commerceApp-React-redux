@@ -3,7 +3,7 @@ import { IFetchedData } from "./getProducts-Action";
 
 export const getDetailBanneritem = (
    allProducts: IFetchedData[],
-   selectedProductId: number
+   selectedProductId?: number
 ) => {
    const exitedProduct = allProducts.find(
       (item) => item.id === selectedProductId
