@@ -7,7 +7,7 @@ import { getTotalItemPrice } from "../../Redux/Action/getTotalPrice";
 import { RootState } from "../../Redux/Reducer";
 
 export default function TotalPrice() {
-   const [discount, Setdiscount] = useState<number>(10);
+   const [discount] = useState<number>(10);
 
    const { totalPrice, selectedItems }: any = useSelector(
       (state: RootState) => state.productReducer
@@ -16,12 +16,11 @@ export default function TotalPrice() {
    const dispatch = useDispatch();
 
    useEffect(() => {
+      function fetchTotalPrice() {
+         dispatch(getTotalItemPrice());
+      }
       fetchTotalPrice();
-   }, [selectedItems]);
-
-   function fetchTotalPrice() {
-      dispatch(getTotalItemPrice());
-   }
+   }, [dispatch, selectedItems]);
 
    return (
       <>
