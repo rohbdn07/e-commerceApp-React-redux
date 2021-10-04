@@ -20,7 +20,7 @@ export default function DetailsBanner(): JSX.Element {
 
    return (
       <>
-         {detailPageBannerItem ? (
+         {detailPageBannerItem !== undefined && detailPageBannerItem ? (
             <div className="col-lg-12 col-12 details_banner">
                <div className="container details_banner_inner">
                   <div className="col-lg-6 col-6 details_banner_left">

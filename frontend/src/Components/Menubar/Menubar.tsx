@@ -74,22 +74,28 @@ export default function Menubar(): JSX.Element {
                         </Link>
                      </li>
                      <li className="nav-item">
-                        <Link to="#" className="nav-link">
+                        <Link
+                           to="/category/men's clothing"
+                           className="nav-link"
+                        >
                            Men's clothes
                         </Link>
                      </li>
                      <li className="nav-item">
-                        <Link to="#" className="nav-link">
+                        <Link
+                           to="/category/women's clothing"
+                           className="nav-link"
+                        >
                            Women's clothes
                         </Link>
                      </li>
                      <li className="nav-item">
-                        <Link to="#" className="nav-link">
+                        <Link to="/category/electronics" className="nav-link">
                            Electronics
                         </Link>
                      </li>
                      <li className="nav-item">
-                        <Link to="#" className="nav-link">
+                        <Link to="/category/jewelery" className="nav-link">
                            Jewelery
                         </Link>
                      </li>

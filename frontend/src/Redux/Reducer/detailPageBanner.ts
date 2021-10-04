@@ -16,8 +16,9 @@ const initalstate: Iinitalstate = {
 export default function detailPageBanner(state = initalstate, action: Action) {
    switch (action.type) {
       case ActionType.GET_PRODUCT_IN_DETAILPAGE_BANNER:
-         localStorage.setItem("exitedProduct", JSON.stringify(action.payload));
-
+         if (action.payload !== undefined) {
+            localStorage.setItem("exitedProduct", JSON.stringify(action.payload));
+         }
          return {
             detailPageBannerItem: action.payload,
          };

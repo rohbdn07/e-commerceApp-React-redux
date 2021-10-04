@@ -1,19 +1,22 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Topbar from "../Components/Topbar/Topbar";
-import CompanyLogo from "../Components/CompanyLogo/CompanyLogo";
-import Searchbar from "../Components/Searchbar/Searchbar";
 import CartIcon from "../Components/CartIcon/CartIcon";
-import UserProfile from "../Components/Profile/UserProfile";
+import CategoryBanner from "../Components/Categories/Banner/CategoryBanner";
+import CompanyLogo from "../Components/CompanyLogo/CompanyLogo";
+import FooterList from "../Components/Footer/FooterList";
 import LoginRegister from "../Components/LoginRegister/LoginRegister";
 import Menubar from "../Components/Menubar/Menubar";
-import DetailsBanner from "../Components/DetailsBanner/detail_banner";
 import Products from "../Components/ProductsContainer/Products";
-import FooterList from "../Components/Footer/FooterList";
+import UserProfile from "../Components/Profile/UserProfile";
+import Searchbar from "../Components/Searchbar/Searchbar";
+import Topbar from "../Components/Topbar/Topbar";
+import useFetchCategory from "../servicesAPI/useFetchCategory";
 
-export default function ProductDetailsPage(): JSX.Element {
-   const { categoryname } = useParams<{ categoryname?: string }>();
-   // const { category } = useParams<{ category?: string }>();
+export default function CategoryPage(): JSX.Element {
+   const { categoryname }: any = useParams();
+
+   const { isError, isLoading, data, isSuccess } =
+      useFetchCategory(categoryname);
 
    return (
       <>
@@ -32,10 +35,15 @@ export default function ProductDetailsPage(): JSX.Element {
                   <LoginRegister />
                </div>
             </div>
+
             <Menubar />
 
-            <DetailsBanner />
-
+            <CategoryBanner
+               isError={isError}
+               isLoading={isLoading}
+               isSuccess={isSuccess}
+               data={data}
+            />
             <div className="container">
                <Products category={categoryname} />
             </div>

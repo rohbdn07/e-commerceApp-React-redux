@@ -1,27 +1,31 @@
-import React from "react";
-import { axiosFetchCategory } from "./axios";
+import { axiosFetchAPI } from "./axios";
+import { useQuery } from "react-query";
+import { IFetchedData } from "../Redux/Action/getProducts-Action";
 
-const useFetchCategory = () => {
-   const [loading, setLoading] = React.useState(false);
+type Products = {
+   data: IFetchedData[];
+};
 
-   React.useEffect(() => {
-      callCategoryAPI();
-   }, []);
-   const callCategoryAPI = async () => {
-      try {
-         setLoading(true);
-         const { data } = await axiosFetchCategory.get(
-            "https://fakestoreapi.com/products/category/jewelery"
-         );
-         setLoading(false);
+const fetchCategoryData = async (category: string) => {
+   try {
+      const response: Products = await axiosFetchAPI.get(
+         `/products/category/${category}`
+      );
+      return response.data;
+   } catch (error) {
+      console.log("Error getting data while fetching category", error);
+   }
+};
 
-         // console.log("the category data", data);
-      } catch (error) {
-         console.log("there is an error on fetching category API", error);
-      }
+const useFetchCategory = (category: string) => {
+   const queryInfo = useQuery(
+      ["categoryData", category],
+      async () => await fetchCategoryData(category)
+   );
+
+   return {
+      ...queryInfo,
    };
-
-   return [loading, callCategoryAPI] as const;
 };
 
 export default useFetchCategory;
