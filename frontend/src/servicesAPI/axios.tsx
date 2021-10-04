@@ -13,17 +13,12 @@ export const axiosInstance: AxiosInstance = axios.create({
    },
 });
 
+//Get data from free API service
+//https://fakestoreapi.com/docs
+
 export const axiosFetchAPI: AxiosInstance & AxiosRequestConfig = axios.create({
-   baseURL: "https://fakestoreapi.com/products?limit=20",
+   baseURL: "https://fakestoreapi.com",
    headers: {
       "Content-Type": "application/json",
    },
 });
-
-export const axiosFetchCategory: AxiosInstance & AxiosRequestConfig =
-   axios.create({
-      // baseURL: `https://fakestoreapi.com/products/category/jewelery`,
-      headers: {
-         "Content-Type": "application/json",
-      },
-   });
