@@ -30,9 +30,8 @@ export const getProductsAction = () => async (dispatch: Dispatch<Action>) => {
          type: ActionType.GET_LOADING_STATE,
       });
 
-      const { data }: Products = await axiosFetchAPI.get(
-         typeof axiosFetchAPI.baseURL
-      );
+      const { data }: Products = await axiosFetchAPI.get('/products?limit=20');
+
       localStorage.setItem("allProducts", JSON.stringify(data));
       dispatch({
          type: ActionType.GET_PRODCUTS,
