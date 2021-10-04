@@ -12,7 +12,7 @@ import Products from "../Components/ProductsContainer/Products";
 import FooterList from "../Components/Footer/FooterList";
 
 export default function ProductDetailsPage(): JSX.Element {
-   const { categoryname }: any = useParams<{ categoryname?: string }>();
+   const { categoryname } = useParams<{ categoryname?: string }>();
    // const { category } = useParams<{ category?: string }>();
 
    return (
