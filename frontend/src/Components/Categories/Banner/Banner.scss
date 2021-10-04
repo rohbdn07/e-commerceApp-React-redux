@@ -2,3 +2,45 @@
    width: 10%;
    height: 100%;
 }
+.categoryItem_title {
+   margin-top: 5rem;
+}
+.category_desc {
+   width: 90%;
+   // height: 100%;
+   text-align: center;
+   margin-top: 2rem;
+}
+
+.categoryItem_price {
+   text-align: center;
+   margin-top: 5rem;
+
+   span {
+      font-size: 1.5rem;
+      color: rgb(237, 235, 235);
+      background-color: crimson;
+      padding: 1rem;
+      border-radius: 0.5rem;
+   }
+}
+
+.Shop_now_button > div {
+   align-items: center;
+   display: grid;
+   width: 50%;
+   margin: 5rem auto;
+   border-radius: 8rem;
+   :hover {
+      background-color: rgb(16, 16, 9);
+      span {
+         color: whitesmoke;
+      }
+   }
+   button {
+      padding: 1rem 0 1rem 0 !important;
+      span {
+         color: rgb(187, 37, 37);
+      }
+   }
+}
