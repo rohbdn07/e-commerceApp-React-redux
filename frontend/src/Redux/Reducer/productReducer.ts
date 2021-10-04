@@ -45,7 +45,6 @@ export default function productReducer(state = initalstate, action: Action) {
          return {
             ...state,
             loading: false,
-            selectedItems: [],
             allProducts: action.payload,
             errMessage: '',
          };
@@ -58,6 +57,10 @@ export default function productReducer(state = initalstate, action: Action) {
          }
 
       case ActionType.ADD_CART:
+         localStorage.setItem(
+            "selectedProduct",
+            JSON.stringify(state.selectedItems)
+         );
          const selectedProduct = state.allProducts.filter((item) => {
             if (item.id === action.payload) {
                return (item.qty = 1, item)
@@ -67,10 +70,7 @@ export default function productReducer(state = initalstate, action: Action) {
          const checkItem = state.selectedItems.some((item) => item.id === action.payload);
 
          if (!checkItem) {
-            localStorage.setItem(
-               "selectedProduct",
-               JSON.stringify(state.selectedItems)
-            );
+
             return {
                ...state,
                selectedItems: [...state.selectedItems, ...selectedProduct],
@@ -106,7 +106,6 @@ export default function productReducer(state = initalstate, action: Action) {
       case ActionType.INCREASE_CART_QTY:
          const increaseQtyUpdate = state.selectedItems.map((item) => {
             if (item.id === action.payload.id) {
-               console.log("the item qty is", item.qty);
                return {
                   ...item,
                   qty: (item.qty += 1),
@@ -121,7 +120,6 @@ export default function productReducer(state = initalstate, action: Action) {
          const decreaseQtyUpdate = state.selectedItems
             .map((item) => {
                if (item.id === action.payload.id) {
-                  console.log("the item qty is", item.qty);
                   return {
                      ...item,
                      qty: item.qty - 1,
