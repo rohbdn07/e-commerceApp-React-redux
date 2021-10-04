@@ -1,4 +1,4 @@
-import { axiosFetchCategory } from "./axios";
+import { axiosFetchAPI } from "./axios";
 import { useQuery } from "react-query";
 import { IFetchedData } from "../Redux/Action/getProducts-Action";
 
@@ -8,8 +8,8 @@ type Products = {
 
 const fetchCategoryData = async (category: string) => {
    try {
-      const response: Products = await axiosFetchCategory.get(
-         `https://fakestoreapi.com/products/category/${category}`
+      const response: Products = await axiosFetchAPI.get(
+         `/products/category/${category}`
       );
       return response.data;
    } catch (error) {
