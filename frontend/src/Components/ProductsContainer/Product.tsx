@@ -20,17 +20,12 @@ export default function Product({ item, category }: IProductProps) {
    const loading = useSelector(
       (state: RootState) => state.productReducer?.loading
    );
-   const allProducts: IFetchedData[] | undefined = useSelector(
-      (state: RootState) => state.productReducer?.allProducts
-   );
 
    const redirectToDetailsPage = (id: number): void => {
       if (category !== undefined) {
          let path = `/product/${category}/${id}`;
          history.push(path);
-         if (allProducts !== undefined) {
-            dispatch(getDetailBanneritem(allProducts, id));
-         }
+         dispatch(getDetailBanneritem(id));
       }
    };
    return (
@@ -65,13 +60,15 @@ export default function Product({ item, category }: IProductProps) {
                      <h5 className="card-title">{item.title}</h5>
                      <p className="card-text price_text">${item.price}</p>
                      <ProductRating ratingNumber={item.rating.rate} />
-                     <button
-                        className="btn btn-outline-info text-dark mb"
-                        onClick={() => redirectToDetailsPage(item.id)}
-                     >
-                        view details
-                     </button>
-                     <AddToCartButton itemId={item.id} />
+                     <div className="d-block">
+                        <button
+                           className="btn btn-outline-info text-dark mb"
+                           onClick={() => redirectToDetailsPage(item.id)}
+                        >
+                           view details
+                        </button>
+                        <AddToCartButton itemId={item.id} />
+                     </div>
                   </div>
                )}
             </div>

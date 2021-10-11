@@ -45,6 +45,11 @@ interface GetTotalPrice {
    paylaod: null
 }
 
+interface GetFilteredProduct {
+   type: ActionType.GET_FILTERED_PRODUCTS
+   payload: Array<number>
+}
+
 export type Action =
    | GetLoadingState
    | GetProductLoadingError
@@ -54,4 +59,5 @@ export type Action =
    | RemoveCartItem
    | IncreaseCartQty
    | DecreaseCartQty
-   | GetTotalPrice;
+   | GetTotalPrice
+   | GetFilteredProduct;

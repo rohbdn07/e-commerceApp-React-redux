@@ -23,10 +23,6 @@ export default function CategoryBanner({
 }: IResponseData) {
    let history = useHistory();
    const dispatch = useDispatch();
-   const allProducts: IFetchedData[] | undefined = useSelector(
-      (state: RootState) => state.productReducer?.allProducts
-   );
-
    const { categoryname } = useParams<{ categoryname?: string }>();
 
    const categoryItemImage =
@@ -71,39 +67,37 @@ export default function CategoryBanner({
       });
 
    const reDirectToDetails = (itemId: number): void => {
-      let path = `/product/${categoryname}/${itemId}`;
-      history.push(path);
-      if (allProducts !== undefined) {
-         dispatch(getDetailBanneritem(allProducts, itemId));
+      if (itemId !== undefined) {
+         let path = `/product/${categoryname}/${itemId}`;
+         history.push(path);
+         dispatch(getDetailBanneritem(itemId));
       }
    };
 
    const shopNowButton = () => {
-      let idExisted: number;
-      const isIdExit =
-         data !== undefined &&
-         data?.some((item) => {
-            if (item.id) {
-               idExisted = item.id;
-               return true;
-            }
-            return false;
-         });
-      if (isIdExit === true) {
-         return (
-            <div className="Shop_now_button">
-               <div className="d-grid gap-2 col-9 mx-auto">
-                  <button
-                     className="btn btn-lg btn-outline-dark"
-                     type="button"
-                     onClick={() => reDirectToDetails(idExisted)}
-                  >
-                     <span>BUY NOW</span>
-                  </button>
-               </div>
+      const getFirstElement = () => {
+         if (data !== undefined || null) {
+            return data?.slice(0, 1).shift();
+         }
+      };
+      const getFirstElementId = getFirstElement();
+      return (
+         <div className="Shop_now_button">
+            <div className="d-grid gap-2 col-9 mx-auto">
+               <button
+                  className="btn btn-lg btn-outline-dark"
+                  type="button"
+                  onClick={() => {
+                     if (getFirstElementId !== undefined) {
+                        reDirectToDetails(getFirstElementId.id);
+                     }
+                  }}
+               >
+                  <span>BUY NOW</span>
+               </button>
             </div>
-         );
-      }
+         </div>
+      );
    };
 
    return (

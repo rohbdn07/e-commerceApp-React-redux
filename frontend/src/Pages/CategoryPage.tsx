@@ -6,11 +6,12 @@ import CompanyLogo from "../Components/CompanyLogo/CompanyLogo";
 import FooterList from "../Components/Footer/FooterList";
 import LoginRegister from "../Components/LoginRegister/LoginRegister";
 import Menubar from "../Components/Menubar/Menubar";
-import Products from "../Components/ProductsContainer/Products";
 import UserProfile from "../Components/Profile/UserProfile";
 import Searchbar from "../Components/Searchbar/Searchbar";
 import Topbar from "../Components/Topbar/Topbar";
 import useFetchCategory from "../servicesAPI/useFetchCategory";
+import FiltersSection from "../Components/Filters/FiltersSection";
+import CategoryList from "../Components/Categories/ProductList/CategoryList";
 
 export default function CategoryPage(): JSX.Element {
    const { categoryname }: any = useParams();
@@ -44,8 +45,14 @@ export default function CategoryPage(): JSX.Element {
                isSuccess={isSuccess}
                data={data}
             />
-            <div className="container">
-               <Products category={categoryname} />
+            <hr />
+            <div className="container col-lg-12 d-flex">
+               <div className="col-lg-3">
+                  <FiltersSection />
+               </div>
+               <div className="col-lg-9">
+                  <CategoryList data={data} isLoading={isLoading} />
+               </div>
             </div>
 
             <FooterList />
