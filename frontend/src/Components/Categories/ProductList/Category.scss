@@ -1,0 +1,8 @@
+.category_list {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   flex-wrap: wrap;
+   //    grid-template-columns: repeat(3, 2fr);
+   //    gap: 1;
+}
