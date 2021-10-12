@@ -47,6 +47,7 @@ export default function CategoryList({ data, isLoading }: any) {
                      key={item.id}
                      product={item}
                      isLoading={isLoading}
+                     category={categoryname}
                   />
                ))}
          </div>
