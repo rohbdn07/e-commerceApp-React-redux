@@ -7,7 +7,7 @@ import Categoryitem from "./CategoryItem";
 import "./Category.scss";
 
 export default function CategoryList({ data, isLoading }: any) {
-   const { categoryname }: any = useParams();
+   const { categoryname } = useParams<{ categoryname: string }>();
    const filterRangeValue = useSelector(
       (state: RootState) => state.productReducer?.filterRangeValue
    );
