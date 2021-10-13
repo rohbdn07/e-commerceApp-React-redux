@@ -33,6 +33,7 @@ export default function Products({
    );
 
    const isError = error !== "" ? error : null;
+   // console.log("the all products", allProducts);
 
    return (
       <>

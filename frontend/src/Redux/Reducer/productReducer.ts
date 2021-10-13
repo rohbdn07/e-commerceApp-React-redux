@@ -7,6 +7,8 @@ export interface Iinitalstate {
    loading: boolean
    allProducts: IFetchedData[]
    selectedItems: IFetchedData[]
+   filterRangeValue: number[]
+   searchProduct: string | null
    price: number
    totalPrice: number
    qty: number
@@ -25,6 +27,8 @@ const initalstate: Iinitalstate = {
    loading: false,
    allProducts: storeAllProducts ? JSON.parse(storeAllProducts) : [],
    selectedItems: storeSelectedItems ? JSON.parse(storeSelectedItems) : [],
+   filterRangeValue: [],
+   searchProduct: null,
    price: 0,
    totalPrice: 0,
    qty: 0,
@@ -32,6 +36,7 @@ const initalstate: Iinitalstate = {
    errMessage: ''
 };
 // JSON.parse(localStorage.getItem('selectedProduct') || '[]')
+
 
 export default function productReducer(state = initalstate, action: Action) {
    switch (action.type) {
@@ -148,6 +153,27 @@ export default function productReducer(state = initalstate, action: Action) {
 
          return { ...state, totalPrice };
 
+      case ActionType.GET_FILTERED_PRODUCTS:
+         return {
+            ...state,
+            filterRangeValue: action.payload
+         }
+
+      case ActionType.GET_SEARCH_PRODUCTS:
+         if (action.payload) {
+            return {
+               ...state,
+               searchProduct: action.payload
+            }
+         } else {
+            if (!action.payload) {
+               return {
+                  ...state,
+                  searchProduct: null
+               }
+            }
+         }
+         break;
       default:
          return state;
    }

@@ -45,6 +45,16 @@ interface GetTotalPrice {
    paylaod: null
 }
 
+interface GetFilteredProduct {
+   type: ActionType.GET_FILTERED_PRODUCTS
+   payload: Array<number>
+}
+
+interface GetSearchedProduct {
+   type: ActionType.GET_SEARCH_PRODUCTS
+   payload: string
+}
+
 export type Action =
    | GetLoadingState
    | GetProductLoadingError
@@ -54,4 +64,6 @@ export type Action =
    | RemoveCartItem
    | IncreaseCartQty
    | DecreaseCartQty
-   | GetTotalPrice;
+   | GetTotalPrice
+   | GetFilteredProduct
+   | GetSearchedProduct;
