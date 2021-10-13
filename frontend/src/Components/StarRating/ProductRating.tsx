@@ -9,10 +9,7 @@ export default function ProductRating(props: any): JSX.Element {
             <StarRatingComponent
                value={ratingNumber}
                starColor="red"
-               // changeRating={this.changeRating}
                starCount={5}
-               // starDimension="18px"
-               // starSpacing="4px"
                name="rating"
             />
          </div>

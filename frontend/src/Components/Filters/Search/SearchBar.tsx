@@ -1,8 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import Box from "@mui/material/Box";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import { ActionType } from "../../../Redux/Action/actionTypes";
 
 const Search = styled("div")(({ theme }) => ({
    position: "relative",
@@ -47,9 +49,21 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchBar() {
+   const [input, setInput] = React.useState<string | null>("");
+   const dispatch = useDispatch();
+
+   const handleChange = (e: any) => {
+      e.preventDefault();
+      setInput(e.target.value);
+      dispatch({
+         type: ActionType.GET_SEARCH_PRODUCTS,
+         payload: input,
+      });
+   };
+
    return (
       <>
-         <Box sx={{ height: 70, backgroundColor: "#e9ecef", p: 2 }}>
+         <Box sx={{ height: 70 }}>
             <Search>
                <SearchIconWrapper>
                   <SearchIcon />
@@ -57,6 +71,7 @@ export default function SearchBar() {
                <StyledInputBase
                   placeholder="Search…"
                   inputProps={{ "aria-label": "search" }}
+                  onChange={(e) => handleChange(e)}
                />
             </Search>
          </Box>

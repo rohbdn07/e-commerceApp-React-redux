@@ -6,11 +6,11 @@ import PriceRange from "./Range/PriceRange";
 export default function FiltersSection() {
    return (
       <>
-         <Box sx={{ mt: 5 }}>
+         <Box>
             <div className="filterSection_searchbar">
                <SearchBar />
             </div>
-            <Box sx={{ mt: 5 }}>
+            <Box sx={{ mt: 2 }}>
                <PriceRange />
             </Box>
          </Box>

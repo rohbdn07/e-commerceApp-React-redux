@@ -1,11 +1,9 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import Skeleton from "@mui/material/Skeleton";
 import ProductRating from "../../StarRating/ProductRating";
 import AddToCartButton from "../../../utils/Button/AddToCartButton";
-import { getDetailBanneritem } from "../../../Redux/Action/getDetailBanneritem";
 import { IFetchedData } from "../../../Redux/Action/getProducts-Action";
+import RedirectToDetailPage from "../../../utils/Button/RedirectToDetailPage";
 
 interface ICategoryItemProps {
    product: IFetchedData;
@@ -18,16 +16,6 @@ export default function Categoryitem({
    isLoading,
    category,
 }: ICategoryItemProps) {
-   let history = useHistory();
-   const dispatch = useDispatch();
-
-   const redirectToDetailsPage = (id: number): void => {
-      if (category !== undefined) {
-         let path = `/product/${category}/${id}`;
-         history.push(path);
-         dispatch(getDetailBanneritem(id));
-      }
-   };
    return (
       <>
          <div className="col-lg-3 col-sm-5 product_wrapper" key={product.id}>
@@ -56,12 +44,10 @@ export default function Categoryitem({
                   <h5 className="card-title">{product.title}</h5>
                   <p className="card-text price_text">${product.price}</p>
                   <ProductRating ratingNumber={product.rating.rate} />
-                  <button
-                     className="btn btn-outline-info text-dark mb"
-                     onClick={() => redirectToDetailsPage(product.id)}
-                  >
-                     view details
-                  </button>
+                  <RedirectToDetailPage
+                     itemId={product.id}
+                     category={category}
+                  />
                   <AddToCartButton itemId={product.id} />
                </div>
             )}

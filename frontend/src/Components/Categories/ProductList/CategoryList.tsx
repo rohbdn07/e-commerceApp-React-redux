@@ -11,6 +11,10 @@ export default function CategoryList({ data, isLoading }: any) {
    const filterRangeValue = useSelector(
       (state: RootState) => state.productReducer?.filterRangeValue
    );
+
+   const searchProduct = useSelector(
+      (state: RootState) => state.productReducer?.searchProduct
+   );
    const [filterData, setFilterData] = React.useState([]);
 
    React.useEffect(() => {
@@ -35,7 +39,33 @@ export default function CategoryList({ data, isLoading }: any) {
          }
       };
       getData();
-   }, [data, filterRangeValue]);
+   }, [data, filterRangeValue, searchProduct]);
+
+   React.useEffect(() => {
+      const filterSearchProduct = () => {
+         const getSearchProduct: any = [];
+         if (data !== undefined) {
+            data.forEach((item: any) => {
+               if (searchProduct !== undefined || !null) {
+                  if (item.title && searchProduct) {
+                     const getItem = [item.title]
+                        .toString()
+                        .toLowerCase()
+                        .includes(searchProduct.toLowerCase());
+                     if (getItem) {
+                        getSearchProduct.push(item);
+                        return setFilterData(getSearchProduct);
+                     }
+                  }
+               }
+               if (searchProduct == null) {
+                  return setFilterData(data);
+               }
+            });
+         }
+      };
+      filterSearchProduct();
+   }, [data, searchProduct]);
 
    return (
       <>

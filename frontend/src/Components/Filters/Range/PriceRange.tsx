@@ -13,7 +13,7 @@ function valuetext(value: number) {
 const minDistance = 10;
 
 export default function PriceRange() {
-   const [value, setValue] = React.useState<number[]>([10, 110]);
+   const [value, setValue] = React.useState<number[]>([0, 150]);
    const dispatch = useDispatch();
 
    const handleChange = (
@@ -41,7 +41,7 @@ export default function PriceRange() {
 
    return (
       <>
-         <Box sx={{ width: "100%", backgroundColor: "#e9ecef", p: 1 }}>
+         <Box sx={{ width: "100%", backgroundColor: "#e9ecef", p: 2 }}>
             <Typography>FILTER BY PRICE</Typography>
             <Slider
                getAriaLabel={() => "Minimum distance"}
@@ -51,15 +51,17 @@ export default function PriceRange() {
                getAriaValueText={valuetext}
                step={10}
                marks
-               min={10}
+               min={0}
                max={150}
                color="secondary"
                disableSwap
             />
+            <Box sx={{ marginBottom: 1 }}>
+               <span>
+                  ${value[0]} - ${value[1]}
+               </span>
+            </Box>
 
-            <p>
-               ${value[0]} - ${value[1]}
-            </p>
             <Button variant="contained" onClick={getFilteredProduct}>
                FILTER
             </Button>

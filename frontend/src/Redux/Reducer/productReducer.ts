@@ -1,5 +1,4 @@
 /* eslint-disable array-callback-return */
-import { StarRateTwoTone } from "@mui/icons-material";
 import { IProductItems } from "../../Components/CartItems/CartItems";
 import { Action } from "../Action/actionInterface";
 import { ActionType } from "../Action/actionTypes";
@@ -9,6 +8,7 @@ export interface Iinitalstate {
    allProducts: IFetchedData[]
    selectedItems: IFetchedData[]
    filterRangeValue: number[]
+   searchProduct: string | null
    price: number
    totalPrice: number
    qty: number
@@ -28,6 +28,7 @@ const initalstate: Iinitalstate = {
    allProducts: storeAllProducts ? JSON.parse(storeAllProducts) : [],
    selectedItems: storeSelectedItems ? JSON.parse(storeSelectedItems) : [],
    filterRangeValue: [],
+   searchProduct: null,
    price: 0,
    totalPrice: 0,
    qty: 0,
@@ -158,6 +159,21 @@ export default function productReducer(state = initalstate, action: Action) {
             filterRangeValue: action.payload
          }
 
+      case ActionType.GET_SEARCH_PRODUCTS:
+         if (action.payload) {
+            return {
+               ...state,
+               searchProduct: action.payload
+            }
+         } else {
+            if (!action.payload) {
+               return {
+                  ...state,
+                  searchProduct: null
+               }
+            }
+         }
+         break;
       default:
          return state;
    }

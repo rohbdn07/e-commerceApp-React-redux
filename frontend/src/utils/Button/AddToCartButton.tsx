@@ -1,10 +1,11 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 import Button, { ButtonProps } from "@mui/material/Button";
-import { blue } from "@mui/material/colors";
+import { blue, green } from "@mui/material/colors";
 import { useSelector, useDispatch } from "react-redux";
 import { selectToCartAction } from "../../Redux/Action/selectToCartAction";
 import { RootState } from "../../Redux/Reducer";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
    color: theme.palette.getContrastText(blue[500]),
@@ -12,16 +13,15 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
    width: "fit-content",
    marginTop: 2,
    height: 40,
+   paddingTop: 0,
+   paddingBottom: 0,
    "&:hover": {
-      backgroundColor: blue[600],
+      backgroundColor: green[600],
    },
 }));
 
-export default function AddToCartButton(props: any): JSX.Element {
+export default function AddToCartButton({ itemId }: any): JSX.Element {
    const dispatch = useDispatch();
-
-   const { itemId } = props;
-
    const selectedItems: any = useSelector(
       (state: RootState) => state.productReducer?.selectedItems
    );
@@ -34,7 +34,9 @@ export default function AddToCartButton(props: any): JSX.Element {
    });
 
    const addTocart = (itemId: string): void => {
-      dispatch(selectToCartAction(itemId));
+      if (itemId) {
+         dispatch(selectToCartAction(itemId));
+      }
    };
    return (
       <>
@@ -43,7 +45,7 @@ export default function AddToCartButton(props: any): JSX.Element {
             onClick={() => addTocart(itemId)}
             disabled={isIdExisted}
          >
-            {isIdExisted ? "Added" : "Add to cart"}
+            {!isIdExisted ? <AddShoppingCartIcon /> : <AddShoppingCartIcon />}
          </ColorButton>
       </>
    );

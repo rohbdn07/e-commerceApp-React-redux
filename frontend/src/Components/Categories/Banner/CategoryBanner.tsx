@@ -3,10 +3,9 @@ import Grid from "@mui/material/Grid";
 import CardMedia from "@mui/material/CardMedia";
 import Skeleton from "@mui/material/Skeleton";
 import { useHistory, useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./Banner.scss";
 import { IFetchedData } from "../../../Redux/Action/getProducts-Action";
-import { RootState } from "../../../Redux/Reducer";
 import { getDetailBanneritem } from "../../../Redux/Action/getDetailBanneritem";
 
 interface IResponseData {
@@ -28,12 +27,7 @@ export default function CategoryBanner({
    const categoryItemImage =
       data !== undefined &&
       data?.map((item) => (
-         <CardMedia
-            component="img"
-            className="bannerImage"
-            image={item.image}
-            alt="product-image"
-         />
+         <CardMedia component="img" image={item.image} alt="product-image" />
       ));
 
    const categoryItemTitle =

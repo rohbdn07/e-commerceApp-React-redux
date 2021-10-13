@@ -12,6 +12,7 @@ import Topbar from "../Components/Topbar/Topbar";
 import useFetchCategory from "../servicesAPI/useFetchCategory";
 import FiltersSection from "../Components/Filters/FiltersSection";
 import CategoryList from "../Components/Categories/ProductList/CategoryList";
+import "./pages.scss";
 
 export default function CategoryPage(): JSX.Element {
    const { categoryname }: any = useParams();
@@ -46,11 +47,11 @@ export default function CategoryPage(): JSX.Element {
                data={data}
             />
             <hr />
-            <div className="container col-lg-12 d-flex">
-               <div className="col-lg-3">
+            <div className="col-lg-12 container categoryPage_filter">
+               <div className="col-lg-3 category_filter_left">
                   <FiltersSection />
                </div>
-               <div className="col-lg-9">
+               <div className="col-lg-8">
                   <CategoryList data={data} isLoading={isLoading} />
                </div>
             </div>
