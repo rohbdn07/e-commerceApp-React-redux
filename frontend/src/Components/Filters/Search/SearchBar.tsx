@@ -52,13 +52,19 @@ export default function SearchBar() {
    const [input, setInput] = React.useState<string | null>("");
    const dispatch = useDispatch();
 
+   React.useEffect(() => {
+      const dispatchAction = () => {
+         dispatch({
+            type: ActionType.GET_SEARCH_PRODUCTS,
+            payload: input,
+         });
+      };
+      dispatchAction();
+   }, [dispatch, input]);
+
    const handleChange = (e: any) => {
       e.preventDefault();
       setInput(e.target.value);
-      dispatch({
-         type: ActionType.GET_SEARCH_PRODUCTS,
-         payload: input,
-      });
    };
 
    return (
