@@ -14,7 +14,18 @@ const minDistance = 10;
 
 export default function PriceRange() {
    const [value, setValue] = React.useState<number[]>([0, 150]);
+   const [filter, setFilter] = React.useState<number[]>([]);
    const dispatch = useDispatch();
+
+   React.useEffect(() => {
+      const disptachFilteredProduct = (): void => {
+         dispatch({
+            type: ActionType.GET_FILTERED_PRODUCTS,
+            payload: filter,
+         });
+      };
+      disptachFilteredProduct();
+   }, [filter, dispatch]);
 
    const handleChange = (
       event: Event,
@@ -32,13 +43,6 @@ export default function PriceRange() {
       }
    };
 
-   const getFilteredProduct = () => {
-      dispatch({
-         type: ActionType.GET_FILTERED_PRODUCTS,
-         payload: value,
-      });
-   };
-
    return (
       <>
          <Box sx={{ width: "100%", backgroundColor: "#e9ecef", p: 2 }}>
@@ -52,7 +56,7 @@ export default function PriceRange() {
                step={10}
                marks
                min={0}
-               max={150}
+               max={200}
                color="secondary"
                disableSwap
             />
@@ -62,7 +66,7 @@ export default function PriceRange() {
                </span>
             </Box>
 
-            <Button variant="contained" onClick={getFilteredProduct}>
+            <Button variant="contained" onClick={() => setFilter(value)}>
                FILTER
             </Button>
          </Box>
