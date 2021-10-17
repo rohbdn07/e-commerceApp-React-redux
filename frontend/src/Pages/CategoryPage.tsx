@@ -13,6 +13,8 @@ import useFetchCategory from "../servicesAPI/useFetchCategory";
 import FiltersSection from "../Components/Filters/FiltersSection";
 import CategoryList from "../Components/Categories/ProductList/CategoryList";
 import "./pages.scss";
+import PartnersList from "../Components/OurBrands/PartnersList";
+import DemoApp from "../Components/DownloadApp/DemoApp";
 
 export default function CategoryPage(): JSX.Element {
    const { categoryname }: any = useParams();
@@ -55,6 +57,9 @@ export default function CategoryPage(): JSX.Element {
                   <CategoryList data={data} isLoading={isLoading} />
                </div>
             </div>
+
+            <PartnersList />
+            <DemoApp />
 
             <FooterList />
          </div>

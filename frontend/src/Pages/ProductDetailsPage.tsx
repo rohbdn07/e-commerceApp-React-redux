@@ -10,6 +10,8 @@ import Menubar from "../Components/Menubar/Menubar";
 import DetailsBanner from "../Components/DetailsBanner/detail_banner";
 import Products from "../Components/ProductsContainer/Products";
 import FooterList from "../Components/Footer/FooterList";
+import PartnersList from "../Components/OurBrands/PartnersList";
+import DemoApp from "../Components/DownloadApp/DemoApp";
 
 export default function ProductDetailsPage(): JSX.Element {
    const { categoryname } = useParams<{ categoryname?: string }>();
@@ -39,6 +41,8 @@ export default function ProductDetailsPage(): JSX.Element {
             <div className="container">
                <Products category={categoryname} />
             </div>
+            <PartnersList />
+            <DemoApp />
 
             <FooterList />
          </div>
