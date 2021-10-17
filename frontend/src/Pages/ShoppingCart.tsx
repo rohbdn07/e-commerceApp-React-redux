@@ -2,7 +2,7 @@ import React from "react";
 import CompanyLogo from "../Components/CompanyLogo/CompanyLogo";
 import CartIcon from "../Components/CartIcon/CartIcon";
 import UserProfile from "../Components/Profile/UserProfile";
-import LoginRegister from "../Components/LoginRegister/LoginRegister";
+import LoginRegister from "../Components/Auth/LoginRegister/LoginRegister";
 import CartItemsList from "../Components/CartItems/CartItemsList";
 import Topbar from "../Components/Topbar/Topbar";
 import Discount from "../Components/Discount/Discount";

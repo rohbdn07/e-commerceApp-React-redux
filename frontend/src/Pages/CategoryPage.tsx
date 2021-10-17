@@ -4,7 +4,7 @@ import CartIcon from "../Components/CartIcon/CartIcon";
 import CategoryBanner from "../Components/Categories/Banner/CategoryBanner";
 import CompanyLogo from "../Components/CompanyLogo/CompanyLogo";
 import FooterList from "../Components/Footer/FooterList";
-import LoginRegister from "../Components/LoginRegister/LoginRegister";
+import LoginRegister from "../Components/Auth/LoginRegister/LoginRegister";
 import Menubar from "../Components/Menubar/Menubar";
 import UserProfile from "../Components/Profile/UserProfile";
 import Searchbar from "../Components/Searchbar/Searchbar";

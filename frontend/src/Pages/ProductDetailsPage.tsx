@@ -5,7 +5,7 @@ import CompanyLogo from "../Components/CompanyLogo/CompanyLogo";
 import Searchbar from "../Components/Searchbar/Searchbar";
 import CartIcon from "../Components/CartIcon/CartIcon";
 import UserProfile from "../Components/Profile/UserProfile";
-import LoginRegister from "../Components/LoginRegister/LoginRegister";
+import LoginRegister from "../Components/Auth/LoginRegister/LoginRegister";
 import Menubar from "../Components/Menubar/Menubar";
 import DetailsBanner from "../Components/DetailsBanner/detail_banner";
 import Products from "../Components/ProductsContainer/Products";
