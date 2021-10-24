@@ -1,7 +1,6 @@
 // if (process.env.NODE_ENV !== "production") {
 //    require("dotenv").config();
 // }
-
 require("dotenv").config();
 if (process.env.NODE_ENV !== "production") {
    require("dotenv").config("../config/keyDev.env");
@@ -24,6 +23,13 @@ if (process.env.NODE_ENV === "production") {
       res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
    });
 }
+
+//Connection to MONGODB database
+const mongoose = require("mongoose");
+mongoose
+   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
+   .then(() => console.log("Connected to MongoDB..."))
+   .catch((err) => console.error("Could not connect to MongoDB..."));
 
 //listing to LocalHost
 const PORT = process.env.PORT || 5050;
