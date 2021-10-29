@@ -20,7 +20,16 @@ export interface IselectedProducts {
    item: IProductItems[]
 }
 
+/**
+ * @variable storeAllProducts, it store allProduct into
+ * localStorage.
+ */
 const storeAllProducts = localStorage.getItem("allProduct");
+
+/**
+ * @variable storeAllProducts, it store selected product into
+ * localStorage.
+ */
 const storeSelectedItems = localStorage.getItem("selectedProduct");
 
 const initalstate: Iinitalstate = {
