@@ -28,11 +28,11 @@ export default function Products({
       (state: RootState) => state.productReducer?.allProducts
    );
 
-   const error = useSelector(
-      (state: RootState) => state.productReducer?.errMessage
-   );
+   // const error = useSelector(
+   //    (state: RootState) => state.productReducer?.errMessage
+   // );
 
-   const isError = error !== "" ? error : null;
+   // const isError = error !== "" ? error : null;
    // console.log("the all products", allProducts);
 
    return (
@@ -41,7 +41,7 @@ export default function Products({
             <h3>Couldn't able to get data from source</h3>
          ) : (
             <div>
-               {isError}
+               {/* {isError} */}
                <h2 style={{ marginTop: "3rem" }}>{title}</h2>
                <div className="col-lg-12 col-md-12 col-sm-12 products">
                   {allProducts &&
