@@ -13,8 +13,10 @@ export const axiosInstance: AxiosInstance = axios.create({
    },
 });
 
-//Get data from free API service
-//https://fakestoreapi.com/docs
+/**
+ * @axiosFetchAPI Free API service to get different demo products.
+ * @baseUrl  "https://fakestoreapi.com"
+ *  */
 
 export const axiosFetchAPI: AxiosInstance & AxiosRequestConfig = axios.create({
    baseURL: "https://fakestoreapi.com",
@@ -22,3 +24,16 @@ export const axiosFetchAPI: AxiosInstance & AxiosRequestConfig = axios.create({
       "Content-Type": "application/json",
    },
 });
+
+/**
+ * @axiosFetchAuthAPI baseurl to connect frontend to backend.
+ * @baseurl "http://localhost:5050"
+ */
+
+export const axiosFetchAuthAPI: AxiosInstance & AxiosRequestConfig =
+   axios.create({
+      baseURL: "http://localhost:5050",
+      headers: {
+         "Content-Type": "application/json",
+      },
+   });
