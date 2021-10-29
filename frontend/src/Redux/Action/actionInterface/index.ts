@@ -1,4 +1,5 @@
 import { IProductItems } from "../../../Components/CartItems/CartItems";
+import IUserAuth from "../../../interfaces/userAuth.interface";
 import { ActionType } from "../actionTypes";
 import { IFetchedData } from "../getProducts-Action";
 
@@ -55,6 +56,21 @@ interface GetSearchedProduct {
    payload: string
 }
 
+interface GetRegisterUser {
+   type: ActionType.REGISTER_USER
+   payload: IUserAuth
+}
+
+interface GetLoginUser {
+   type: ActionType.LOGIN_USER
+   payload: IUserAuth
+}
+
+interface CancelRegisterForm {
+
+   type: ActionType.CANCEL_REGISTER_FORM
+}
+
 export type Action =
    | GetLoadingState
    | GetProductLoadingError
@@ -66,4 +82,7 @@ export type Action =
    | DecreaseCartQty
    | GetTotalPrice
    | GetFilteredProduct
-   | GetSearchedProduct;
+   | GetSearchedProduct
+   | GetRegisterUser
+   | GetLoginUser
+   | CancelRegisterForm;
