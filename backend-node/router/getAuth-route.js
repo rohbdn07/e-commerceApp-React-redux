@@ -71,32 +71,39 @@ router.post("/api/register", async (req, res) => {
 
 router.post("/api/login", async (req, res) => {
    const { email, password } = req.body;
-   const existUser = await User.findOne({ email });
-   if (!existUser) {
-      return res.status(404).json({ message: "This user doesn't exit!" });
-   }
-   bcrypt.compare(password, existUser.password).then((isMatch) => {
-      if (isMatch) {
-         const payload = {
-            id: existUser.id,
-            email: existUser.email,
-         };
-
-         jwt.sign(
-            payload,
-            process.env.SECRET_KEY,
-            { expiresIn: 3600 }, //expires in 1hr
-            (error, token) => {
-               res.json({
-                  success: true,
-                  token: "Bearer " + token,
-               });
-            }
-         );
-      } else {
-         res.status(400).json({ message: "Email or password is incorrect!!" });
+   try {
+      const existUser = await User.findOne({ email });
+      if (!existUser) {
+         return res.status(404).json({ message: "This user doesn't exit!" });
       }
-   });
+
+      bcrypt.compare(password, existUser.password).then((isMatch) => {
+         if (isMatch) {
+            const payload = {
+               id: existUser.id,
+               email: existUser.email,
+            };
+
+            jwt.sign(
+               payload,
+               process.env.SECRET_KEY,
+               { expiresIn: 3600 }, //expires in 1hr
+               (error, token) => {
+                  res.json({
+                     success: true,
+                     token: "Bearer " + token,
+                  });
+               }
+            );
+         } else {
+            res.status(400).json({
+               message: "Email or password is incorrect!!",
+            });
+         }
+      });
+   } catch (error) {
+      console.log("Error while login user", error);
+   }
 });
 
 module.exports = router;
