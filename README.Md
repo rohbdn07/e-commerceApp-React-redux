@@ -2,18 +2,50 @@
 
 #### Deploy at Heroku: https://rbstore-ecommerce.herokuapp.com/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Creating a simple e-commerce website with Stripe payment gateway (dev:mode). Users can select, add, and/or delete the shopping items. Use of API (fakestoreapi.com) to generate shopping items. Moreover, Redux is used for state management. NodeJs is used to handle API requests for stripe. For styling, SCSS has been in use. In order to give real kind of feeling to users, Stripe payment system has been addded, where user can checkout and use demo credit card to pay for the selected items. To run this project, see the commands below:
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) with Typescript. This project is build up from scratch that means I started making this aplication from zero level.
+
+Creating a e-commerce website with Stripe payment gateway (dev:mode). The online shopping website is for Buying and Selling products online within the network. Users can select, add, and/or delete the shopping items. After clicking 'Checkout' button, users are re-directed to stripe payment page where users can put their card credentials to buy the products. If not, users can cancel and return back to front-landing page with 'Back' button.
+
+Use of 3rd party API (fakestoreapi.com) to generate shopping items.
+
+Moreover, Redux has been in use for state management along with some uses cases of React-Query. NodeJs has been in use to handle API requests for Stripe payment and Login/Register features along with JWT authentication. For styling, SCSS, Bootstrap, Material UI has been in use. In order to give real kind of feeling to users, Stripe payment system has been in use, where user can checkout and use demo credit card to pay for the selected items.
+
+#### Note:
+
+This project is on-going project, that means I add new features in order to practice and develop my skills. Currently, I am working on JWT authentication section in order to provide Login and Register features to users.
+
+To run this project, see the commands below:
 
 #### Front-page desktop screenshot:
 
 ![e-commerce-app-desktop-image](https://user-images.githubusercontent.com/57314666/130216547-9ad33103-1d65-44ac-a39b-ffd3f01a3f12.png)
 
+#### Category-section page screenshot:
+
+![category-section01](https://user-images.githubusercontent.com/57314666/140048316-7317fd41-e904-4fa7-a915-b3f60e28fea7.png)
+
+#### Checkout-payment page with Stripe screenshot:
+
+![checkout-payment](https://user-images.githubusercontent.com/57314666/140050542-ac5c1da0-9229-4367-9c65-025f6f93519e.png)
+
 #### Front-page mobile screenshot:
 
 ![e-commerce-website-mobile](https://user-images.githubusercontent.com/57314666/130216684-61a5dede-9265-4e5c-913f-d2437a283afb.png)
 
-First, clone this repo. Then Go to the root of the project folder. Then run following command:
+### Tech Stack
+
+-  MERN STACK
+-  React Js, Typescript, Redux, React-Query
+-  SCSS, Bootstrap, Material-UI
+-  Node Js, Express Js
+-  MongoDB
+-  Stripe payment gateway
+
+### Installation
+
+First, clone this repo. Then Go to the root of the project folder. Then run following command.
+
+Note: Use your OWN api keys and Stripe secret keys in order to enjoy full features of this application.
 
 ### `npm run dev`
 
