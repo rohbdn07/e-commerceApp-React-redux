@@ -2,6 +2,11 @@ const { User } = require("../../database/models/user/user.auth");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+/**
+ * @param req it contains user's credentials.
+ * @param res send response: jwt token, message, success to client server.
+ */
+
 const register = async (req, res) => {
    try {
       const userExist = await User.findOne({ email: req.body.email });
@@ -54,6 +59,10 @@ const register = async (req, res) => {
    }
 };
 
+/**
+ * @param req it contains user's login credentials.
+ * @param res send response: jwt token, message, success to client server.
+ */
 const login = async (req, res) => {
    const existUser = await User.findOne({ email: req.body.email });
    console.log(existUser);
