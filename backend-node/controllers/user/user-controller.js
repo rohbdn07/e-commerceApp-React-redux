@@ -42,7 +42,7 @@ const register = async (req, res) => {
                         res.json({
                            success: true,
                            token: "Bearer " + token,
-                           message: "User has been created!!",
+                           message: "User has been created. Please Login now!",
                         });
                      }
                   );
@@ -65,17 +65,16 @@ const register = async (req, res) => {
  */
 const login = async (req, res) => {
    const existUser = await User.findOne({ email: req.body.email });
-   console.log(existUser);
    if (!existUser) {
       return res.json({ message: "This user doesn't exit!" });
    } else {
       try {
+         const userName = existUser.userName;
          //compare new password with already existed password
          bcrypt
             .compare(req.body.password, existUser.password)
             .then((isMatch) => {
                if (isMatch) {
-                  console.log("the password matched");
                   const payload = {
                      id: existUser._id,
                      email: existUser.email,
@@ -89,12 +88,13 @@ const login = async (req, res) => {
                         res.json({
                            success: true,
                            token: "Bearer " + token,
+                           userName,
                         });
                      }
                   );
                } else if (!isMatch) {
-                  console.log("the password not matched");
                   res.json({
+                     success: false,
                      message: "Email or password is incorrect!!",
                   });
                }
