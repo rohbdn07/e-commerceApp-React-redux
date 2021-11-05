@@ -3,23 +3,25 @@ import { ActionType } from "../../Action/actionTypes";
 
 
 const initialState = {
-    registerdUserResponse: ''
+    user: {}
 }
 export default function registerReducer(state = initialState, action: Action) {
     switch (action.type) {
-        case ActionType.REGISTER_USER:
+        case ActionType.USER_REGISTER_SUCCESS:
             if (action.payload !== undefined) {
                 return {
-                    registerdUserResponse: action.payload
+                    user: action.payload
                 }
 
             }
             break;
+
+        case ActionType.USER_REGISTER_FAILURE:
+            return {}
+
         case ActionType.CANCEL_REGISTER_FORM:
-            // let getCurrentState = state.registerdUserResponse
-            // console.log('the current state', getCurrentState)
             return {
-                registerdUserResponse: ''
+                user: {}
             }
 
         default:
