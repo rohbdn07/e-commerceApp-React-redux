@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import ScrollToTop from "../Components/ScrollToTop";
+import { PrivateRoute } from "../Middleware/PrivateRoutes/PrivateRoute";
 import CancelledPage from "../Pages/CancelledPage";
 import CategoryPage from "../Pages/CategoryPage";
 import Homepage from "../Pages/Homepage";
@@ -25,9 +26,7 @@ const AppRoutes: React.FC = () => {
             <Route path="/shopping-cart">
                <ShoppingCart />
             </Route>
-            <Route path="/success">
-               <SuccessPage />
-            </Route>
+            <PrivateRoute exact path="/" component={SuccessPage} />
             <Route path="/cancelled">
                <CancelledPage />
             </Route>
