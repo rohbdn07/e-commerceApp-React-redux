@@ -20,7 +20,7 @@ export default function Homepage(): JSX.Element {
             <Topbar />
          </div>
          <div className="homepage_search">
-            <div className="container homepage_search_wrapper">
+            <div className="col-lg-8 container homepage_search_wrapper">
                <CompanyLogo />
                <div className="display_searchbar">
                   <Searchbar />
