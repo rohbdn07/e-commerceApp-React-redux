@@ -8,13 +8,41 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import IUserAuth from "../../../interfaces/userAuth.interface";
-import AlertInfo from "../Register/AlertInfo";
-import { loginUserAction } from "../../../Redux/Action/Auth/loginUserAction";
+import { ILoginState, IUserAuth } from "../../../interfaces/userAuth.interface";
+import AlertInfo from "../AlertInfo";
+import {
+   cancelLoginForm,
+   loginUserAction,
+} from "../../../Redux/Action/Auth/loginUserAction";
+import { RootState } from "../../../Redux/Reducer";
 
-export default function Login() {
-   const [open, setOpen] = React.useState(false);
-   const [alertInfo, setAlertInfo] = React.useState("");
+type LoginProps = {
+   open: boolean;
+   toogleRegister: () => void;
+   setOpen: (open: boolean) => void;
+};
+
+/**
+ * @description renders the login form and handles the login process
+ * @function Login
+ * @param {LoginProps} open - open dialog
+ * @param {LoginProps} toogleRegister - toogle register
+ * @param {LoginProps} setOpen - set open dialog
+ * @returns {JSX.Element} - JSX element
+ */
+export default function Login({
+   toogleRegister,
+   open,
+   setOpen,
+}: LoginProps): JSX.Element {
+   // Redux: get login state
+   const loginUser: ILoginState = useSelector(
+      (state: RootState) => state.loginReducer
+   );
+   const isSuccess: boolean = loginUser.user.data?.success;
+
+   const [formError, setformError] = React.useState(false);
+
    const dispatch = useDispatch();
 
    const [userLogin, setUserLogin] = React.useState<IUserAuth>({
@@ -24,12 +52,19 @@ export default function Login() {
 
    const { email, password } = userLogin;
 
-   const handleClickOpen = () => {
-      setOpen(true);
-   };
+   // const handleClickOpen = () => {
+   //    if (loginUser.user.data?.token) {
+   //       setOpen(false);
+   //    }
+   // };
 
-   const handleClose = () => {
+   const handleClose = (): void => {
+      setformError(false);
+      resetCredentials();
       setOpen(false);
+      if (loginUser.user.data?.message) {
+         dispatch(cancelLoginForm());
+      }
    };
 
    const resetCredentials = () => {
@@ -39,32 +74,53 @@ export default function Login() {
       });
    };
 
+   /**
+    * @description handle change input
+    * @function handleChange
+    * @param {event} event
+    * @returns {void} void
+    */
    const handleChange = (event: React.FormEvent): void => {
       event.preventDefault();
       const { name, value } = event.target as HTMLSelectElement;
       setUserLogin({ ...userLogin, [name]: value });
    };
 
-   const submitHandler = () => {
-      if (email && password !== "") {
+   /**
+    * @function handleSubmit send the user's credentials for registration.
+    * @dispatch user's credentials as an action creator.
+    * @restCredentials it reset to initial state
+    * @returns void
+    */
+   const handleSubmit = (event: React.FormEvent): void => {
+      event.preventDefault();
+      if (email === "" || password === "") {
+         setformError(true);
+      } else if (!loginUser.user.data?.userName) {
          dispatch(loginUserAction(userLogin));
+         resetCredentials();
       } else {
-         setAlertInfo("Please enter your credentials!!!");
+         setOpen(false);
       }
-      resetCredentials();
    };
 
    return (
       <div>
-         <p onClick={handleClickOpen}>Login</p>
-         <Dialog open={open} onClose={handleClose}>
-            <AlertInfo info={alertInfo} />
+         <Dialog
+            open={open}
+            onClose={handleClose}
+            className={isSuccess ? "d-none" : "d-block"}
+         >
+            {loginUser.user.data?.message ? (
+               <AlertInfo info={loginUser.user.data?.message} />
+            ) : null}
             <DialogTitle>Login</DialogTitle>
             <DialogContent>
                <DialogContentText>
                   Please enter your email address and Password.
                </DialogContentText>
                <TextField
+                  error={formError}
                   autoFocus
                   margin="dense"
                   id="email"
@@ -77,6 +133,7 @@ export default function Login() {
                   onChange={handleChange}
                />
                <TextField
+                  error={formError}
                   autoFocus
                   margin="dense"
                   id="password"
@@ -92,9 +149,13 @@ export default function Login() {
             <DialogActions>
                <ButtonGroup variant="text" aria-label="text button group">
                   <Button onClick={handleClose}>CANCEL</Button>
-                  <Button onClick={submitHandler}>LOGIN</Button>
+                  <Button onClick={handleSubmit}>LOGIN</Button>
                </ButtonGroup>
             </DialogActions>
+            <div className="text-center">
+               <p>New in Rb Store? Create an account.</p>
+               <Button onClick={toogleRegister}> Register</Button>
+            </div>
          </Dialog>
       </div>
    );
