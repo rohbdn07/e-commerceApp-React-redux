@@ -1,13 +1,9 @@
 import { Dispatch } from 'redux';
-import IUserAuth from "../../../interfaces/userAuth.interface";
-import { axiosFetchAuthAPI } from "../../../servicesAPI/axios";
+import { ILoginUserResponse, IUserAuth } from "../../../interfaces/userAuth.interface";
+import { userService } from '../../../servicesAPI/Auth-service/Users/UserService';
 import { Action } from '../actionInterface';
 import { ActionType } from '../actionTypes';
 
-
-type UserInfo = {
-    data: IUserAuth;
-};
 
 /**
  * 
@@ -17,23 +13,53 @@ type UserInfo = {
  */
 
 export const loginUserAction = (userCredentials: IUserAuth) => async (dispatch: Dispatch<Action>) => {
-    console.log('the login action data', userCredentials)
+    // console.log('the login action data', userCredentials)
 
-    try {
-        if (typeof userCredentials !== undefined && userCredentials) {
-            const { data }: UserInfo = await axiosFetchAuthAPI.post('/api/login', userCredentials);
-            console.log('the response auth data', data)
+    if (userCredentials && typeof userCredentials !== 'undefined') {
+        try {
+            const loginResponse: ILoginUserResponse | undefined = await userService.login(userCredentials)
+            // console.log('the response auth data', loginResponse)
 
-            dispatch({
-                type: ActionType.LOGIN_USER,
-                payload: data,
-            })
+            if (loginResponse !== undefined) {
+                dispatch({
+                    type: ActionType.USER_LOGIN_SUCCESS,
+                    payload: loginResponse,
+                })
+            }
+
         }
+        catch (error) {
+            dispatch({
+                type: ActionType.USER_LOGIN_FAILURE
+            });
+
+            console.log('there is error', error)
+        }
+    }
+}
+
+
+export const cancelLoginForm = () => async (dispatch: Dispatch<Action>) => {
+    try {
+        dispatch({
+            type: ActionType.CANCEL_LOGIN_FORM,
+
+        })
+
     } catch (error) {
         dispatch({
-            type: ActionType.PRODUCT_LOADING_ERROR
+            type: ActionType.USER_LOGIN_FAILURE
         });
 
         console.log('there is error', error)
     }
+}
+
+
+export const logoutAction = () => async (dispatch: Dispatch<Action>) => {
+    userService.logout()
+    dispatch({
+        type: ActionType.USER_LOGOUT,
+
+    })
 }
