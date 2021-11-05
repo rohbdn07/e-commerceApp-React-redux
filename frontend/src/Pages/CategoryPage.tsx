@@ -9,7 +9,7 @@ import Menubar from "../Components/Menubar/Menubar";
 import UserProfile from "../Components/Profile/UserProfile";
 import Searchbar from "../Components/Searchbar/Searchbar";
 import Topbar from "../Components/Topbar/Topbar";
-import useFetchCategory from "../servicesAPI/useFetchCategory";
+import useFetchCategory from "../servicesAPI/Category/useFetchCategory";
 import FiltersSection from "../Components/Filters/FiltersSection";
 import CategoryList from "../Components/Categories/ProductList/CategoryList";
 import "./pages.scss";
