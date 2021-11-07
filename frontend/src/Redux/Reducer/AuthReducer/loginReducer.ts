@@ -2,39 +2,49 @@ import { Action } from "../../Action/actionInterface";
 import { ActionType } from "../../Action/actionTypes";
 
 
-const initialState = {
-    loggedIn: false,
-    user: {}
-}
+
+const getUser = localStorage.getItem('user');
+const user = getUser ? JSON.parse(getUser) : {};
+
+const initialState = user
+    ? { isLoggedIn: true, user }
+    : { isLoggedIn: false, user: {} };
 
 /**
  * @description handles the login states
- * @param {Object} state
- * @param {Object} action
- * @returns {Object} state
+ * @param {initialState} state
+ * @param {Action} action
+ * @returns {state} state
  */
 export default function loginReducer(state = initialState, action: Action) {
     switch (action.type) {
         case ActionType.USER_LOGIN_SUCCESS:
             return {
-                loggedIn: true,
+                ...state,
+                isLoggedIn: true,
                 user: action.payload
             }
 
         case ActionType.USER_LOGIN_FAILURE:
-            return {}
+            return {
+                ...state,
+                isLoggedIn: false,
+                user: {},
+            };
 
         case ActionType.CANCEL_LOGIN_FORM:
             return {
-                loggedIn: false,
-                user: {}
-            }
+                ...state,
+                isLoggedIn: false,
+                user: {},
+            };
 
         case ActionType.USER_LOGOUT:
             return {
-                loggedIn: false,
-                user: {}
-            }
+                ...state,
+                isLoggedIn: false,
+                user: {},
+            };
 
         default:
             return state
