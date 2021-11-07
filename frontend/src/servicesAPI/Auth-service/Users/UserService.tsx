@@ -25,7 +25,7 @@ async function register(userCredentials: IUserAuth) {
             "/api/register",
             userCredentials
          );
-         console.log("the api call for register response", response);
+         // console.log("the api call for register response", response);
          return response;
       } catch (error) {
          console.log("Error while performaing user register", error);
