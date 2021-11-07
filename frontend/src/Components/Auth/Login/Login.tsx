@@ -39,7 +39,6 @@ export default function Login({
    const loginUser: ILoginState = useSelector(
       (state: RootState) => state.loginReducer
    );
-   const isSuccess: boolean = loginUser.user.data?.success;
 
    const [formError, setformError] = React.useState(false);
 
@@ -94,13 +93,12 @@ export default function Login({
     */
    const handleSubmit = (event: React.FormEvent): void => {
       event.preventDefault();
-      if (email === "" || password === "") {
-         setformError(true);
-      } else if (!loginUser.user.data?.userName) {
+      if (email && password) {
+         setformError(false);
          dispatch(loginUserAction(userLogin));
          resetCredentials();
       } else {
-         setOpen(false);
+         setformError(true);
       }
    };
 
@@ -109,7 +107,7 @@ export default function Login({
          <Dialog
             open={open}
             onClose={handleClose}
-            className={isSuccess ? "d-none" : "d-block"}
+            className={loginUser.user.data?.success ? "d-none" : "d-block"}
          >
             {loginUser.user.data?.message ? (
                <AlertInfo info={loginUser.user.data?.message} />
