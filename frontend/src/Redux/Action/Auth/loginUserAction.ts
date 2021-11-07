@@ -57,7 +57,7 @@ export const cancelLoginForm = () => async (dispatch: Dispatch<Action>) => {
 
 
 export const logoutAction = () => async (dispatch: Dispatch<Action>) => {
-    userService.logout()
+    userService.logout();
     dispatch({
         type: ActionType.USER_LOGOUT,
 
