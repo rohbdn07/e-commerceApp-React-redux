@@ -1,6 +1,12 @@
-import { axiosFetchAPI } from "./axios";
+import { axiosFetchAPI } from "../axios";
 import { useQuery } from "react-query";
-import { IFetchedData } from "../Redux/Action/getProducts-Action";
+import { IFetchedData } from "../../Redux/Action/getProducts-Action";
+
+/**
+ * Hook for fetching product category
+ * @param category
+ * @returns object of queryInfo
+ */
 
 type Products = {
    data: IFetchedData[];

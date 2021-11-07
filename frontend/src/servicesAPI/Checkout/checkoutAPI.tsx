@@ -1,6 +1,6 @@
 import React from "react";
-import { IProductItems } from "../Components/CartItems/CartItems";
-import { axiosInstance } from "./axios";
+import { IProductItems } from "../../Components/CartItems/CartItems";
+import { axiosInstance } from "../axios";
 
 /**
  * Hook for redirecting to stipe payment page.

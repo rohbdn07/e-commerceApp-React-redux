@@ -14,9 +14,7 @@
    "author": "Rohit Bhandari",
    "license": "ISC",
    "dependencies": {
-      "@types/react-star-rating-component": "^1.4.1",
-      "concurrently": "^6.2.1",
-      "react-star-rating-component": "^1.4.1"
+      "concurrently": "^6.2.1"
    },
    "engines": {
       "node": "14.17.4"

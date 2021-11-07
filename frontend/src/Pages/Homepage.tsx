@@ -11,7 +11,7 @@ import FooterList from "../Components/Footer/FooterList";
 import CartIcon from "../Components/CartIcon/CartIcon";
 import UserProfile from "../Components/Profile/UserProfile";
 import CompanyLogo from "../Components/CompanyLogo/CompanyLogo";
-import LoginRegister from "../Components/LoginRegister/LoginRegister";
+import LoginRegister from "../Components/Auth/LoginRegister/LoginRegister";
 
 export default function Homepage(): JSX.Element {
    return (
@@ -20,7 +20,7 @@ export default function Homepage(): JSX.Element {
             <Topbar />
          </div>
          <div className="homepage_search">
-            <div className="container homepage_search_wrapper">
+            <div className="col-lg-8 container homepage_search_wrapper">
                <CompanyLogo />
                <div className="display_searchbar">
                   <Searchbar />

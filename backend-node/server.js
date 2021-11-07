@@ -1,7 +1,6 @@
 // if (process.env.NODE_ENV !== "production") {
 //    require("dotenv").config();
 // }
-
 require("dotenv").config();
 if (process.env.NODE_ENV !== "production") {
    require("dotenv").config("../config/keyDev.env");
@@ -15,6 +14,7 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 const getPaymentRoute = require("./router/getPayment-route");
+const getAuthRoute = require("./router/getAuth-route");
 
 //Serve static assists if in PRODUCTION
 if (process.env.NODE_ENV === "production") {
@@ -23,6 +23,13 @@ if (process.env.NODE_ENV === "production") {
       res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
    });
 }
+
+//Connection to MONGODB database
+const mongoose = require("mongoose");
+mongoose
+   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
+   .then(() => console.log("Connected to MongoDB..."))
+   .catch((err) => console.error("Could not connect to MongoDB..."));
 
 //listing to LocalHost
 const PORT = process.env.PORT || 5050;
@@ -38,6 +45,9 @@ app.use(cors());
 
 //get data from route end-point
 app.use(getPaymentRoute);
+
+//Post Auth request and response
+app.use(getAuthRoute);
 
 // The `res.redirect()` function sends back an HTTP 302 by default.
 // When an HTTP client receives a response with status 302, it will send
