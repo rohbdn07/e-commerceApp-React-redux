@@ -1,6 +1,7 @@
 const { User } = require("../../database/models/user/user.auth");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const validator = require("validator");
 
 /**
  * @param req it contains user's credentials.
@@ -9,6 +10,13 @@ const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
    try {
+      const isEmail = validator.isEmail(req.body.email);
+      if (!isEmail) {
+         return res.json({
+            success: false,
+            message: "Email is not valid. Please enter valid email.",
+         });
+      }
       const userExist = await User.findOne({ email: req.body.email });
       if (userExist) {
          return res
