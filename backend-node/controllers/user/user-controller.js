@@ -2,22 +2,32 @@ const { User } = require("../../database/models/user/user.auth");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const validator = require("validator");
+const validateRegisterInput = require("../../middleware/auth/validateRegisterInput");
 
 /**
  * @param req it contains user's credentials.
  * @param res send response: jwt token, message, success to client server.
  */
-
 const register = async (req, res) => {
    try {
-      const isEmail = validator.isEmail(req.body.email);
-      if (!isEmail) {
+      const { errors, isValid } = validateRegisterInput(req.body);
+
+      if (errors.email) {
          return res.json({
             success: false,
-            message: "Email is not valid. Please enter valid email.",
+            message: errors.email, //return error message
          });
       }
+
+      if (errors.password) {
+         return res.json({
+            success: false,
+            message: errors.password, //return error message
+         });
+      }
+
       const userExist = await User.findOne({ email: req.body.email });
+
       if (userExist) {
          return res
             .status(200)
