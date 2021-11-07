@@ -10,9 +10,9 @@ export default function FooterEnd(): JSX.Element {
                   <p className="text-muted">2021 RB-Cart</p>
                </div>
                <div className="fotend_middle text-muted">
-                  <p>rohit.raj.bhandari07@gmail.com</p>
-                  <p>+358449702512</p>
-                  <p>Helsinki-Finland</p>
+                  <p>rohbdn@yahoo.com</p>
+                  <p>+1234567890</p>
+                  <p>somewhere in the world</p>
                </div>
                <div className="fotend_cards text-muted">
                   <FaCcVisa className="mx-1" />
