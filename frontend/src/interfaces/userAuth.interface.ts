@@ -31,5 +31,6 @@ export interface ILoginUserResponse {
 
 export interface ILoginState {
     user: ILoginUserResponse
+    isLoggedIn: boolean
 }
 
