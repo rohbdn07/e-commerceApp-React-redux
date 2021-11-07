@@ -65,7 +65,7 @@ export default function Register({
       setFormError(false);
       resetCredentials();
       setOpen(false);
-      if (registerResponse.user.data?.message) {
+      if (registerResponse.user?.data?.message) {
          dispatch(cancelRegisterForm());
       }
    };
@@ -108,7 +108,7 @@ export default function Register({
          setFormError(true);
       }
       resetCredentials();
-      if (registerResponse.user.data?.success) {
+      if (registerResponse.user?.data?.success) {
          setOpen(false);
       }
    };
@@ -118,10 +118,10 @@ export default function Register({
          <div>
             <Dialog open={open} onClose={handleClose}>
                <DialogTitle>Register</DialogTitle>
-               {registerResponse.user.data?.message ? (
+               {registerResponse.user?.data?.message ? (
                   <AlertInfo
-                     info={registerResponse.user.data?.message}
-                     status={registerResponse.user.data?.success}
+                     info={registerResponse.user?.data?.message}
+                     status={registerResponse.user?.data?.success}
                   />
                ) : null}
                <DialogContent>
