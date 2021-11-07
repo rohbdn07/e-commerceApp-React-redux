@@ -1,6 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IRegisterUserResponse } from "../../../interfaces/userAuth.interface";
+import {
+   ILoginState,
+   IRegisterUserResponse,
+} from "../../../interfaces/userAuth.interface";
 import { logoutAction } from "../../../Redux/Action/Auth/loginUserAction";
 import { RootState } from "../../../Redux/Reducer";
 import Login from "../Login/Login";
@@ -16,29 +19,37 @@ import { accountInitialValues } from "../Helpers/account/Toggle";
 export default function LoginRegister(): JSX.Element {
    const [open, setOpen] = React.useState(false);
 
+   const [userName, setUserName] = React.useState("");
+
    const registerUser: IRegisterUserResponse = useSelector(
       (state: RootState) => state.registerReducer
+   );
+
+   const loginUser: ILoginState = useSelector(
+      (state: RootState) => state.loginReducer
    );
 
    const dispatch = useDispatch();
 
    const [account, toggleAccount] = React.useState(accountInitialValues.login);
 
-   const displayUsername = (): string | null => {
-      const getUserFromLocalStroage: string | null =
-         localStorage.getItem("user");
-      const user = getUserFromLocalStroage
-         ? JSON.parse(getUserFromLocalStroage)
-         : [];
+   const isSuccess: boolean = registerUser.user.data?.success;
 
-      if (user) {
-         const userName: string = user.userName;
-         return userName;
-      }
-      return null;
-   };
+   React.useEffect(() => {
+      const displayUsername = () => {
+         const getUserFromLocalStroage: string | null =
+            localStorage.getItem("user");
+         const user = getUserFromLocalStroage
+            ? JSON.parse(getUserFromLocalStroage)
+            : {};
 
-   const loggedUserName: string | null = displayUsername();
+         if (user) {
+            const userName: string = user.userName;
+            setUserName(userName);
+         }
+      };
+      displayUsername();
+   }, [loginUser]);
 
    const logoutUser = () => {
       dispatch(logoutAction());
@@ -63,19 +74,21 @@ export default function LoginRegister(): JSX.Element {
       setOpen(true);
    };
 
-   const isSuccess: boolean = registerUser.user.data?.success;
-
    return (
       <>
          <div className="welcome_section">
-            <p>Welcome!</p>
+            {userName && userName ? <p>Welcome!</p> : null}
             <div className="d-flex login_section">
-               {loggedUserName ? (
+               {userName && userName ? (
                   <div className="d-flex">
-                     <p>{loggedUserName}</p>|<p onClick={logoutUser}>Logout</p>
+                     <p>{userName}</p>|<p onClick={logoutUser}>Logout</p>
                   </div>
                ) : (
-                  <Button variant="outlined" onClick={() => openDialog()}>
+                  <Button
+                     variant="contained"
+                     color="primary"
+                     onClick={openDialog}
+                  >
                      Login
                   </Button>
                )}
