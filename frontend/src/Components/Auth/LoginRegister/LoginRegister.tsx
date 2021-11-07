@@ -33,7 +33,7 @@ export default function LoginRegister(): JSX.Element {
 
    const [account, toggleAccount] = React.useState(accountInitialValues.login);
 
-   const isSuccess: boolean = registerUser.user.data?.success;
+   const isSuccess: boolean = registerUser.user?.data?.success;
 
    React.useEffect(() => {
       const displayUsername = () => {
