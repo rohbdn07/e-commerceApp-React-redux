@@ -11,6 +11,7 @@ import Register from "../Register/Register";
 import "./Login_register.scss";
 import Button from "@mui/material/Button";
 import { accountInitialValues } from "../Helpers/account/Toggle";
+import useLogoutUser from "../logout/useLogoutUser";
 
 /**
  *
@@ -29,7 +30,10 @@ export default function LoginRegister(): JSX.Element {
       (state: RootState) => state.loginReducer
    );
 
-   const dispatch = useDispatch();
+   // const dispatch = useDispatch();
+
+   //use of custom hook: useLogoutUser to dispatch logout action
+   const logout: () => void = useLogoutUser();
 
    const [account, toggleAccount] = React.useState(accountInitialValues.login);
 
@@ -50,10 +54,6 @@ export default function LoginRegister(): JSX.Element {
       };
       displayUsername();
    }, [loginUser]);
-
-   const logoutUser = () => {
-      dispatch(logoutAction());
-   };
 
    //toggle between login and register form
    const toggleRegister = (): void => {
@@ -81,7 +81,7 @@ export default function LoginRegister(): JSX.Element {
             <div className="d-flex login_section">
                {userName && userName ? (
                   <div className="d-flex">
-                     <p>{userName}</p>|<p onClick={logoutUser}>Logout</p>
+                     <p>{userName}</p>|<p onClick={() => logout()}>Logout</p>
                   </div>
                ) : (
                   <Button
