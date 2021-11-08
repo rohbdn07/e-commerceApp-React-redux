@@ -101,7 +101,7 @@ const login = async (req, res) => {
                   jwt.sign(
                      payload,
                      process.env.SECRET_KEY,
-                     { expiresIn: 3600 }, //expires in 1hr
+                     { expiresIn: 600 }, //expires in 10min
                      (error, token) => {
                         res.json({
                            success: true,
