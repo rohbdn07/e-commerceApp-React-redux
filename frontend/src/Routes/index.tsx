@@ -8,6 +8,8 @@ import Homepage from "../Pages/Homepage";
 import ProductDetailsPage from "../Pages/ProductDetailsPage";
 import ShoppingCart from "../Pages/ShoppingCart";
 import SuccessPage from "../Pages/SuccessPage";
+import AuthVerify from "../common/auth/AuthVerify";
+import useLogoutUser from "../Components/Auth/logout/useLogoutUser";
 
 const AppRoutes: React.FC = () => {
    return (
@@ -32,6 +34,8 @@ const AppRoutes: React.FC = () => {
             </Route>
             <Redirect from="*" to="/" />
          </Switch>
+
+         <AuthVerify logout={useLogoutUser()} />
       </>
    );
 };
