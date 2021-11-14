@@ -55,7 +55,7 @@ const register = async (req, res) => {
                   jwt.sign(
                      payload,
                      process.env.SECRET_KEY,
-                     { expiresIn: 3600 },
+                     { expiresIn: 1800 }, //expires in 30min
                      (err, token) => {
                         res.json({
                            success: true,
