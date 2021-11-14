@@ -1,10 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
    ILoginState,
    IRegisterUserResponse,
 } from "../../../interfaces/userAuth.interface";
-import { logoutAction } from "../../../Redux/Action/Auth/loginUserAction";
 import { RootState } from "../../../Redux/Reducer";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
