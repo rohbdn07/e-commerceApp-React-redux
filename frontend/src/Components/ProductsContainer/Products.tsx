@@ -13,6 +13,11 @@ interface IProductsProps {
    category: string | undefined;
 }
 
+/**
+ *
+ * @param {IProductsProps} props
+ * @returns JSX.Element
+ */
 export default function Products({
    title,
    category,
@@ -41,8 +46,16 @@ export default function Products({
             <h3>Couldn't able to get data from source</h3>
          ) : (
             <div>
-               {/* {isError} */}
-               <h2 style={{ marginTop: "3rem" }}>{title}</h2>
+               <h2
+                  className="p-3 text-white"
+                  style={{
+                     backgroundColor: "black",
+                     marginTop: "3rem",
+                     width: "fit-content",
+                  }}
+               >
+                  {category}
+               </h2>
                <div className="col-lg-12 col-md-12 col-sm-12 products">
                   {allProducts &&
                      allProducts.map((item: IFetchedData) => {

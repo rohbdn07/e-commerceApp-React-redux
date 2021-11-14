@@ -146,13 +146,17 @@ export default function Login({
             </DialogContent>
             <DialogActions>
                <ButtonGroup variant="text" aria-label="text button group">
-                  <Button onClick={handleClose}>CANCEL</Button>
-                  <Button onClick={handleSubmit}>LOGIN</Button>
+                  <Button variant="outlined" onClick={handleClose}>
+                     CANCEL
+                  </Button>
+                  <Button variant="contained" onClick={handleSubmit}>
+                     LOGIN
+                  </Button>
                </ButtonGroup>
             </DialogActions>
             <div className="text-center">
                <p>New in Rb Store? Create an account.</p>
-               <Button onClick={toogleRegister}> Register</Button>
+               <Button onClick={toogleRegister}>Register</Button>
             </div>
          </Dialog>
       </div>

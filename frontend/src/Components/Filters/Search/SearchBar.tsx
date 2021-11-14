@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import Box from "@mui/material/Box";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
@@ -48,10 +47,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
    },
 }));
 
-export default function SearchBar() {
+export default function SearchBar(): JSX.Element {
    const [input, setInput] = React.useState<string | null>("");
    const dispatch = useDispatch();
 
+   //UseEffect to dispatch the action to the reducer
    React.useEffect(() => {
       const dispatchAction = () => {
          dispatch({
@@ -69,18 +69,16 @@ export default function SearchBar() {
 
    return (
       <>
-         <Box sx={{ height: 70 }}>
-            <Search>
-               <SearchIconWrapper>
-                  <SearchIcon />
-               </SearchIconWrapper>
-               <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ "aria-label": "search" }}
-                  onChange={(e) => handleChange(e)}
-               />
-            </Search>
-         </Box>
+         <Search sx={{ color: "white" }}>
+            <SearchIconWrapper>
+               <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+               placeholder="Search…"
+               inputProps={{ "aria-label": "search" }}
+               onChange={(e) => handleChange(e)}
+            />
+         </Search>
       </>
    );
 }

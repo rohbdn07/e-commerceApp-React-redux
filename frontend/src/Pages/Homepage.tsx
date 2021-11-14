@@ -12,6 +12,7 @@ import CartIcon from "../Components/CartIcon/CartIcon";
 import UserProfile from "../Components/Profile/UserProfile";
 import CompanyLogo from "../Components/CompanyLogo/CompanyLogo";
 import LoginRegister from "../Components/Auth/LoginRegister/LoginRegister";
+import ImageBanner from "../Components/Banner/ImageBanner";
 
 export default function Homepage(): JSX.Element {
    return (
@@ -33,6 +34,8 @@ export default function Homepage(): JSX.Element {
          <Menubar />
          <Banner />
          <Eservices />
+         <ImageBanner />
+         <hr className="category__hr_line col-lg-10" />
          <ProductsList />
          <PartnersList />
          <DemoApp />

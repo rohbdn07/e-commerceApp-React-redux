@@ -173,8 +173,12 @@ export default function Register({
                </DialogContent>
                <DialogActions>
                   <ButtonGroup variant="text" aria-label="text button group">
-                     <Button onClick={handleClose}>CANCEL</Button>
-                     <Button onClick={handleSubmit}>REGISTER</Button>
+                     <Button variant="outlined" onClick={handleClose}>
+                        CANCEL
+                     </Button>
+                     <Button variant="contained" onClick={handleSubmit}>
+                        REGISTER
+                     </Button>
                   </ButtonGroup>
                </DialogActions>
                <div className="text-center">

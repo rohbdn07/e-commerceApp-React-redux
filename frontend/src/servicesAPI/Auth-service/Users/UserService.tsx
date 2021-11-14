@@ -17,8 +17,6 @@ export const userService = {
  * @returns response data
  */
 async function register(userCredentials: IUserAuth) {
-   // return fetch(`${config.apiUrl}/users/register`, userCredentials).then(handleResponse);
-
    if (typeof userCredentials !== undefined || null) {
       try {
          const response: IRegisterUserResponse = await axiosFetchAuthAPI.post(

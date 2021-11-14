@@ -3,11 +3,11 @@ import SearchBar from "./Search/SearchBar";
 import Box from "@mui/material/Box";
 import PriceRange from "./Range/PriceRange";
 
-export default function FiltersSection() {
+export default function FiltersSection(): JSX.Element {
    return (
       <>
          <Box>
-            <div className="filterSection_searchbar">
+            <div className="filterSection_searchbar ">
                <SearchBar />
             </div>
             <Box sx={{ mt: 2 }}>

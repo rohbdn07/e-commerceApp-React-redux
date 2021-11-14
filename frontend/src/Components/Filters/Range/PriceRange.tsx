@@ -12,11 +12,12 @@ function valuetext(value: number) {
 
 const minDistance = 10;
 
-export default function PriceRange() {
+export default function PriceRange(): JSX.Element {
    const [value, setValue] = React.useState<number[]>([0, 150]);
    const [filter, setFilter] = React.useState<number[]>([]);
    const dispatch = useDispatch();
 
+   //UseEffect to dispatch action to update the filter
    React.useEffect(() => {
       const disptachFilteredProduct = (): void => {
          dispatch({
@@ -45,8 +46,8 @@ export default function PriceRange() {
 
    return (
       <>
-         <Box sx={{ width: "100%", backgroundColor: "#e9ecef", p: 2 }}>
-            <Typography>FILTER BY PRICE</Typography>
+         <Box sx={{ width: "100%", backgroundColor: "black", p: 2 }}>
+            <Typography sx={{ color: "white" }}>FILTER BY PRICE</Typography>
             <Slider
                getAriaLabel={() => "Minimum distance"}
                value={value}
@@ -66,7 +67,11 @@ export default function PriceRange() {
                </span>
             </Box>
 
-            <Button variant="contained" onClick={() => setFilter(value)}>
+            <Button
+               sx={{ color: "white" }}
+               variant="outlined"
+               onClick={() => setFilter(value)}
+            >
                FILTER
             </Button>
          </Box>

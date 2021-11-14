@@ -30,7 +30,7 @@ export default function DetailsBanner(): JSX.Element {
                         <span>$</span>
                         {price}
                      </p>
-                     <ProductRating ratingNumber={rating.rate} />
+                     <ProductRating ratingNumber={rating?.rate} />
                      <div className="details_banner_button">
                         <AddToCartButton itemId={id} />
                      </div>

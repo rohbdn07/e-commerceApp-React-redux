@@ -48,6 +48,5 @@ export default function loginReducer(state = initialState, action: Action) {
 
         default:
             return state
-            break;
     }
 }
