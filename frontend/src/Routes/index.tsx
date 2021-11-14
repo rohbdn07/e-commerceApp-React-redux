@@ -34,7 +34,7 @@ const AppRoutes: React.FC = () => {
             </Route>
             <Redirect from="*" to="/" />
          </Switch>
-
+         {/* Logout User if token expires */}
          <AuthVerify logout={useLogoutUser()} />
       </>
    );
