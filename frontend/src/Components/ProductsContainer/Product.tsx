@@ -12,6 +12,11 @@ interface IProductProps {
    category: string | undefined;
 }
 
+/**
+ *
+ * @param {IProductProps} props
+ * @returns JSX.Element
+ */
 export default function Product({ item, category }: IProductProps) {
    const loading = useSelector(
       (state: RootState) => state.productReducer?.loading
