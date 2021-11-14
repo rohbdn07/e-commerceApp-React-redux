@@ -15,12 +15,32 @@ import CategoryList from "../Components/Categories/ProductList/CategoryList";
 import "./pages.scss";
 import PartnersList from "../Components/OurBrands/PartnersList";
 import DemoApp from "../Components/DownloadApp/DemoApp";
+import ImageCategory from "../Components/Banner/components/Banner/ImageCatogry";
+import {
+   FeaturesImages,
+   newArrivalsProduct,
+} from "../Components/Banner/Images/ImageData";
 
 export default function CategoryPage(): JSX.Element {
    const { categoryname }: any = useParams();
+   const [newArrivals, setNewArrivals] = React.useState<FeaturesImages[]>([]);
 
    const { isError, isLoading, data, isSuccess } =
       useFetchCategory(categoryname);
+
+   //UseEffect to get the new arrivals images from other folder.
+   React.useEffect(() => {
+      const newArrivalsImage = () => {
+         if (categoryname === "electronics") {
+            return setNewArrivals(newArrivalsProduct.newElectronics);
+         } else if (categoryname === "jewelery") {
+            return setNewArrivals(newArrivalsProduct.newJewelery);
+         } else {
+            return setNewArrivals(newArrivalsProduct.newArrivalsClothes);
+         }
+      };
+      newArrivalsImage();
+   }, [categoryname]);
 
    return (
       <>
@@ -48,7 +68,16 @@ export default function CategoryPage(): JSX.Element {
                isSuccess={isSuccess}
                data={data}
             />
-            <hr />
+
+            <hr className="category__hr_line col-lg-10" />
+
+            <ImageCategory
+               header={`New ${categoryname}`}
+               images={newArrivals}
+            />
+
+            <hr className="category__hr_line col-lg-10" />
+
             <div className="col-lg-12 container categoryPage_filter">
                <div className="col-lg-3 category_filter_left">
                   <FiltersSection />
@@ -59,6 +88,7 @@ export default function CategoryPage(): JSX.Element {
             </div>
 
             <PartnersList />
+
             <DemoApp />
 
             <FooterList />
