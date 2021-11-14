@@ -1,6 +1,6 @@
 import { withRouter, useHistory } from "react-router-dom";
-import jwt_decode from "jwt-decode";
-import useLogoutUser from "../../Components/Auth/logout/useLogoutUser";
+// import jwt_decode from "jwt-decode";
+// import useLogoutUser from "../../Components/Auth/logout/useLogoutUser";
 // import { history } from "../../Helpers/history/history";
 
 // const isTokenExpired = (token: any) => {
@@ -17,6 +17,11 @@ import useLogoutUser from "../../Components/Auth/logout/useLogoutUser";
 //    logout: () => void;
 // };
 
+/**
+ *
+ * @param token string
+ * @returns JSON.parse(token) | null
+ */
 const parseJwt = (token: any) => {
    // console.log("token", token);
    // console.log(JSON.parse(atob(token.split(".")[1])));
@@ -35,12 +40,10 @@ const parseJwt = (token: any) => {
  */
 const AuthVerify = (props: any) => {
    const history = useHistory();
-   // const logout = useLogoutUser();
-   // console.log("props", props);
    props.history.listen(() => {
       const userInLocalStorage = localStorage.getItem("user");
       const user = userInLocalStorage ? JSON.parse(userInLocalStorage) : null;
-      if (user) {
+      if (user && user.token) {
          const decodedToken = parseJwt(user.token);
          if (decodedToken.exp * 1000 < Date.now()) {
             localStorage.clear();
@@ -48,7 +51,7 @@ const AuthVerify = (props: any) => {
             props.logout();
          }
       }
-      return null;
+      return;
    });
 
    return <></>;
