@@ -1,6 +1,11 @@
 const Validator = require("validator");
 const validText = require("./valid.text");
 
+/**
+ *
+ * @param {*} data it is the user's credentials that we want to validate
+ * @returns
+ */
 module.exports = function validateRegisterInput(data) {
    let errors = {};
    data.userName = validText(data.userName) ? data.userName : "";
