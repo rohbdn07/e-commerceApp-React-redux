@@ -41,11 +41,16 @@ To run this project, see the commands below:
 -  MongoDB
 -  Stripe payment gateway
 
+#### Card Credentials (For Test purpose only):
+
+Account: 4242 4242 4242 4242 \
+Pin(CVC): 424
+
 ### Installation
 
 First, clone this repo. Then Go to the root of the project folder. Then run following command.
 
-Note: Use your OWN api keys and Stripe secret keys in order to enjoy full features of this application.
+Note: Use your `OWN api keys` and `Stripe secret` keys in order to enjoy full features of this application.
 
 ### `npm run dev`
 

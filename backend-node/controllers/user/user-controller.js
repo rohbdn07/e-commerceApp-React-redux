@@ -1,8 +1,11 @@
 const { User } = require("../../database/models/user/user.auth");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const validator = require("validator");
 const validateRegisterInput = require("../../middleware/auth/validateRegisterInput");
+const {
+   bcryptThePasswordAndSaveUser,
+   comparePassword,
+} = require("./utils/bcrypt");
+const { jwtSignInUser, jwtSignUpUser } = require("./utils/jwtSignUser");
 
 /**
  * @param req it contains user's credentials.
@@ -26,6 +29,7 @@ const register = async (req, res) => {
          });
       }
 
+      //check if the email is already exist in database.
       const userExist = await User.findOne({ email: req.body.email });
 
       if (userExist) {
@@ -33,6 +37,7 @@ const register = async (req, res) => {
             .status(200)
             .json({ message: "User with this email is already existed!" });
       } else {
+         //if user doesn't exist, then create the user.
          const newUser = new User({
             userName: req.body.userName,
             email: req.body.email,
@@ -40,33 +45,31 @@ const register = async (req, res) => {
          });
 
          //bcrypt the password into hash-password.
-         const saltRound = 10;
-         bcrypt.genSalt(saltRound, (error, salt) => {
-            bcrypt.hash(newUser.password, salt, (error, hash) => {
-               if (error) throw error;
-               newUser.password = hash;
-               newUser.save().then((user) => {
-                  const payload = {
-                     id: user.id,
-                     email: user.email,
-                  };
+         //then save the user into database.
+         //then send response to client server with JWT token.
+         const userIsSaved = await bcryptThePasswordAndSaveUser(newUser);
 
-                  //JWT Auth to generate 'Token'.
-                  jwt.sign(
-                     payload,
-                     process.env.SECRET_KEY,
-                     { expiresIn: 1800 }, //expires in 30min
-                     (err, token) => {
-                        res.json({
-                           success: true,
-                           token: "Bearer " + token,
-                           message: "User has been created. Please Login now!",
-                        });
-                     }
-                  );
+         if (userIsSaved) {
+            const payload = {
+               id: userIsSaved._id,
+               email: userIsSaved.email,
+            };
+
+            const token = await jwtSignUpUser(payload); //generate the token.
+
+            if (token && token.length > 0) {
+               return res.json({
+                  success: true,
+                  token: "Bearer " + token,
+                  message: "User has been created. Please Login now!",
                });
-            });
-         });
+            } else {
+               return res.json({
+                  success: false,
+                  message: "Something went wrong. Please try again!",
+               });
+            }
+         }
       }
    } catch (error) {
       console.log("Unable to register! Failed to register!!!", error);
@@ -82,41 +85,54 @@ const register = async (req, res) => {
  * @param res send response: jwt token, message, success to client server.
  */
 const login = async (req, res) => {
+   //check if the email is already exist in database.
    const existUser = await User.findOne({ email: req.body.email });
+
    if (!existUser) {
       return res.json({ message: "This user doesn't exit!" });
    } else {
       try {
-         const userName = existUser.userName;
-         //compare new password with already existed password
-         bcrypt
-            .compare(req.body.password, existUser.password)
-            .then((isMatch) => {
-               if (isMatch) {
-                  const payload = {
-                     id: existUser._id,
-                     email: existUser.email,
-                  };
+         const passwordInputByUser = req.body.password;
 
-                  jwt.sign(
-                     payload,
-                     process.env.SECRET_KEY,
-                     { expiresIn: 600 }, //expires in 10min
-                     (error, token) => {
-                        res.json({
-                           success: true,
-                           token: "Bearer " + token,
-                           userName,
-                        });
-                     }
-                  );
-               } else if (!isMatch) {
-                  res.json({
-                     success: false,
-                     message: "Email or password is incorrect!!",
-                  });
-               }
+         //compare the password input by user with the password in database.
+         //if the password input by user is correct,
+         //then send response to client server with JWT token.
+         const isPasswordMatch = await comparePassword(
+            existUser,
+            passwordInputByUser
+         );
+         if (!isPasswordMatch) {
+            return res.json({
+               message: "Email or Password is incorrect!!",
+               error: "Email or password is incorrect!!",
             });
+         } else {
+            //if password matched, then generate the token.
+            //and send the token and username to user.
+            const userName = existUser.userName;
+            const existUserEmail = existUser.email;
+
+            const payload = {
+               id: existUser._id,
+               email: existUserEmail,
+               userName,
+            };
+
+            const token = await jwtSignInUser(payload); //generate the token.
+            if (token && token.length > 0) {
+               res.json({
+                  success: true,
+                  token: "Bearer " + token,
+                  message: "You're loggedIn",
+                  userName,
+               });
+            } else {
+               res.json({
+                  message:
+                     "Login unsuccessful, please try with valid creadintials",
+               });
+            }
+         }
       } catch (error) {
          console.log("Error while login user", error);
       }
