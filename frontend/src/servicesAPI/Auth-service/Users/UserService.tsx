@@ -49,18 +49,15 @@ async function login(userCredentials: IUserAuth) {
          const storeIntoLocalStorage = {
             userName: response.data.userName,
             token: response.data.token,
+            message: response.data.message,
          };
          // store user details and jwt token in local storage
          //to keep user logged in between page refreshes
          localStorage.setItem("user", JSON.stringify(storeIntoLocalStorage));
-         // console.log("the api call for login response", response);
+
          return response;
-         // if (response !== undefined) {
-         //    return response;
-         // }
       } catch (error) {
          console.log("Error while performaing login User", error);
-         //  error;
       }
    }
 }
