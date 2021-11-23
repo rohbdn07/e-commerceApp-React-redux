@@ -1,9 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import {
-   ILoginState,
-   IRegisterUserResponse,
-} from "../../../interfaces/userAuth.interface";
+import { ILoginState } from "../../../interfaces/userAuth.interface";
 import { RootState } from "../../../Redux/Reducer";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
@@ -21,9 +18,9 @@ export default function LoginRegister(): JSX.Element {
 
    const [userName, setUserName] = React.useState("");
 
-   const registerUser: IRegisterUserResponse = useSelector(
-      (state: RootState) => state.registerReducer
-   );
+   // const registerUser: IRegisterUserResponse = useSelector(
+   //    (state: RootState) => state.registerReducer
+   // );
 
    const loginUser: ILoginState = useSelector(
       (state: RootState) => state.loginReducer
