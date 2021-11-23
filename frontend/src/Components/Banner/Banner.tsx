@@ -45,11 +45,10 @@ export default function Banner() {
                      alt="clotheImage"
                   />
                   <div className="carousel-caption d-none d-md-block">
-                     <h2>Big SALE!!! Don't miss it</h2>
-                     <p>
-                        Some representative placeholder content for the third
-                        slide.
-                     </p>
+                     <h2>
+                        <span>Big SALE!!!</span> Don't miss it
+                     </h2>
+                     <p>Buy now and get big discount on our products.</p>
                   </div>
                </div>
                <div className="carousel-item">
@@ -59,7 +58,9 @@ export default function Banner() {
                      alt="clotheImage"
                   />
                   <div className="carousel-caption d-none d-md-block">
-                     <h2>Hurry up! for discounted price</h2>
+                     <h2>
+                        <span>Hurry up!</span> for discounted price
+                     </h2>
                   </div>
                </div>
                <div className="carousel-item">
