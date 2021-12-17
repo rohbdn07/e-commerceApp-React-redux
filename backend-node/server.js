@@ -2,11 +2,11 @@
 //    require("dotenv").config();
 // }
 require("dotenv").config();
-if (process.env.NODE_ENV !== "production") {
-   require("dotenv").config("../config/keyDev.env");
-} else if (process.env.NODE_ENV === "production") {
-   require("dotenv").config("../config/keyProd.env");
-}
+// if (process.env.NODE_ENV !== "production") {
+//    require("dotenv").config("../config/keyDev.env");
+// } else if (process.env.NODE_ENV === "production") {
+//    require("dotenv").config("../config/keyProd.env");
+// }
 
 const express = require("express");
 const router = express.Router();
