@@ -1,10 +1,3 @@
-if (process.env.NODE_ENV !== "production") {
-   require("dotenv").config("../config/keyDev.env");
-} else if (process.env.NODE_ENV === "production") {
-   require("dotenv").config("../config/keyProd.env");
-}
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-
 /**
  *
  * @param req it contains data coming from client server.
@@ -33,27 +26,28 @@ const paymentController = async (req, res) => {
          };
       });
 
-      const coupon = await stripe.coupons.create({
+      const coupon = await process.env.STRIPE_SECRET_KEY.coupons.create({
          percent_off: 10,
          duration: "once",
          currency: "usd",
       });
 
-      const session = await stripe.checkout.sessions.create({
-         payment_method_types: ["card"],
-         line_items: getProductData,
-         shipping_address_collection: {
-            allowed_countries: ["FI", "CA"],
-         },
-         mode: "payment",
-         discounts: [
-            {
-               coupon: coupon.id,
+      const session =
+         await process.env.STRIPE_SECRET_KEY.checkout.sessions.create({
+            payment_method_types: ["card"],
+            line_items: getProductData,
+            shipping_address_collection: {
+               allowed_countries: ["FI", "CA"],
             },
-         ],
-         success_url: `${process.env.SERVER_URL}/success?session_id={CHECKOUT_SESSION_ID}`, //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
-         cancel_url: `${process.env.SERVER_URL}/cancelled`, //`${DomainUrl}/cancelled=true`
-      });
+            mode: "payment",
+            discounts: [
+               {
+                  coupon: coupon.id,
+               },
+            ],
+            success_url: `${process.env.SERVER_URL}/success?session_id={CHECKOUT_SESSION_ID}`, //`${DomainUrl}/success?session_id={CHECKOUT_SESSION_ID}`
+            cancel_url: `${process.env.SERVER_URL}/cancelled`, //`${DomainUrl}/cancelled=true`
+         });
 
       res.status(200).json({
          url: session.url,
