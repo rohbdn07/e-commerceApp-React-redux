@@ -4,9 +4,11 @@ if (process.env.NODE_ENV !== "production") {
    require("dotenv").config({
       path: "./config/keyDev.env",
    });
-} else if (process.env.NODE_ENV === "production") {
-   require("dotenv").config({ path: "./config/keyProd.env" });
 }
+
+// else if (process.env.NODE_ENV === "production") {
+//    require("dotenv").config({ path: "./config/keyProd.env" });
+// }
 
 const express = require("express");
 const router = express.Router();
