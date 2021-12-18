@@ -3,6 +3,13 @@ import React from "react";
 import { IProductItems } from "../../Components/CartItems/CartItems";
 // import { axiosInstance } from "../axios";
 
+// setting enviroment variables for http requests to the backend server
+// according to dev enviroment or production enviroment.
+// always set the enviroment variables at the top of this file.
+if (process.env.NODE_ENV !== "production") {
+   require("dotenv").config({ path: "../config/keyDev.env" });
+}
+
 type userToken = {
    token: string;
 };
@@ -26,7 +33,7 @@ export const useCheckoutAPI = (selectedItems: IProductItems) => {
       try {
          setLoading(true);
          const { data } = await axios.post(
-            "/api/create-checkout-session",
+            `${process.env.REACT_APP_HOST}/api/create-checkout-session`,
             {
                dataFromClient: selectedItems,
             },
