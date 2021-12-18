@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
  *
  * @param {*} responseAfterSavingUser it is the user that we want to register.
  */
-const jwtSignUpUser = async (responseAfterSavingUser) => {
+const jwtSignUpUser = (responseAfterSavingUser) => {
    return jwt.sign(
       responseAfterSavingUser,
       process.env.SECRET_KEY,

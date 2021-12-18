@@ -1,18 +1,19 @@
-// if (process.env.NODE_ENV !== "production") {
-//    require("dotenv").config();
-// }
-require("dotenv").config();
-// if (process.env.NODE_ENV !== "production") {
-//    require("dotenv").config("../config/keyDev.env");
-// } else if (process.env.NODE_ENV === "production") {
-//    require("dotenv").config("../config/keyProd.env");
-// }
+// By setting environment variables according to stages (dev,prod) in this entry file.
+// you'll get the process.env variables anywhere in this backend server.
+if (process.env.NODE_ENV !== "production") {
+   require("dotenv").config({
+      path: "./config/keyDev.env",
+   });
+} else if (process.env.NODE_ENV === "production") {
+   require("dotenv").config({ path: "./config/keyProd.env" });
+}
 
 const express = require("express");
 const router = express.Router();
 const cors = require("cors");
 const path = require("path");
 const app = express();
+
 const getPaymentRoute = require("./router/getPayment-route");
 const getAuthRoute = require("./router/getAuth-route");
 
@@ -38,8 +39,10 @@ console.log("  Press CTRL-C to stop\n");
 
 // parse json request body
 app.use(express.json());
+
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
+
 // enable cors
 app.use(cors());
 

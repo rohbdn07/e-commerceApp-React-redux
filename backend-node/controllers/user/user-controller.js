@@ -55,7 +55,7 @@ const register = async (req, res) => {
                email: userIsSaved.email,
             };
 
-            const token = await jwtSignUpUser(payload); //generate the token.
+            const token = jwtSignUpUser(payload); //generate the token.
 
             if (token && token.length > 0) {
                return res.json({
@@ -101,6 +101,7 @@ const login = async (req, res) => {
             existUser,
             passwordInputByUser
          );
+
          if (!isPasswordMatch) {
             return res.json({
                message: "Email or Password is incorrect!!",

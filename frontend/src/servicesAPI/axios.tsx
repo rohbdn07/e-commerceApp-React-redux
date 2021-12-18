@@ -1,17 +1,21 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+// import authHeader from "./Auth-service/authHeader";
 
+// setting enviroment variables for http requests to the backend server
+// according to devenviroment or production enviroment.
+// always set the enviroment variables at the top of this file.
 if (process.env.NODE_ENV !== "production") {
    require("dotenv").config("../config/keyDev.env");
 } else if (process.env.NODE_ENV === "production") {
    require("dotenv").config("../config/keyProd.env");
 }
 
-export const axiosInstance: AxiosInstance = axios.create({
-   baseURL: process.env.REACT_APP_HOST,
-   headers: {
-      "Content-Type": "application/json",
-   },
-});
+// export const axiosInstance: AxiosInstance = axios.create({
+//    baseURL: process.env.REACT_APP_HOST,
+//    headers: {
+//       Authorization: authHeader(),
+//    },
+// });
 
 /**
  * @axiosFetchAPI Free API service to get different demo products.
@@ -32,7 +36,8 @@ export const axiosFetchAPI: AxiosInstance & AxiosRequestConfig = axios.create({
 
 export const axiosFetchAuthAPI: AxiosInstance & AxiosRequestConfig =
    axios.create({
-      baseURL: "http://localhost:5050",
+      // baseURL: "http://localhost:5050",
+      baseURL: process.env.REACT_APP_HOST,
       headers: {
          "Content-Type": "application/json",
       },

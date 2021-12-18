@@ -53,8 +53,9 @@ async function login(userCredentials: IUserAuth) {
          };
          // store user details and jwt token in local storage
          //to keep user logged in between page refreshes
-         localStorage.setItem("user", JSON.stringify(storeIntoLocalStorage));
-
+         if (response.data.token) {
+            localStorage.setItem("user", JSON.stringify(storeIntoLocalStorage));
+         }
          return response;
       } catch (error) {
          console.log("Error while performaing login User", error);
