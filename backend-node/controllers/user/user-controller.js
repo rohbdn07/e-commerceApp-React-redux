@@ -101,6 +101,7 @@ const login = async (req, res) => {
             existUser,
             passwordInputByUser
          );
+
          if (!isPasswordMatch) {
             return res.json({
                message: "Email or Password is incorrect!!",
