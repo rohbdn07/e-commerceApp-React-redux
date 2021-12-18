@@ -5,9 +5,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 // according to devenviroment or production enviroment.
 // always set the enviroment variables at the top of this file.
 if (process.env.NODE_ENV !== "production") {
-   require("dotenv").config("../config/keyDev.env");
-} else if (process.env.NODE_ENV === "production") {
-   require("dotenv").config("../config/keyProd.env");
+   require("dotenv").config({ path: "../config/keyDev.env" });
 }
 
 // export const axiosInstance: AxiosInstance = axios.create({
