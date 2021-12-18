@@ -1,13 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 // import authHeader from "./Auth-service/authHeader";
 
-// setting enviroment variables for http requests to the backend server
-// according to devenviroment or production enviroment.
-// always set the enviroment variables at the top of this file.
-if (process.env.NODE_ENV !== "production") {
-   require("dotenv").config({ path: "../config/keyDev.env" });
-}
-
 // export const axiosInstance: AxiosInstance = axios.create({
 //    baseURL: process.env.REACT_APP_HOST,
 //    headers: {
