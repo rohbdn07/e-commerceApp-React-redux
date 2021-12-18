@@ -20,7 +20,7 @@ export default function Purchase(): JSX.Element {
    const [account, toggleAccount] = React.useState(accountInitialValues.login);
 
    //use of custome hook
-   const [loading, callCheckoutAPI] = useCheckoutAPI(selectedItems);
+   const [loading, errorMsg, callCheckoutAPI] = useCheckoutAPI(selectedItems);
 
    // const openDialog = () => {
    //    setOpen(true);
@@ -35,14 +35,16 @@ export default function Purchase(): JSX.Element {
       toggleAccount(accountInitialValues.login);
    };
 
-   function checkoutSubmit() {
+   const checkoutSubmit = () => {
       const user = localStorage.getItem("user");
-      if (user) {
-         callCheckoutAPI();
+      const userExist = JSON.parse(user as string);
+
+      if (userExist) {
+         callCheckoutAPI(userExist.token);
       } else {
          setOpen(true);
       }
-   }
+   };
 
    return (
       <>
@@ -68,6 +70,7 @@ export default function Purchase(): JSX.Element {
                   </Link>
                </div>
                <div className="purchase_right">
+                  {errorMsg && <p className="alert alert-danger">Error!</p>}
                   {!loading ? (
                      <button
                         onClick={checkoutSubmit}
