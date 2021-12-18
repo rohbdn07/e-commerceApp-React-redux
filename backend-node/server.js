@@ -1,14 +1,4 @@
-// By setting environment variables according to stages (dev,prod) in this entry file.
-// you'll get the process.env variables anywhere in this backend server.
-if (process.env.NODE_ENV !== "production") {
-   require("dotenv").config({
-      path: "./config/keyDev.env",
-   });
-}
-
-// else if (process.env.NODE_ENV === "production") {
-//    require("dotenv").config({ path: "./config/keyProd.env" });
-// }
+require("dotenv").config();
 
 const express = require("express");
 const router = express.Router();
