@@ -26,7 +26,7 @@ export const useCheckoutAPI = (selectedItems: IProductItems) => {
       try {
          setLoading(true);
          const { data } = await axios.post(
-            `${process.env.REACT_APP_HOST}/api/create-checkout-session`,
+            "/api/create-checkout-session",
             {
                dataFromClient: selectedItems,
             },
