@@ -55,7 +55,7 @@ const register = async (req, res) => {
                email: userIsSaved.email,
             };
 
-            const token = jwtSignUpUser(payload); //generate the token.
+            const token = await jwtSignUpUser(payload); //generate the token.
 
             if (token && token.length > 0) {
                return res.json({
@@ -85,58 +85,58 @@ const register = async (req, res) => {
  * @param res send response: jwt token, message, success to client server.
  */
 const login = async (req, res) => {
-   //check if the email is already exist in database.
-   const existUser = await User.findOne({ email: req.body.email });
+   try {
+      //check if the email is already exist in database.
+      const existUser = await User.findOne({ email: req.body.email });
 
-   if (!existUser) {
-      return res.json({ message: "This user doesn't exit!" });
-   } else {
-      try {
-         const passwordInputByUser = req.body.password;
+      if (!existUser) {
+         return res.json({ message: "This user doesn't exit!" });
+      }
 
-         //compare the password input by user with the password in database.
-         //if the password input by user is correct,
-         //then send response to client server with JWT token.
-         const isPasswordMatch = await comparePassword(
-            existUser,
-            passwordInputByUser
-         );
+      const passwordInputByUser = req.body.password;
 
-         if (!isPasswordMatch) {
-            return res.json({
-               message: "Email or Password is incorrect!!",
-               error: "Email or password is incorrect!!",
+      //compare the password input by user with the password in database.
+      //if the password input by user is correct,
+      //then send response to client server with JWT token.
+      const isPasswordMatch = await comparePassword(
+         existUser,
+         passwordInputByUser
+      );
+
+      if (!isPasswordMatch) {
+         return res.json({
+            message: "Email or Password is incorrect!!",
+            error: "Email or password is incorrect!!",
+         });
+      } else {
+         //if password matched, then generate the token.
+         //and send the token and username to user.
+         const userName = existUser.userName;
+         const existUserEmail = existUser.email;
+
+         const payload = {
+            id: existUser._id,
+            email: existUserEmail,
+            userName,
+         };
+
+         const token = await jwtSignInUser(payload); //generate the token.
+         if (token && token.length > 0) {
+            res.json({
+               success: true,
+               token: "Bearer " + token,
+               message: "You're loggedIn",
+               userName,
             });
          } else {
-            //if password matched, then generate the token.
-            //and send the token and username to user.
-            const userName = existUser.userName;
-            const existUserEmail = existUser.email;
-
-            const payload = {
-               id: existUser._id,
-               email: existUserEmail,
-               userName,
-            };
-
-            const token = await jwtSignInUser(payload); //generate the token.
-            if (token && token.length > 0) {
-               res.json({
-                  success: true,
-                  token: "Bearer " + token,
-                  message: "You're loggedIn",
-                  userName,
-               });
-            } else {
-               res.json({
-                  message:
-                     "Login unsuccessful, please try with valid creadintials",
-               });
-            }
+            res.json({
+               message:
+                  "Login unsuccessful, please try with valid creadintials",
+            });
          }
-      } catch (error) {
-         console.log("Error while login user", error);
       }
+   } catch (error) {
+      console.log("Error while login user", error);
    }
 };
 
