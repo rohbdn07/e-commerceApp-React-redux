@@ -1,9 +1,10 @@
+import axios from "axios";
 import {
    ILoginUserResponse,
    IRegisterUserResponse,
    IUserAuth,
 } from "../../../interfaces/userAuth.interface";
-import { axiosFetchAuthAPI } from "../../axios";
+// import { axiosFetchAuthAPI } from "../../axios";
 
 export const userService = {
    register,
@@ -19,7 +20,7 @@ export const userService = {
 async function register(userCredentials: IUserAuth) {
    if (typeof userCredentials !== undefined || null) {
       try {
-         const response: IRegisterUserResponse = await axiosFetchAuthAPI.post(
+         const response: IRegisterUserResponse = await axios.post(
             "/api/register",
             userCredentials
          );
@@ -41,7 +42,7 @@ async function register(userCredentials: IUserAuth) {
 async function login(userCredentials: IUserAuth) {
    if (typeof userCredentials !== undefined || null) {
       try {
-         const response: ILoginUserResponse = await axiosFetchAuthAPI.post(
+         const response: ILoginUserResponse = await axios.post(
             "/api/login",
             userCredentials
          );
@@ -62,6 +63,31 @@ async function login(userCredentials: IUserAuth) {
       }
    }
 }
+
+// async function login(userCredentials: IUserAuth) {
+//    if (typeof userCredentials !== undefined || null) {
+//       try {
+//          const response: ILoginUserResponse = await axiosFetchAuthAPI.post(
+//             "/api/login",
+//             userCredentials
+//          );
+
+//          const storeIntoLocalStorage = {
+//             userName: response.data.userName,
+//             token: response.data.token,
+//             message: response.data.message,
+//          };
+//          // store user details and jwt token in local storage
+//          //to keep user logged in between page refreshes
+//          if (response.data.token) {
+//             localStorage.setItem("user", JSON.stringify(storeIntoLocalStorage));
+//          }
+//          return response;
+//       } catch (error) {
+//          console.log("Error while performaing login User", error);
+//       }
+//    }
+// }
 
 /**
  * @description logout user & clear user from local storage
