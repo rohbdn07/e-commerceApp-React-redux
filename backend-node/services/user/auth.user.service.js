@@ -1,8 +1,8 @@
 const {
    bcryptThePasswordAndSaveUser,
    comparePassword,
-} = require("../../controllers/user/utils/bcrypt");
-const { jwtSignInUser } = require("../../controllers/user/utils/jwtSignUser");
+} = require("./helpers/utils/bcrypt");
+const { jwtSignInUser } = require("./helpers/utils/jwtSignUser");
 const { User } = require("../../database/models/user/user.auth");
 
 /**
