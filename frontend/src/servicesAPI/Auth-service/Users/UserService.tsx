@@ -53,7 +53,7 @@ async function login(userCredentials: IUserAuth) {
             message: response.data.message,
          };
          // store user details and jwt token in local storage
-         //to keep user logged in between page refreshes
+         //to keep user logged in between page refreshes.
          if (response.data.token) {
             localStorage.setItem("user", JSON.stringify(storeIntoLocalStorage));
          }
@@ -64,33 +64,8 @@ async function login(userCredentials: IUserAuth) {
    }
 }
 
-// async function login(userCredentials: IUserAuth) {
-//    if (typeof userCredentials !== undefined || null) {
-//       try {
-//          const response: ILoginUserResponse = await axiosFetchAuthAPI.post(
-//             "/api/login",
-//             userCredentials
-//          );
-
-//          const storeIntoLocalStorage = {
-//             userName: response.data.userName,
-//             token: response.data.token,
-//             message: response.data.message,
-//          };
-//          // store user details and jwt token in local storage
-//          //to keep user logged in between page refreshes
-//          if (response.data.token) {
-//             localStorage.setItem("user", JSON.stringify(storeIntoLocalStorage));
-//          }
-//          return response;
-//       } catch (error) {
-//          console.log("Error while performaing login User", error);
-//       }
-//    }
-// }
-
 /**
- * @description logout user & clear user from local storage
+ * @description logout user & clear user from local storage.
  * @function logout
  * @returns void
  */
