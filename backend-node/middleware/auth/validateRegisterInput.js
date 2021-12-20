@@ -3,8 +3,8 @@ const validText = require("./valid.text");
 
 /**
  *
- * @param {*} data it is the user's credentials that we want to validate
- * @returns
+ * @param {Object} data it is the user's credentials that we want to validate.
+ * @returns validation result.
  */
 module.exports = function validateRegisterInput(data) {
    let errors = {};

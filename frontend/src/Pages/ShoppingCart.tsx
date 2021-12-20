@@ -32,7 +32,7 @@ export default function ShoppingCart(): JSX.Element {
             </div>
             <div className="container shopping_cart">
                <CartHeader />
-               <div className="col-lg-8">
+               <div className="col-lg-8 col-12">
                   <CartItemsList />
                   <Purchase />
                </div>

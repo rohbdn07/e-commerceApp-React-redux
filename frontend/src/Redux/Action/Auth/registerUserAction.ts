@@ -48,7 +48,8 @@ export const cancelRegisterForm = () => async (dispatch: Dispatch<Action>) => {
         })
     } catch (error) {
         dispatch({
-            type: ActionType.USER_REGISTER_FAILURE
+            type: ActionType.USER_REGISTER_FAILURE,
+            payload: 'Register cancelled'
         });
 
         // console.log('there is error', error)

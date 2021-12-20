@@ -15,7 +15,6 @@
 }
 .hompage_topbar {
    background-color: var(--topbar-color);
-   margin: auto;
    width: 100%;
 }
 
@@ -94,5 +93,8 @@
    .category_filter_left {
       width: 100%;
       margin-bottom: 1rem;
+   }
+   .homepage_search {
+      padding: 1rem 0.5rem;
    }
 }
