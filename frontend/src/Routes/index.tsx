@@ -32,6 +32,9 @@ const AppRoutes: React.FC = () => {
             <Route path="/cancelled">
                <CancelledPage />
             </Route>
+            <Route path="/success">
+               <SuccessPage />
+            </Route>
             <Redirect from="*" to="/" />
          </Switch>
          {/* Logout User if token expires */}
