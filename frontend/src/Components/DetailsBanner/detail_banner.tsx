@@ -1,42 +1,37 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../Redux/Reducer";
+import { Iinitalstate } from "../../Redux/Reducer/detailPageBanner";
 import AddToCartButton from "../../utils/Button/AddToCartButton";
-import { IProductItems } from "../CartItems/CartItems";
 import ProductRating from "../StarRating/ProductRating";
 import "./detail.scss";
 
-interface IDetailPageProps {
-   detailPageBannerItem: IProductItems;
-}
+// interface IDetailPageProps {
+//    detailPageBannerItem: Iinitalstate;
+// }
 
-export default function DetailsBanner(): JSX.Element {
-   const { detailPageBannerItem }: IDetailPageProps = useSelector(
-      (state: RootState) => state.detailPageBanner
-   );
-
-   const { id, title, description, price, image, rating } =
-      detailPageBannerItem;
-
+export default function DetailsBanner({
+   detailPageBannerItem,
+}: Iinitalstate): JSX.Element {
    return (
       <>
          {detailPageBannerItem !== undefined && detailPageBannerItem ? (
             <div className="col-lg-12 col-12 details_banner">
                <div className="container details_banner_inner">
                   <div className="col-lg-6 col-6 details_banner_left">
-                     <h3>{title}</h3>
-                     <h5>{description}</h5>
+                     <h3>{detailPageBannerItem.title}</h3>
+                     <h5>{detailPageBannerItem.description}</h5>
                      <p>
                         <span>$</span>
-                        {price}
+                        {detailPageBannerItem.price}
                      </p>
-                     <ProductRating ratingNumber={rating?.rate} />
+                     <ProductRating
+                        ratingNumber={detailPageBannerItem.rating?.rate}
+                     />
                      <div className="details_banner_button">
-                        <AddToCartButton itemId={id} />
+                        <AddToCartButton itemId={detailPageBannerItem.id} />
                      </div>
                   </div>
                   <div className="col-lg-6 col-5 details_banner_right">
-                     <img src={image} alt="img" />
+                     <img src={detailPageBannerItem.image} alt="img" />
                   </div>
                </div>
             </div>
