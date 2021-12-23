@@ -11,7 +11,7 @@ const paymentController = async (req, res) => {
       // wait payment service to return the response.
       const paymentResponse = await PaymentService.payment(dataFromClient);
 
-      console.log("paymentResponse", paymentResponse);
+      // console.log("paymentResponse", paymentResponse);
 
       // send the response to client server.
       res.status(200).json(paymentResponse);
