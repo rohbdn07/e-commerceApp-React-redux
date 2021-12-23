@@ -28,7 +28,7 @@ export const axiosFetchAPI: AxiosInstance & AxiosRequestConfig = axios.create({
 export const axiosFetchAuthAPI: AxiosInstance & AxiosRequestConfig =
    axios.create({
       // baseURL: "http://localhost:5050",
-      baseURL: process.env.REACT_APP_HOST,
+      baseURL: process.env.REACT_APP_HOST || "http://localhost:5050",
       headers: {
          "Content-Type": "application/json",
       },
