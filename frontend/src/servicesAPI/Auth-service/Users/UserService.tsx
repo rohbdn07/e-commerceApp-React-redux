@@ -1,9 +1,10 @@
-import axios from "axios";
+// import axios from "axios";
 import {
    ILoginUserResponse,
    IRegisterUserResponse,
    IUserAuth,
 } from "../../../interfaces/userAuth.interface";
+import { axiosFetchAuthAPI } from "../../axios";
 // import { axiosFetchAuthAPI } from "../../axios";
 
 export const userService = {
@@ -20,7 +21,7 @@ export const userService = {
 async function register(userCredentials: IUserAuth) {
    if (typeof userCredentials !== undefined || null) {
       try {
-         const response: IRegisterUserResponse = await axios.post(
+         const response: IRegisterUserResponse = await axiosFetchAuthAPI.post(
             "/api/register",
             userCredentials
          );
@@ -42,7 +43,7 @@ async function register(userCredentials: IUserAuth) {
 async function login(userCredentials: IUserAuth) {
    if (typeof userCredentials !== undefined || null) {
       try {
-         const response: ILoginUserResponse = await axios.post(
+         const response: ILoginUserResponse = await axiosFetchAuthAPI.post(
             "/api/login",
             userCredentials
          );
