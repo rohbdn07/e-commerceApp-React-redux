@@ -12,10 +12,28 @@ import Products from "../Components/ProductsContainer/Products";
 import FooterList from "../Components/Footer/FooterList";
 import PartnersList from "../Components/OurBrands/PartnersList";
 import DemoApp from "../Components/DownloadApp/DemoApp";
+import { getProductsAction } from "../Redux/Action/getProducts-Action";
+import { RootState } from "../Redux/Reducer";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ProductDetailsPage(): JSX.Element {
    const { categoryname } = useParams<{ categoryname?: string }>();
    // const { category } = useParams<{ category?: string }>();
+
+   const allProducts = useSelector(
+      (state: RootState) => state.productReducer?.allProducts
+   );
+
+   const detailPageBannerItem = useSelector(
+      (state: RootState) => state.detailPageBanner?.detailPageBannerItem
+   );
+
+   const dispatch = useDispatch();
+
+   //FETCHING: fetching data from API through Redux-action (see at Action folder)
+   React.useEffect(() => {
+      dispatch(getProductsAction());
+   }, [dispatch]);
 
    return (
       <>
@@ -36,10 +54,10 @@ export default function ProductDetailsPage(): JSX.Element {
             </div>
             <Menubar />
 
-            <DetailsBanner />
+            <DetailsBanner detailPageBannerItem={detailPageBannerItem} />
 
             <div className="container">
-               <Products category={categoryname} />
+               <Products category={categoryname} allProducts={allProducts} />
             </div>
             <PartnersList />
             <DemoApp />

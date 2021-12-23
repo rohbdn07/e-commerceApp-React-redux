@@ -38,6 +38,8 @@ export const getProductsAction = () => async (dispatch: Dispatch<Action>) => {
          payload: data,
       })
 
+      return data;
+
    } catch (error) {
       dispatch({
          type: ActionType.PRODUCT_LOADING_ERROR
@@ -46,5 +48,4 @@ export const getProductsAction = () => async (dispatch: Dispatch<Action>) => {
       console.log('there is error', error)
    }
 }
-
 

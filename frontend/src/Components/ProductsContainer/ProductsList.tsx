@@ -1,9 +1,14 @@
 import React from "react";
+import { IFetchedData } from "../../Redux/Action/getProducts-Action";
 import Products from "./Products";
 
 interface IText {
    title: string;
    category: string;
+}
+
+interface IProductsProps {
+   allProducts: IFetchedData[] | undefined;
 }
 
 const text: IText[] = [
@@ -25,7 +30,7 @@ const text: IText[] = [
    },
 ];
 
-export default function ProductsList(): JSX.Element {
+const ProductsList = ({ allProducts }: IProductsProps): JSX.Element => {
    return (
       <>
          <div className="container">
@@ -35,10 +40,13 @@ export default function ProductsList(): JSX.Element {
                      key={index}
                      title={item.title}
                      category={item.category}
+                     allProducts={allProducts}
                   />
                ))}
             </div>
          </div>
       </>
    );
-}
+};
+
+export default React.memo(ProductsList);
