@@ -1,6 +1,7 @@
-import axios from "axios";
+// import axios from "axios";
 import React from "react";
 import { IProductItems } from "../../Components/CartItems/CartItems";
+import { axiosHttpForPayment } from "../axios";
 // import { axiosInstance } from "../axios";
 
 /**
@@ -21,7 +22,7 @@ export const useCheckoutAPI = (selectedItems: IProductItems) => {
 
       try {
          setLoading(true);
-         const { data } = await axios.post(
+         const { data } = await axiosHttpForPayment.post(
             "/api/create-checkout-session",
             {
                dataFromClient: selectedItems,
