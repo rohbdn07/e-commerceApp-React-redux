@@ -1,16 +1,12 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 import "./Product.scss";
-import { RootState } from "../../Redux/Reducer";
-import {
-   getProductsAction,
-   IFetchedData,
-} from "../../Redux/Action/getProducts-Action";
 import Product from "./Product";
+import { IFetchedData } from "../../interfaces/productItem.interface";
 
 interface IProductsProps {
    title?: string;
    category: string | undefined;
+   allProducts: IFetchedData[] | undefined;
 }
 
 /**
@@ -19,27 +15,9 @@ interface IProductsProps {
  * @returns JSX.Element
  */
 export default function Products({
-   title,
    category,
+   allProducts,
 }: IProductsProps): JSX.Element {
-   const dispatch = useDispatch();
-
-   //FETCHING: fetching data from API through Redux-action (see at Action folder)
-   React.useEffect(() => {
-      dispatch(getProductsAction());
-   }, [dispatch]);
-
-   const allProducts: IFetchedData[] | undefined = useSelector(
-      (state: RootState) => state.productReducer?.allProducts
-   );
-
-   // const error = useSelector(
-   //    (state: RootState) => state.productReducer?.errMessage
-   // );
-
-   // const isError = error !== "" ? error : null;
-   // console.log("the all products", allProducts);
-
    return (
       <>
          {allProducts === undefined && !allProducts ? (

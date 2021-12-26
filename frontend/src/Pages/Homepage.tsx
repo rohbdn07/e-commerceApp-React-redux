@@ -13,8 +13,21 @@ import UserProfile from "../Components/Profile/UserProfile";
 import CompanyLogo from "../Components/CompanyLogo/CompanyLogo";
 import LoginRegister from "../Components/Auth/LoginRegister/LoginRegister";
 import ImageBanner from "../Components/Banner/ImageBanner";
+import { getProductsAction } from "../Redux/Action/getProducts-Action";
+import { RootState } from "../Redux/Reducer";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Homepage(): JSX.Element {
+   const allProducts = useSelector(
+      (state: RootState) => state.productReducer?.allProducts
+   );
+
+   const dispatch = useDispatch();
+
+   //FETCHING: fetching data from API through Redux-action (see at Action folder)
+   React.useEffect(() => {
+      dispatch(getProductsAction());
+   }, [dispatch]);
    return (
       <div className="col-lg-12 mx-auto">
          <div className="col-lg-8 hompage_topbar">
@@ -36,7 +49,7 @@ export default function Homepage(): JSX.Element {
          <Eservices />
          <ImageBanner />
          <hr className="category__hr_line col-lg-10" />
-         <ProductsList />
+         <ProductsList allProducts={allProducts} />
          <PartnersList />
          <DemoApp />
          <FooterList />

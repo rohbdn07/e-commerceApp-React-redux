@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./CartIcon.scss";
 import { RootState } from "../../Redux/Reducer";
-import { IFetchedData } from "../../Redux/Action/getProducts-Action";
+import { IFetchedData } from "../../interfaces/productItem.interface";
 
 export default function CartIcon(): JSX.Element {
    const selectedItems: IFetchedData[] | undefined = useSelector(

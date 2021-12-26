@@ -1,8 +1,8 @@
 /* eslint-disable array-callback-return */
 import { IProductItems } from "../../Components/CartItems/CartItems";
+import { IFetchedData } from "../../interfaces/productItem.interface";
 import { Action } from "../Action/actionInterface";
 import { ActionType } from "../Action/actionTypes";
-import { IFetchedData } from "../Action/getProducts-Action";
 export interface Iinitalstate {
    loading: boolean
    allProducts: IFetchedData[]

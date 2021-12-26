@@ -1,9 +1,6 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { removeFromcart } from "../../Redux/Action/removeFromcart";
+import { IFetchedData } from "../../interfaces/productItem.interface";
 import "./CartItems.scss";
-import { decreaseQty, increaseQty } from "../../Redux/Action/upDown";
-import { RootState } from "../../Redux/Reducer";
 import CartItemTab from "./CartItemTab";
 
 export interface IProductItems {
@@ -18,28 +15,23 @@ export interface IProductItems {
    };
 }
 
-export default function CartItems(): JSX.Element {
-   const { selectedItems }: any = useSelector(
-      (state: RootState) => state.productReducer
-   );
-   const dispatch = useDispatch();
+type ICartItemsProps = {
+   selectedItems: IFetchedData[] | undefined;
+   removeItem: (itemId: number) => void;
+   addQty: (item: IProductItems) => void;
+   minusQty: (item: IProductItems) => void;
+};
 
-   const removeItem = (itemId: number) => {
-      dispatch(removeFromcart(itemId));
-   };
-
-   const addQty = (item: IProductItems) => {
-      dispatch(increaseQty(item));
-   };
-
-   const minusQty = (item: IProductItems) => {
-      dispatch(decreaseQty(item));
-   };
-
+export default function CartItems({
+   selectedItems,
+   removeItem,
+   addQty,
+   minusQty,
+}: ICartItemsProps): JSX.Element {
    return (
       <>
-         {selectedItems.length > 0 ? (
-            selectedItems.map((item: IProductItems, index: number) => {
+         {selectedItems && selectedItems.length > 0 ? (
+            selectedItems.map((item, index: number) => {
                return (
                   <CartItemTab
                      key={item.id}

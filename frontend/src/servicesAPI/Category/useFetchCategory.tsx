@@ -1,6 +1,6 @@
 import { axiosFetchAPI } from "../axios";
 import { useQuery } from "react-query";
-import { IFetchedData } from "../../Redux/Action/getProducts-Action";
+import { IFetchedData } from "../../interfaces/productItem.interface";
 
 /**
  * Hook for fetching product category
