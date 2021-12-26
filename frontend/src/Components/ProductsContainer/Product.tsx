@@ -4,8 +4,8 @@ import Skeleton from "@mui/material/Skeleton";
 import { RootState } from "../../Redux/Reducer";
 import ProductRating from "../StarRating/ProductRating";
 import AddToCartButton from "../../utils/Button/AddToCartButton";
-import { IFetchedData } from "../../Redux/Action/getProducts-Action";
 import RedirectToDetailPage from "../../utils/Button/RedirectToDetailPage";
+import { IFetchedData } from "../../interfaces/productItem.interface";
 
 interface IProductProps {
    item: IFetchedData;

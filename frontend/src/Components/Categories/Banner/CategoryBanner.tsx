@@ -5,8 +5,8 @@ import Skeleton from "@mui/material/Skeleton";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./Banner.scss";
-import { IFetchedData } from "../../../Redux/Action/getProducts-Action";
 import { getDetailBanneritem } from "../../../Redux/Action/getDetailBanneritem";
+import { IFetchedData } from "../../../interfaces/productItem.interface";
 
 interface IResponseData {
    isError: boolean;

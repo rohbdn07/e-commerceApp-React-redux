@@ -1,5 +1,5 @@
 import React from "react";
-import { IFetchedData } from "../../Redux/Action/getProducts-Action";
+import { IFetchedData } from "../../interfaces/productItem.interface";
 import Products from "./Products";
 
 interface IText {

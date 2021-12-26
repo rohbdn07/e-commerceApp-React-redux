@@ -2,9 +2,9 @@ import React from "react";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Reducer";
-import { IFetchedData } from "../../../Redux/Action/getProducts-Action";
 import Categoryitem from "./CategoryItem";
 import "./Category.scss";
+import { IFetchedData } from "../../../interfaces/productItem.interface";
 
 export default function CategoryList({ data, isLoading }: any) {
    const { categoryname } = useParams<{ categoryname: string }>();

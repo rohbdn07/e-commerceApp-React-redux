@@ -2,19 +2,8 @@ import { ActionType } from "./actionTypes";
 import { Dispatch } from 'redux';
 import { axiosFetchAPI } from "../../servicesAPI/axios";
 import { Action } from "./actionInterface";
+import { IFetchedData } from "../../interfaces/productItem.interface";
 
-export interface IFetchedData {
-   id: number;
-   title: string;
-   price: number;
-   description?: string;
-   qty: number
-   category: string;
-   image: string;
-   rating: {
-      rate: number
-   };
-}
 
 type Products = {
    data: IFetchedData[];

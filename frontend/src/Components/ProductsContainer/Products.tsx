@@ -1,7 +1,7 @@
 import React from "react";
 import "./Product.scss";
-import { IFetchedData } from "../../Redux/Action/getProducts-Action";
 import Product from "./Product";
+import { IFetchedData } from "../../interfaces/productItem.interface";
 
 interface IProductsProps {
    title?: string;

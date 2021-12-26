@@ -1,7 +1,7 @@
 import { IProductItems } from "../../../Components/CartItems/CartItems";
+import { IFetchedData } from "../../../interfaces/productItem.interface";
 import { ILoginUserResponse, IRegisterUserResponse, IUserAuth } from "../../../interfaces/userAuth.interface";
 import { ActionType } from "../actionTypes";
-import { IFetchedData } from "../getProducts-Action";
 
 interface GetLoadingState {
    type: ActionType.GET_LOADING_STATE
